@@ -1,0 +1,17 @@
+---
+const { partners = [] } = Astro.props;
+---
+
+<section class="py-12">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 items-center">
+      {
+        partners.map((p) => (
+          <div class="card-glass p-6 flex items-center justify-center">
+            <img src={p.logo} alt={p.name} class="max-h-12 object-contain" />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

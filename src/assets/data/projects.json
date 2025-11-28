@@ -1,0 +1,18 @@
+[
+  {
+    "id": "projeto-1",
+    "title": "Residência Contemporânea",
+    "category": "Residencial",
+    "cover": "/images/projeto-1.jpg",
+    "year": 2024,
+    "description": "Residência com integração total entre espaços internos e externos."
+  },
+  {
+    "id": "projeto-2",
+    "title": "Loft Industrial",
+    "category": "Interiores",
+    "cover": "/images/projeto-2.jpg",
+    "year": 2023,
+    "description": "Renovação de loft em estilo industrial, com materiais aparentes."
+  }
+]

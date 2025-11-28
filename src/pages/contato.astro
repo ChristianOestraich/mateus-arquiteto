@@ -1,0 +1,21 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+---
+
+<MainLayout title="Contato | Mateus Arquiteto">
+  <section class="py-24">
+    <div class="max-w-3xl mx-auto px-6">
+      <h2 class="text-3xl font-bold">Fale com o escritório</h2>
+      <form class="mt-8 grid grid-cols-1 gap-6">
+        <input class="p-4 rounded-lg" placeholder="Nome" />
+        <input class="p-4 rounded-lg" placeholder="E-mail" />
+        <input class="p-4 rounded-lg" placeholder="Assunto" />
+        <textarea class="p-4 rounded-lg" rows="6" placeholder="Mensagem"
+        ></textarea>
+        <button class="px-6 py-3 rounded-full bg-accent text-white"
+          >Enviar</button
+        >
+      </form>
+    </div>
+  </section>
+</MainLayout>

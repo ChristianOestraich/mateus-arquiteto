@@ -1,0 +1,18 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import Partners from "../components/Partners.astro";
+---
+
+<MainLayout title="Parceiros | Mateus Arquiteto">
+  <section class="py-24">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-3xl font-bold">Parceiros</h2>
+      <Partners
+        partners={[
+          { name: "Empresa A", logo: "/images/logo-a.png" },
+          { name: "Empresa B", logo: "/images/logo-b.png" },
+        ]}
+      />
+    </div>
+  </section>
+</MainLayout>

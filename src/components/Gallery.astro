@@ -1,0 +1,21 @@
+---
+import { onMount } from "solid-js";
+const { images = [] } = Astro.props;
+---
+
+<div class="w-full">
+  <div class="swiper mySwiper">
+    <div class="swiper-wrapper">
+      {
+        images.map((img) => (
+          <div class="swiper-slide">
+            <img src={img} alt="project" class="w-full h-[60vh] object-cover" />
+          </div>
+        ))
+      }
+    </div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-pagination"></div>
+  </div>
+</div>

@@ -1,11 +1,15 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import MainLayout from "../layouts/MainLayout.astro";
+import Hero from "../components/Hero.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import projects from "../assets/data/projects.json";
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<MainLayout title="Home | Mateus Arquiteto">
+  <Hero />
+  <section class="py-16">
+    <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-8">
+      {projects.slice(0, 4).map((p) => <ProjectCard project={p} />)}
+    </div>
+  </section>
+</MainLayout>
