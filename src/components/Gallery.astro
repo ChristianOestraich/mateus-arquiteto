@@ -1,21 +1,53 @@
+// ============================================
+// Gallery.astro
+// ============================================
 ---
-import { onMount } from "solid-js";
-const { images = [] } = Astro.props;
+interface Props {
+  images: string[];
+}
+
+const { images } = Astro.props;
 ---
 
 <div class="w-full">
   <div class="swiper mySwiper">
     <div class="swiper-wrapper">
-      {
-        images.map((img) => (
-          <div class="swiper-slide">
-            <img src={img} alt="project" class="w-full h-[60vh] object-cover" />
-          </div>
-        ))
-      }
+      {images.map((img) => (
+        <div class="swiper-slide">
+          <img 
+            src={img} 
+            alt="project" 
+            class="w-full h-[60vh] object-cover rounded-lg"
+            loading="lazy"
+          />
+        </div>
+      ))}
     </div>
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next hover-lift"></div>
+    <div class="swiper-button-prev hover-lift"></div>
     <div class="swiper-pagination"></div>
   </div>
 </div>
+
+<script>
+  import Swiper from 'swiper';
+  import { Navigation, Pagination } from 'swiper/modules';
+  import 'swiper/css';
+  import 'swiper/css/navigation';
+  import 'swiper/css/pagination';
+
+  const swiper = new Swiper('.mySwiper', {
+    modules: [Navigation, Pagination],
+    slidesPerView: 1,
+    spaceBetween: 30,
+    loop: true,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+  });
+</script>

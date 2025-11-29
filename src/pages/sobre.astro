@@ -3,28 +3,78 @@ import MainLayout from "../layouts/MainLayout.astro";
 ---
 
 <MainLayout title="Sobre | Mateus Arquiteto">
-  <section class="py-24">
-    <div
-      class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center"
-    >
-      <div>
-        <img
-          src="/images/autor.jpg"
-          alt="Mateus"
-          class="rounded-lg object-cover h-96 w-full"
-        />
-      </div>
-      <div>
-        <h2 class="text-3xl font-bold">Sobre Mateus</h2>
-        <p class="mt-4 text-lg text-gray-600">
-          Arquiteto com experiência em projetos residenciais e comerciais...
-        </p>
+  <section class="section py-32">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <!-- Imagem -->
+        <div class="animate-slide-in-left">
+          <div class="relative">
+            <img
+              src="/images/autor.jpg"
+              alt="Mateus"
+              class="rounded-2xl object-cover h-96 w-full shadow-2xl"
+            />
+            <div
+              class="absolute inset-0 rounded-2xl bg-gradient-to-t from-indigo-600/20 to-transparent"
+            >
+            </div>
+          </div>
+        </div>
 
-        <h3 class="mt-6 font-semibold">Processo Criativo</h3>
-        <p class="mt-2 text-gray-500">
-          Pesquisa de contexto, materialidade e iluminação — repensando os
-          espaços.
-        </p>
+        <!-- Conteúdo -->
+        <div class="animate-slide-in-right">
+          <h2 class="text-4xl md:text-5xl font-bold mb-6">Sobre Mateus</h2>
+          <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+            Arquiteto com experiência em projetos residenciais e comerciais,
+            focado em criar espaços que dialogam com a luz natural e
+            materialidade.
+          </p>
+
+          <div class="mt-10">
+            <h3 class="text-2xl font-semibold mb-4">Processo Criativo</h3>
+            <p class="text-gray-600 leading-relaxed">
+              Pesquisa de contexto, materialidade e iluminação — repensando os
+              espaços com atenção aos detalhes e às necessidades de cada
+              cliente.
+            </p>
+          </div>
+
+          <div class="mt-8 flex flex-wrap gap-4">
+            <div class="card-glass px-6 py-3 inline-block">
+              <span class="font-semibold text-indigo-600">+50</span>
+              <span class="text-gray-600 ml-2">Projetos</span>
+            </div>
+            <div class="card-glass px-6 py-3 inline-block">
+              <span class="font-semibold text-indigo-600">10+</span>
+              <span class="text-gray-600 ml-2">Anos</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Especialidades -->
+      <div class="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="card-glass p-8 text-center hover-lift hover-glow">
+          <div class="text-4xl mb-4">🏠</div>
+          <h3 class="text-xl font-semibold mb-2">Residencial</h3>
+          <p class="text-gray-600 text-sm">
+            Casas e apartamentos personalizados
+          </p>
+        </div>
+
+        <div class="card-glass p-8 text-center hover-lift hover-glow">
+          <div class="text-4xl mb-4">🏢</div>
+          <h3 class="text-xl font-semibold mb-2">Comercial</h3>
+          <p class="text-gray-600 text-sm">
+            Escritórios e espaços corporativos
+          </p>
+        </div>
+
+        <div class="card-glass p-8 text-center hover-lift hover-glow">
+          <div class="text-4xl mb-4">✨</div>
+          <h3 class="text-xl font-semibold mb-2">Interiores</h3>
+          <p class="text-gray-600 text-sm">Design de interiores completo</p>
+        </div>
       </div>
     </div>
   </section>

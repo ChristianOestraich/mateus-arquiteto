@@ -1,17 +1,35 @@
 ---
-const { partners = [] } = Astro.props;
+interface Partner {
+  logo: string;
+  name: string;
+}
+
+interface Props {
+  partners: Partner[];
+}
+
+const { partners } = Astro.props;
 ---
 
-<section class="py-12">
-  <div class="max-w-6xl mx-auto">
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 items-center">
-      {
-        partners.map((p) => (
-          <div class="card-glass p-6 flex items-center justify-center">
-            <img src={p.logo} alt={p.name} class="max-h-12 object-contain" />
-          </div>
-        ))
-      }
+<section class="section">
+  <div class="section-container">
+    <div class="section-header">
+      <h2 class="section-title">Parceiros</h2>
+      <p class="section-subtitle">
+        Empresas e profissionais que confiam no nosso trabalho
+      </p>
+    </div>
+    
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
+      {partners.map((p) => (
+        <div class="card-glass p-6 flex items-center justify-center hover-lift hover-glow">
+          <img 
+            src={p.logo} 
+            alt={p.name} 
+            class="max-h-16 object-contain grayscale hover:grayscale-0 transition-all duration-300"
+          />
+        </div>
+      ))}
     </div>
   </div>
 </section>
