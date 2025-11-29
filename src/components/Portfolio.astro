@@ -1,0 +1,449 @@
+---
+// Portfolio.astro - Portfólio de Projetos
+const projects = {
+  year: "2024",
+  subtitle: "Projetos concluídos, cada um com uma história única de design.",
+  team: [
+    { image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80", alt: "Membro 1" },
+    { image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80", alt: "Membro 2" },
+    { image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80", alt: "Membro 3" },
+    { image: "https://images.unsplash.com/photo-1485546246426-74dc88dec4d9?w=400&q=80", alt: "Projeto" }
+  ]
+};
+---
+
+<section class="portfolio">
+  <div class="portfolio-container">
+    <!-- Header -->
+    <div class="portfolio-header">
+      <h2 class="portfolio-title">Portfólio de Projetos</h2>
+      <p class="portfolio-description">
+        Explore uma seleção cuidadosa dos nossos principais projetos,
+        demonstrando criatividade, inovação e atenção aos detalhes em cada
+        espaço que transformamos.
+      </p>
+    </div>
+
+    <!-- Main Grid -->
+    <div class="portfolio-grid">
+      <!-- Row 1: Year Card + Large Image -->
+      <div class="year-card">
+        <div class="year-content">
+          <h3 class="year-number">{projects.year}</h3>
+          <p class="year-subtitle">{projects.subtitle}</p>
+          <div class="team-avatars">
+            {projects.team.map((member) => (
+              <div class="avatar">
+                <img src={member.image} alt={member.alt} />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-item large">
+        <div class="image-content">
+          <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&q=80" alt="Casa Moderna" />
+          <div class="image-overlay">
+            <p class="overlay-text">Desfrute de imagens em alta resolução que capturam cada detalhe e emoção de forma bela.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 2: Medium Image + Stat Card + Contact -->
+      <div class="gallery-item medium">
+        <div class="image-content">
+          <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=80" alt="Interior Design" />
+          <div class="image-overlay">
+            <p class="overlay-text">Desfrute de imagens em alta resolução que capturam cada detalhe e emoção de forma bela.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="gallery-item stat">
+        <div class="stat-content">
+          <div class="stat-number">95<span class="percent">%</span></div>
+          <p class="stat-text">Clientes satisfeitos recomendam nossos serviços.</p>
+        </div>
+      </div>
+
+      <div class="contact-card">
+        <button class="contact-button">
+          <span class="button-text">CONTACT US</span>
+          <div class="button-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </div>
+        </button>
+      </div>
+
+      <!-- Row 3: Large Image + Large Image with Arrow -->
+  </div>
+</section>
+
+<style>
+  .portfolio {
+    background: #ffffff;
+    padding: 80px 20px;
+    min-height: 100vh;
+  }
+
+  .portfolio-container {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .portfolio-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    margin-bottom: 60px;
+    align-items: start;
+  }
+
+  .portfolio-title {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 700;
+    color: #1a1a1a;
+    line-height: 1.2;
+  }
+
+  .portfolio-description {
+    font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+    color: #666;
+    line-height: 1.8;
+  }
+
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 24px;
+  }
+
+  /* Year Card */
+  .year-card {
+    grid-column: span 5;
+    background: #ffffff;
+    border: 2px dashed #d0d0d0;
+    border-radius: 24px;
+    padding: 48px;
+    min-height: 420px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .year-number {
+    font-size: 5rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 16px;
+    line-height: 1;
+  }
+
+  .year-subtitle {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 40px;
+  }
+
+  .team-avatars {
+    display: flex;
+  }
+
+  .avatar {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid #ffffff;
+    margin-left: -20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .avatar:first-child {
+    margin-left: 0;
+  }
+
+  .avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Gallery Items */
+  .gallery-item {
+    border-radius: 24px;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.4s ease;
+  }
+
+  .gallery-item:hover {
+    transform: translateY(-5px);
+  }
+
+  .gallery-item.large {
+    grid-column: span 7;
+    min-height: 420px;
+  }
+
+  .gallery-item.medium {
+    grid-column: span 5;
+    min-height: 360px;
+  }
+
+  .gallery-item.stat {
+    grid-column: span 5;
+    background: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 48px;
+    min-height: 360px;
+  }
+
+  .image-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 360px;
+  }
+
+  .image-content img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .image-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 40px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.3) 60%, transparent 100%);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .overlay-text {
+    color: #ffffff;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    max-width: 85%;
+  }
+
+  .arrow-button {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+  }
+
+  .arrow-button svg {
+    color: #1a1a1a;
+  }
+
+  .arrow-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Stat Card */
+  .stat-content {
+    text-align: center;
+  }
+
+  .stat-number {
+    font-size: 7rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .percent {
+    font-size: 3rem;
+    vertical-align: super;
+  }
+
+  .stat-text {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.6;
+  }
+
+  /* Contact Card */
+  .contact-card {
+    grid-column: span 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 360px;
+  }
+
+  .contact-button {
+    position: relative;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background: #c9a56c;
+    border: none;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .contact-button:hover {
+    transform: scale(1.05);
+    background: #b89354;
+  }
+
+  .button-text {
+    position: absolute;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    color: #1a1a1a;
+    animation: rotateText 15s linear infinite;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .button-icon {
+    position: relative;
+    z-index: 2;
+    color: #1a1a1a;
+    transform: rotate(-45deg);
+  }
+
+  @keyframes rotateText {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .portfolio-header {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+
+    .portfolio-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .year-card,
+    .gallery-item.large,
+    .gallery-item.medium,
+    .gallery-item.stat,
+    .contact-card {
+      grid-column: span 1;
+    }
+
+    .image-content {
+      min-height: 320px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .portfolio {
+      padding: 60px 20px;
+    }
+
+    .year-card {
+      padding: 32px;
+      min-height: 320px;
+    }
+
+    .year-number {
+      font-size: 4rem;
+    }
+
+    .avatar {
+      width: 70px;
+      height: 70px;
+      margin-left: -15px;
+    }
+
+    .stat-number {
+      font-size: 5rem;
+    }
+
+    .contact-button {
+      width: 140px;
+      height: 140px;
+    }
+
+    .overlay-text {
+      font-size: 1rem;
+      max-width: 100%;
+    }
+
+    .arrow-button {
+      width: 48px;
+      height: 48px;
+    }
+
+    .image-overlay {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+    }
+  }
+</style>
+
+<script>
+  // Animação de entrada dos itens
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }, index * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.gallery-item, .year-card, .contact-card').forEach((item) => {
+    item.style.opacity = '0';
+    item.style.transform = 'translateY(30px)';
+    item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(item);
+  });
+
+  // Click nos botões de seta
+  document.querySelectorAll('.arrow-button').forEach(button => {
+    button.addEventListener('click', (e) => {
+      e.stopPropagation();
+      console.log('Ver mais detalhes do projeto');
+    });
+  });
+</script>

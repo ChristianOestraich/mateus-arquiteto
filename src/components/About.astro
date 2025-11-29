@@ -1,0 +1,482 @@
+---
+// About.astro - Sobre Nós
+const aboutData = {
+  title: "Sobre Nós",
+  subtitle: "Transformando Visões em Realidade",
+  description: "Somos um escritório de arquitetura dedicado a criar espaços que inspiram e funcionam perfeitamente. Nossa equipe combina criatividade, experiência técnica e atenção aos detalhes para entregar projetos excepcionais.",
+  stats: [
+    { number: "150+", label: "Projetos Concluídos" },
+    { number: "15+", label: "Anos de Experiência" },
+    { number: "50+", label: "Clientes Satisfeitos" },
+    { number: "20+", label: "Prêmios Recebidos" }
+  ],
+  team: {
+    title: "Nossa Equipe",
+    description: "Profissionais apaixonados por criar espaços únicos que refletem a personalidade e necessidades de cada cliente.",
+    members: [
+      {
+        name: "Ricardo Santos",
+        role: "Arquiteto Fundador",
+        image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=600&q=80"
+      },
+      {
+        name: "Ana Paula Costa",
+        role: "Designer de Interiores",
+        image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=600&q=80"
+      },
+      {
+        name: "Carlos Mendes",
+        role: "Gerente de Projetos",
+        image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&q=80"
+      }
+    ]
+  },
+  values: [
+    {
+      icon: "creativity",
+      title: "Criatividade",
+      description: "Soluções inovadoras e únicas para cada projeto"
+    },
+    {
+      icon: "quality",
+      title: "Qualidade",
+      description: "Excelência em cada detalhe do processo"
+    },
+    {
+      icon: "sustainability",
+      title: "Sustentabilidade",
+      description: "Projetos responsáveis e ecologicamente conscientes"
+    },
+    {
+      icon: "commitment",
+      title: "Compromisso",
+      description: "Dedicação total à satisfação do cliente"
+    }
+  ]
+};
+---
+
+<section class="about">
+  <div class="about-container">
+    <!-- Header -->
+    <div class="about-header">
+      <h2 class="about-title">{aboutData.title}</h2>
+      <div class="header-content">
+        <h3 class="about-subtitle">{aboutData.subtitle}</h3>
+        <p class="about-description">{aboutData.description}</p>
+      </div>
+    </div>
+
+    <!-- Stats Grid -->
+    <div class="stats-grid">
+      {aboutData.stats.map((stat) => (
+        <div class="stat-card">
+          <div class="stat-number">{stat.number}</div>
+          <div class="stat-label">{stat.label}</div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Values Section -->
+    <div class="values-section">
+      <h3 class="section-title">Nossos Valores</h3>
+      <div class="values-grid">
+        {aboutData.values.map((value) => (
+          <div class="value-card">
+            <div class="value-icon">
+              {value.icon === 'creativity' && (
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+              )}
+              {value.icon === 'quality' && (
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                  <polyline points="22 4 12 14.01 9 11.01"/>
+                </svg>
+              )}
+              {value.icon === 'sustainability' && (
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                </svg>
+              )}
+              {value.icon === 'commitment' && (
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                </svg>
+              )}
+            </div>
+            <h4 class="value-title">{value.title}</h4>
+            <p class="value-description">{value.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Team Section -->
+    <div class="team-section">
+      <div class="team-header">
+        <h3 class="section-title">{aboutData.team.title}</h3>
+        <p class="team-description">{aboutData.team.description}</p>
+      </div>
+      <div class="team-grid">
+        {aboutData.team.members.map((member) => (
+          <div class="team-card">
+            <div class="team-image">
+              <img src={member.image} alt={member.name} />
+            </div>
+            <div class="team-info">
+              <h4 class="team-name">{member.name}</h4>
+              <p class="team-role">{member.role}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="cta-section">
+      <div class="cta-content">
+        <h3 class="cta-title">Pronto para começar seu projeto?</h3>
+        <p class="cta-description">Entre em contato e vamos transformar suas ideias em realidade.</p>
+        <button class="cta-button">
+          Fale Conosco
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about {
+    background: #ffffff;
+    padding: 100px 20px;
+  }
+
+  .about-container {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  /* Header */
+  .about-header {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 80px;
+    margin-bottom: 80px;
+    align-items: start;
+  }
+
+  .about-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    color: #1a1a1a;
+    line-height: 1.1;
+    position: sticky;
+    top: 100px;
+  }
+
+  .about-subtitle {
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 24px;
+    line-height: 1.3;
+  }
+
+  .about-description {
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    color: #666;
+    line-height: 1.8;
+  }
+
+  /* Stats Grid */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    margin-bottom: 100px;
+  }
+
+  .stat-card {
+    text-align: center;
+    padding: 40px 20px;
+    background: #f8f8f8;
+    border-radius: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .stat-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  }
+
+  .stat-number {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 8px;
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 1rem;
+    color: #666;
+    font-weight: 500;
+  }
+
+  /* Values Section */
+  .values-section {
+    margin-bottom: 100px;
+  }
+
+  .section-title {
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 48px;
+    text-align: center;
+  }
+
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+  }
+
+  .value-card {
+    padding: 40px 32px;
+    background: #ffffff;
+    border: 2px solid #f0f0f0;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+  }
+
+  .value-card:hover {
+    border-color: #c9a56c;
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  }
+
+  .value-icon {
+    width: 64px;
+    height: 64px;
+    background: #f8f8f8;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+    color: #c9a56c;
+  }
+
+  .value-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 12px;
+  }
+
+  .value-description {
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.6;
+  }
+
+  /* Team Section */
+  .team-section {
+    margin-bottom: 100px;
+  }
+
+  .team-header {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 48px;
+  }
+
+  .team-description {
+    font-size: 1.1rem;
+    color: #666;
+    line-height: 1.7;
+  }
+
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+  }
+
+  .team-card {
+    text-align: center;
+    transition: transform 0.3s ease;
+  }
+
+  .team-card:hover {
+    transform: translateY(-10px);
+  }
+
+  .team-image {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 24px;
+  }
+
+  .team-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+
+  .team-card:hover .team-image img {
+    transform: scale(1.05);
+  }
+
+  .team-name {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 8px;
+  }
+
+  .team-role {
+    font-size: 1rem;
+    color: #666;
+  }
+
+  /* CTA Section */
+  .cta-section {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    border-radius: 24px;
+    padding: 80px 60px;
+    text-align: center;
+  }
+
+  .cta-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 16px;
+  }
+
+  .cta-description {
+    font-size: 1.2rem;
+    color: #cccccc;
+    margin-bottom: 40px;
+  }
+
+  .cta-button {
+    padding: 18px 48px;
+    background: #c9a56c;
+    color: #1a1a1a;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.3s ease;
+  }
+
+  .cta-button:hover {
+    background: #b89354;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(201, 165, 108, 0.4);
+  }
+
+  @media (max-width: 1024px) {
+    .about-header {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .stats-grid,
+    .values-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .team-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .about {
+      padding: 60px 20px;
+    }
+
+    .about-header {
+      margin-bottom: 60px;
+    }
+
+    .stats-grid,
+    .values-grid,
+    .team-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .cta-section {
+      padding: 60px 30px;
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+    }
+  }
+</style>
+
+<script>
+  // Animação de contagem nos números
+  const observerOptions = {
+    threshold: 0.3
+  };
+
+  const animateNumber = (element: Element) => {
+    const target = parseInt(element.textContent?.replace(/\D/g, '') || '0');
+    const duration = 2000;
+    const increment = target / (duration / 16);
+    let current = 0;
+
+    const updateNumber = () => {
+      current += increment;
+      if (current < target) {
+        element.textContent = Math.floor(current) + (element.textContent?.includes('+') ? '+' : '');
+        requestAnimationFrame(updateNumber);
+      } else {
+        element.textContent = element.textContent;
+      }
+    };
+
+    updateNumber();
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const number = entry.target.querySelector('.stat-number');
+        if (number) {
+          animateNumber(number);
+        }
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.stat-card').forEach(card => {
+    observer.observe(card);
+  });
+
+  // Scroll suave para o botão CTA
+  document.querySelector('.cta-button')?.addEventListener('click', () => {
+    console.log('Navegando para contato...');
+    // Aqui você pode adicionar navegação ou abrir modal de contato
+  });
+</script>

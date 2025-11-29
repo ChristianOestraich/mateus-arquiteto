@@ -1,39 +1,50 @@
 ---
+// src/components/ProjectCard.astro
 interface Props {
-  project: {
-    cover: string;
-    title: string;
-    category: string;
-    year: string;
-    description: string;
-    slug?: string;
-  };
+  title: string;
+  type: string;
+  image: string;
+  description: string;
 }
 
-const { project } = Astro.props;
+const { title, type, image, description } = Astro.props;
 ---
 
-<article class="project-card animate-fade-in hover-glow">
-  <a href={project.slug || '#'} class="block">
-    <div class="overflow-hidden rounded-t-2xl">
-      <img
-        src={project.cover}
-        alt={project.title}
-        class="project-image"
-        loading="lazy"
-      />
-    </div>
+<div class="group relative bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-500 hover:shadow-2xl hover:transform hover:scale-105">
+  <!-- Image -->
+  <div class="relative overflow-hidden">
+    <img 
+      src={image} 
+      alt={title}
+      class="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+      loading="lazy"
+    />
+    <!-- Overlay -->
+    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300"></div>
     
-    <div class="project-info">
-      <h3 class="project-title">{project.title}</h3>
-      
-      <p class="project-category">
-        {project.category} • {project.year}
-      </p>
-      
-      <p class="project-description">
-        {project.description}
-      </p>
+    <!-- Type Badge -->
+    <div class="absolute top-4 left-4">
+      <span class="bg-amber-700 text-white px-3 py-1 rounded-full text-sm font-medium">
+        {type}
+      </span>
     </div>
-  </a>
-</article>
+  </div>
+
+  <!-- Content -->
+  <div class="p-6">
+    <h3 class="text-xl font-serif font-bold text-gray-800 mb-2">
+      {title}
+    </h3>
+    <p class="text-gray-600 leading-relaxed">
+      {description}
+    </p>
+    
+    <!-- View Button -->
+    <button class="mt-4 text-amber-700 hover:text-amber-800 font-semibold flex items-center gap-2 transition-colors">
+      Ver Detalhes
+      <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+      </svg>
+    </button>
+  </div>
+</div>

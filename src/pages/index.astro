@@ -1,38 +1,18 @@
 ---
-import MainLayout from "../layouts/MainLayout.astro";
-import Hero from "../components/Hero.astro";
-import ProjectCard from "../components/ProjectCard.astro";
-import projects from "../assets/data/projects.json";
+// src/pages/index.astro
+import Layout from '../layouts/MainLayout.astro';
+import Hero from '../components/Hero.astro';
+import Gallery from '../components/Gallery.astro';
+import Feedback from '../components/Feedback.astro';
+import Portfolio from '../components/Portfolio.astro';
+import About from '../components/About.astro';
+import Contact from '../components/Contact.astro';
 ---
 
-<MainLayout title="Home | Mateus Arquiteto">
-  <Hero />
-
-  <section class="section">
-    <div class="section-container">
-      <div class="section-header animate-fade-in">
-        <h2 class="section-title">Projetos em Destaque</h2>
-        <p class="section-subtitle">
-          Conheça alguns dos nossos trabalhos mais recentes
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
-        {projects.slice(0, 4).map((p) => (
-          <div class="animate-fade-in-up">
-            <ProjectCard project={p} />
-          </div>
-        ))}
-      </div>
-
-      <div class="text-center mt-12 animate-fade-in">
-        <a
-          href="/projetos"
-          class="btn-glass inline-block hover-lift"
-        >
-          Ver Todos os Projetos
-        </a>
-      </div>
-    </div>
-  </section>
-</MainLayout>
+<Layout title="Mateus Arquiteto - Arquitetura e Design">
+    <Hero />
+    <Gallery />
+    <Portfolio />
+    <Feedback />
+    <Contact />
+</Layout>

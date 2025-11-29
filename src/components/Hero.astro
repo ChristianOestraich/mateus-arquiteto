@@ -1,28 +1,348 @@
-<section class="hero-section">
-  <img
-    src="/images/hero.jpg"
-    alt="Hero"
-    class="absolute inset-0 w-full h-full object-cover opacity-30"
-  />
-  
-  <div class="hero-content animate-fade-in-up">
-    <div class="card-glass p-8 md:p-12 rounded-3xl inline-block backdrop-blur-xl">
-      <h1 class="hero-title text-white">
-        Mateus — Arquitetura & Design
-      </h1>
-      
-      <p class="hero-subtitle text-white/90">
-        Projetos contemporâneos com foco em materialidade e luz.
-      </p>
-      
-      <div class="hero-cta mt-8">
-        <a
-          href="/projetos"
-          class="btn-glass text-white hover-lift inline-block"
-        >
-          Ver Projetos
-        </a>
-      </div>
+---
+// Hero.astro - Slider de Casas Modernas
+const slides = [
+  {
+    title: "MODERN LIVING",
+    subtitle: "Contemporary Architecture",
+    image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200&q=80"
+  },
+  {
+    title: "LUXURY HOMES",
+    subtitle: "Elegant Design",
+    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80"
+  },
+  {
+    title: "DREAM HOUSES",
+    subtitle: "Minimalist Style",
+    image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1200&q=80"
+  }
+];
+---
+
+<section class="hero">
+  <div class="slider-container">
+    <div class="slide-wrapper">
+      {slides.map((slide, index) => (
+        <div class={`slide ${index === 0 ? 'active' : ''}`} data-slide={index}>
+          <div class="slide-content">
+            <h1 class="slide-title">{slide.title}</h1>
+            <p class="slide-subtitle">{slide.subtitle}</p>
+          </div>
+          <div class="slide-image">
+            <img src={slide.image} alt={slide.title} />
+          </div>
+        </div>
+      ))}
     </div>
   </div>
+
+  <div class="slider-controls">
+    <button class="slider-btn prev" aria-label="Previous slide">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="15 18 9 12 15 6"></polyline>
+      </svg>
+    </button>
+    <div class="slider-dots">
+      {slides.map((_, index) => (
+        <button class={`dot ${index === 0 ? 'active' : ''}`} data-index={index} aria-label={`Go to slide ${index + 1}`}></button>
+      ))}
+    </div>
+    <button class="slider-btn next" aria-label="Next slide">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="9 18 15 12 9 6"></polyline>
+      </svg>
+    </button>
+  </div>
+
+  <div class="progress-wrapper">
+    <div class="progress-bar"></div>
+  </div>
 </section>
+
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: #0a0a0a;
+    overflow: hidden;
+  }
+
+  .slider-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .slide-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 0 8%;
+    gap: 4rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+  }
+
+  .slide.active {
+    opacity: 1;
+    visibility: visible;
+    z-index: 1;
+  }
+
+  .slide-content {
+    z-index: 2;
+  }
+
+  .slide-title {
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 900;
+    color: #fff;
+    margin: 0;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    animation: slideInUp 0.8s ease-out;
+  }
+
+  .slide-subtitle {
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    color: #888;
+    margin-top: 1rem;
+    animation: slideInUp 0.8s ease-out 0.2s backwards;
+  }
+
+  .slide-image {
+    position: relative;
+    width: 100%;
+    height: 70vh;
+    overflow: hidden;
+    border-radius: 20px;
+    background: #1a1a1a;
+    animation: scaleIn 0.8s ease-out 0.3s backwards;
+  }
+
+  .slide-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .slider-controls {
+    position: absolute;
+    bottom: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    z-index: 10;
+  }
+
+  .slider-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    backdrop-filter: blur(10px);
+  }
+
+  .slider-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+  }
+
+  .slider-dots {
+    display: flex;
+    gap: 0.8rem;
+  }
+
+  .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .dot.active {
+    background: #fff;
+    width: 32px;
+    border-radius: 6px;
+  }
+
+  .progress-wrapper {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    z-index: 10;
+  }
+
+  .progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #6366f1, #8b5cf6);
+    width: 0%;
+    transition: width 0.1s linear;
+  }
+
+  @keyframes slideInUp {
+    from {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .slide {
+      grid-template-columns: 1fr;
+      padding: 0 5%;
+      gap: 2rem;
+    }
+
+    .slide-content {
+      text-align: center;
+    }
+
+    .slide-image {
+      height: 50vh;
+    }
+
+    .slider-controls {
+      bottom: 40px;
+      gap: 1rem;
+    }
+
+    .slider-btn {
+      width: 40px;
+      height: 40px;
+    }
+  }
+</style>
+
+<script>
+  let currentSlide = 0;
+  let isAnimating = false;
+  let progressInterval;
+  let progressWidth = 0;
+
+  const slides = document.querySelectorAll('.slide');
+  const dots = document.querySelectorAll('.dot');
+  const prevBtn = document.querySelector('.prev');
+  const nextBtn = document.querySelector('.next');
+  const progressBar = document.querySelector('.progress-bar');
+
+  function updateSlide(newIndex) {
+    if (isAnimating || newIndex === currentSlide) return;
+    
+    isAnimating = true;
+
+    // Remove active class from current slide
+    slides[currentSlide].classList.remove('active');
+    dots[currentSlide].classList.remove('active');
+
+    // Add active class to new slide
+    slides[newIndex].classList.add('active');
+    dots[newIndex].classList.add('active');
+
+    currentSlide = newIndex;
+
+    setTimeout(() => {
+      isAnimating = false;
+    }, 600);
+
+    resetProgress();
+  }
+
+  function nextSlide() {
+    const next = (currentSlide + 1) % slides.length;
+    updateSlide(next);
+  }
+
+  function prevSlide() {
+    const prev = (currentSlide - 1 + slides.length) % slides.length;
+    updateSlide(prev);
+  }
+
+  function goToSlide(index) {
+    updateSlide(index);
+  }
+
+  function updateProgress() {
+    progressWidth += 0.5;
+    progressBar.style.width = progressWidth + '%';
+
+    if (progressWidth >= 100) {
+      nextSlide();
+    }
+  }
+
+  function resetProgress() {
+    progressWidth = 0;
+    progressBar.style.width = '0%';
+    clearInterval(progressInterval);
+    progressInterval = setInterval(updateProgress, 25); // 100/0.5*25 = 5000ms (5 segundos)
+  }
+
+  // Event listeners
+  prevBtn?.addEventListener('click', prevSlide);
+  nextBtn?.addEventListener('click', nextSlide);
+
+  dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => goToSlide(index));
+  });
+
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') prevSlide();
+    if (e.key === 'ArrowRight') nextSlide();
+  });
+
+  // Start autoplay
+  resetProgress();
+</script>

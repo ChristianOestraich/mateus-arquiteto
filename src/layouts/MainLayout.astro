@@ -1,23 +1,40 @@
 ---
+// src/layouts/Layout.astro
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
-const { title = "Mateus - Arquiteto" } = Astro.props;
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="pt-BR">
   <head>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
-    <link rel="icon" href="/favicon.svg" />
+
+    <!-- Meta Tags -->
+    <meta
+      name="description"
+      content="Arquiteto Mateus - Transformando espaços em experiências únicas através do design e funcionalidade"
+    />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/styles/global.css" />
   </head>
-  <body class="min-h-screen flex flex-col">
+
+  <body class="font-sans antialiased">
     <Navbar />
-    <main class="flex-1">
+    <main>
       <slot />
     </main>
     <Footer />
-    <script type="module" src="/scripts/main.js"></script>
   </body>
 </html>

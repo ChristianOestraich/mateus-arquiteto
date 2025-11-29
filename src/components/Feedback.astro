@@ -1,0 +1,346 @@
+---
+// Feedback.astro - Depoimentos de Clientes
+const testimonials = [
+  {
+    id: 1,
+    text: "Trabalhar com essa equipe foi transformador. A estratégia, os visuais, a atenção aos detalhes – tudo se encaixou perfeitamente. Finalmente, sentimos orgulho de como nos apresentamos.",
+    author: "Theo Gardner",
+    role: "Fundador",
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80",
+    featured: true
+  },
+  {
+    id: 2,
+    text: "A criatividade e o profissionalismo desta equipe superaram todas as expectativas. Cada detalhe foi pensado para criar um impacto duradouro.",
+    author: "Laura Ribeiro",
+    role: "Diretora de Marketing",
+    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80",
+    featured: false
+  },
+  {
+    id: 3,
+    text: "Projeto executado com excelência. A equipe demonstrou conhecimento técnico e sensibilidade artística em cada etapa do processo.",
+    author: "Carlos Mendes",
+    role: "CEO",
+    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80",
+    featured: false
+  },
+  {
+    id: 4,
+    text: "Superou nossas expectativas em todos os aspectos. O resultado final reflete perfeitamente nossa visão e valores.",
+    author: "Marina Silva",
+    role: "Arquiteta",
+    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80",
+    featured: false
+  }
+];
+---
+
+<section class="feedback">
+  <div class="feedback-container">
+    <!-- Header -->
+    <div class="feedback-header">
+      <div class="icon-wrapper">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </div>
+      <h2 class="feedback-title">Feedback de Clientes</h2>
+      <p class="feedback-description">
+        Confira o que nossos clientes têm a dizer sobre nossos serviços de arquitetura. Suas
+        avaliações destacam a criatividade, a atenção aos detalhes e a excelência que colocamos em
+        cada projeto.
+      </p>
+    </div>
+
+    <!-- Testimonials Grid -->
+    <div class="testimonials-grid">
+      {testimonials.map((testimonial) => (
+        <div class={`testimonial-card ${testimonial.featured ? 'featured' : ''}`}>
+          {testimonial.featured ? (
+            <div class="featured-content">
+              <div class="featured-image">
+                <img src={testimonial.image} alt={testimonial.author} />
+                <div class="image-gradient"></div>
+              </div>
+              <div class="featured-text">
+                <p class="testimonial-text">{testimonial.text}</p>
+                <div class="author-info">
+                  <p class="author-name">{testimonial.author}</p>
+                  <p class="author-role">{testimonial.role}</p>
+                </div>
+              </div>
+            </div>
+          ) : (
+            <div class="standard-content">
+              <div class="avatar">
+                <img src={testimonial.image} alt={testimonial.author} />
+              </div>
+              <p class="testimonial-text">{testimonial.text}</p>
+              <div class="author-info">
+                <p class="author-name">{testimonial.author}</p>
+                <p class="author-role">{testimonial.role}</p>
+              </div>
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .feedback {
+    background: #ffffff;
+    padding: 80px 20px;
+    min-height: 100vh;
+  }
+
+  .feedback-container {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .feedback-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .icon-wrapper {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    background: #6b46c1;
+    border-radius: 16px;
+    margin-bottom: 24px;
+  }
+
+  .icon-wrapper svg {
+    color: #ffffff;
+  }
+
+  .feedback-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 20px;
+  }
+
+  .feedback-description {
+    font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+    color: #666;
+    max-width: 900px;
+    margin: 0 auto;
+    line-height: 1.8;
+  }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 30px;
+    margin-top: 40px;
+  }
+
+  .testimonial-card {
+    background: #f8f8f8;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+
+  .testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+  }
+
+  /* Featured Card (Grande à esquerda) */
+  .testimonial-card.featured {
+    grid-column: span 7;
+    grid-row: span 2;
+  }
+
+  .featured-content {
+    position: relative;
+    height: 100%;
+    min-height: 500px;
+  }
+
+  .featured-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .featured-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .image-gradient {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 100%);
+  }
+
+  .featured-text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 40px;
+    color: #ffffff;
+    z-index: 2;
+  }
+
+  .featured-text .testimonial-text {
+    font-size: 1.25rem;
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+
+  /* Standard Cards (Menores à direita) */
+  .testimonial-card:not(.featured) {
+    grid-column: span 5;
+  }
+
+  .standard-content {
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+
+  .avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .testimonial-text {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #333;
+    margin-bottom: 24px;
+    flex-grow: 1;
+  }
+
+  .author-info {
+    margin-top: auto;
+  }
+
+  .author-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 4px;
+  }
+
+  .author-role {
+    font-size: 0.9rem;
+    color: #666;
+  }
+
+  .featured-text .author-name,
+  .featured-text .author-role {
+    color: #ffffff;
+  }
+
+  .featured-text .author-role {
+    opacity: 0.9;
+  }
+
+  @media (max-width: 1024px) {
+    .testimonials-grid {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    .testimonial-card.featured,
+    .testimonial-card:not(.featured) {
+      grid-column: span 1;
+      grid-row: span 1;
+    }
+
+    .featured-content {
+      min-height: 400px;
+    }
+
+    .featured-text {
+      padding: 30px;
+    }
+
+    .featured-text .testimonial-text {
+      font-size: 1.1rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .feedback {
+      padding: 60px 20px;
+    }
+
+    .feedback-header {
+      margin-bottom: 40px;
+    }
+
+    .icon-wrapper {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+    }
+
+    .featured-content {
+      min-height: 350px;
+    }
+
+    .featured-text {
+      padding: 24px;
+    }
+
+    .standard-content {
+      padding: 24px;
+    }
+  }
+</style>
+
+<script>
+  // Adiciona animação de entrada aos cards
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }, index * 100);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.testimonial-card').forEach((card) => {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(30px)';
+    card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(card);
+  });
+</script>

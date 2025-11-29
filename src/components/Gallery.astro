@@ -1,53 +1,245 @@
-// ============================================
-// Gallery.astro
-// ============================================
 ---
-interface Props {
-  images: string[];
-}
-
-const { images } = Astro.props;
+// Gallery.astro - Galeria de Serviços de Arquitetura
+const services = [
+  {
+    title: "Projetos Residenciais",
+    description: "Mais de 50 projetos",
+    image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80",
+    buttonText: "Saiba Mais"
+  },
+  {
+    title: "Design de Interiores",
+    description: "Mais de 30 designs",
+    image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&q=80",
+    buttonText: "Ver Detalhes"
+  },
+  {
+    title: "Projetos Comerciais",
+    description: "Mais de 20 projetos",
+    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80",
+    buttonText: "Descubra"
+  },
+  {
+    title: "Consultoria Estratégica",
+    description: "Soluções inovadoras",
+    image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=80",
+    buttonText: "Explore Agora"
+  },
+  {
+    title: "Estilo Moderno",
+    description: "Tendências atuais",
+    image: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800&q=80",
+    buttonText: "Ver Mais"
+  },
+  {
+    title: "Preservação Patrimonial",
+    description: "Expertise completa",
+    image: "https://images.unsplash.com/photo-1511818966892-d7d671e672a2?w=800&q=80",
+    buttonText: "Saiba Mais"
+  }
+];
 ---
 
-<div class="w-full">
-  <div class="swiper mySwiper">
-    <div class="swiper-wrapper">
-      {images.map((img) => (
-        <div class="swiper-slide">
-          <img 
-            src={img} 
-            alt="project" 
-            class="w-full h-[60vh] object-cover rounded-lg"
-            loading="lazy"
-          />
+<section class="gallery">
+  <div class="gallery-container">
+    <div class="gallery-header">
+      <h2 class="gallery-title">Serviços de Arquitetura</h2>
+      <p class="gallery-description">
+        Descubra as soluções criativas em arquitetura que transformam espaços em arte. Consulte
+        nossos serviços para projetos residenciais e comerciais, parcerias estratégicas e designs
+        personalizados que destacam inovação e funcionalidade.
+      </p>
+    </div>
+
+    <div class="services-grid">
+      {services.map((service) => (
+        <div class="service-card">
+          <div class="card-image">
+            <img src={service.image} alt={service.title} loading="lazy" />
+            <div class="image-overlay"></div>
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">{service.title}</h3>
+            <p class="card-description">{service.description}</p>
+          </div>
+          <button class="card-button">
+            {service.buttonText}
+          </button>
         </div>
       ))}
     </div>
-    <div class="swiper-button-next hover-lift"></div>
-    <div class="swiper-button-prev hover-lift"></div>
-    <div class="swiper-pagination"></div>
   </div>
-</div>
+</section>
+
+<style>
+  .gallery {
+    background: #ffffff;
+    padding: 80px 20px;
+    min-height: 100vh;
+  }
+
+  .gallery-container {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .gallery-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .gallery-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 20px;
+  }
+
+  .gallery-description {
+    font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+    color: #666;
+    max-width: 900px;
+    margin: 0 auto;
+    line-height: 1.8;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+  }
+
+  .service-card {
+    position: relative;
+    background: #f8f8f8;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    cursor: pointer;
+  }
+
+  .service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  }
+
+  .card-image {
+    position: relative;
+    width: 100%;
+    height: 280px;
+    overflow: hidden;
+  }
+
+  .card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+
+  .service-card:hover .card-image img {
+    transform: scale(1.1);
+  }
+
+  .image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.3) 100%);
+  }
+
+  .card-content {
+    padding: 24px;
+  }
+
+  .card-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 8px;
+  }
+
+  .card-description {
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 20px;
+  }
+
+  .card-button {
+    width: calc(100% - 48px);
+    margin: 0 24px 24px;
+    padding: 14px 28px;
+    background: #1a1a1a;
+    color: #ffffff;
+    border: none;
+    border-radius: 50px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .card-button:hover {
+    background: #333;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  @media (max-width: 768px) {
+    .gallery {
+      padding: 60px 20px;
+    }
+
+    .services-grid {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    .gallery-header {
+      margin-bottom: 40px;
+    }
+  }
+
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .services-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1025px) {
+    .services-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .service-card:nth-child(5),
+    .service-card:nth-child(6) {
+      grid-column: span 2;
+    }
+  }
+</style>
 
 <script>
-  import Swiper from 'swiper';
-  import { Navigation, Pagination } from 'swiper/modules';
-  import 'swiper/css';
-  import 'swiper/css/navigation';
-  import 'swiper/css/pagination';
+  // Adiciona interatividade aos cards
+  const cards = document.querySelectorAll('.service-card');
 
-  const swiper = new Swiper('.mySwiper', {
-    modules: [Navigation, Pagination],
-    slidesPerView: 1,
-    spaceBetween: 30,
-    loop: true,
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-    },
+  cards.forEach(card => {
+    const button = card.querySelector('.card-button');
+    
+    button?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const title = card.querySelector('.card-title')?.textContent;
+      console.log(`Serviço selecionado: ${title}`);
+      // Aqui você pode adicionar navegação ou modal
+    });
+
+    card.addEventListener('click', () => {
+      card.style.transform = 'scale(0.98)';
+      setTimeout(() => {
+        card.style.transform = '';
+      }, 200);
+    });
   });
 </script>

@@ -5,24 +5,11 @@ import projects from "../assets/data/projects.json";
 ---
 
 <MainLayout title="Projetos | Mateus Arquiteto">
-  <section class="section py-32">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="text-center mb-16 animate-fade-in-up">
-        <h2 class="text-4xl md:text-5xl font-bold mb-4">Projetos</h2>
-        <p class="text-lg text-gray-600">
-          Explore nosso portfólio completo de arquitetura
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {projects.map((p, index) => (
-          <div 
-            class="animate-fade-in-up"
-            style={`animation-delay: ${index * 0.1}s`}
-          >
-            <ProjectCard project={p} />
-          </div>
-        ))}
+  <section class="py-24">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-3xl font-bold">Projetos</h2>
+      <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {projects.map((p) => <ProjectCard project={p} />)}
       </div>
     </div>
   </section>
