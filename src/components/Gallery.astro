@@ -4,38 +4,44 @@ const services = [
   {
     title: "Projetos Residenciais",
     description: "Mais de 50 projetos",
-    image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80",
-    buttonText: "Saiba Mais"
+    image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=600&q=80&fit=crop",
+    buttonText: "Saiba Mais",
+    link: "/services/residencial"
   },
   {
     title: "Design de Interiores",
     description: "Mais de 30 designs",
-    image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&q=80",
-    buttonText: "Ver Detalhes"
+    image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&h=600&q=80&fit=crop",
+    buttonText: "Ver Detalhes",
+    link: "/services/interiores"
   },
   {
     title: "Projetos Comerciais",
     description: "Mais de 20 projetos",
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80",
-    buttonText: "Descubra"
+    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&h=600&q=80&fit=crop",
+    buttonText: "Descubra",
+    link: "/services/comercial"
   },
   {
     title: "Consultoria Estratégica",
     description: "Soluções inovadoras",
-    image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=80",
-    buttonText: "Explore Agora"
+    image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&h=600&q=80&fit=crop",
+    buttonText: "Explore Agora",
+    link: "/services/residencial"
   },
   {
     title: "Estilo Moderno",
     description: "Tendências atuais",
-    image: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800&q=80",
-    buttonText: "Ver Mais"
+    image: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800&h=600&q=80&fit=crop",
+    buttonText: "Ver Mais",
+    link: "/services/residencial"
   },
   {
     title: "Preservação Patrimonial",
     description: "Expertise completa",
-    image: "https://images.unsplash.com/photo-1511818966892-d7d671e672a2?w=800&q=80",
-    buttonText: "Saiba Mais"
+    image: "https://images.unsplash.com/photo-1511818966892-d7d671e672a2?w=800&h=600&q=80&fit=crop",
+    buttonText: "Saiba Mais",
+    link: "/services/residencial"
   }
 ];
 ---
@@ -62,9 +68,9 @@ const services = [
             <h3 class="card-title">{service.title}</h3>
             <p class="card-description">{service.description}</p>
           </div>
-          <button class="card-button">
+          <a href={service.link} class="card-button">
             {service.buttonText}
-          </button>
+          </a>
         </div>
       ))}
     </div>
@@ -129,17 +135,18 @@ const services = [
     width: 100%;
     height: 280px;
     overflow: hidden;
+    background: #e0e0e0;
   }
 
   .card-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.6s ease;
+    display: block;
   }
 
   .service-card:hover .card-image img {
-    transform: scale(1.1);
+    transform: scale(1.05);
   }
 
   .image-overlay {
@@ -169,9 +176,11 @@ const services = [
   }
 
   .card-button {
-    width: calc(100% - 48px);
-    margin: 0 24px 24px;
-    padding: 14px 28px;
+    display: block;
+    width: auto;
+    max-width: 200px;
+    margin: 0 auto 24px;
+    padding: 12px 32px;
     background: #1a1a1a;
     color: #ffffff;
     border: none;
@@ -180,6 +189,8 @@ const services = [
     font-weight: 500;
     cursor: pointer;
     transition: all 0.3s ease;
+    text-align: center;
+    text-decoration: none;
   }
 
   .card-button:hover {
@@ -222,24 +233,25 @@ const services = [
 </style>
 
 <script>
-  // Adiciona interatividade aos cards
-  const cards = document.querySelectorAll('.service-card');
-
-  cards.forEach(card => {
-    const button = card.querySelector('.card-button');
-    
-    button?.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const title = card.querySelector('.card-title')?.textContent;
-      console.log(`Serviço selecionado: ${title}`);
-      // Aqui você pode adicionar navegação ou modal
-    });
-
-    card.addEventListener('click', () => {
-      card.style.transform = 'scale(0.98)';
-      setTimeout(() => {
-        card.style.transform = '';
-      }, 200);
+  // Navegação direta para páginas de serviços
+  document.querySelectorAll('.card-button').forEach(button => {
+    button.addEventListener('click', (e) => {
+      const href = button.getAttribute('href');
+      
+      // Se for link interno, scroll suave
+      if (href?.startsWith('#')) {
+        e.preventDefault();
+        const targetId = href.substring(1);
+        const targetElement = document.getElementById(targetId);
+        
+        if (targetElement) {
+          targetElement.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      }
+      // Se for link externo (páginas), deixa navegação padrão acontecer
     });
   });
 </script>

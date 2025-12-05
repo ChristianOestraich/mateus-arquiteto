@@ -1,10 +1,10 @@
 ---
 // Navbar.astro
 const navItems = [
-  { name: 'About', href: '#about', delay: '0.2s' },
-  { name: 'Portfolio', href: '#portfolio', delay: '0.3s' },
-  { name: 'Services', href: '#services', delay: '0.4s' },
-  { name: 'Contact', href: '#contact', delay: '0.5s' }
+  { name: "Serviços", href: "/services/residencial", delay: "0.4s" },
+  { name: "Portfolio", href: "#portfolio", delay: "0.3s" },
+  { name: "Sobre", href: "#about", delay: "0.2s" },
+  { name: "Contato", href: "#contact", delay: "0.5s" },
 ];
 ---
 
@@ -14,11 +14,13 @@ const navItems = [
 
 <div class="menu" id="menu">
   <nav>
-    {navItems.map((item) => (
-      <a href={item.href} style={`animation-delay: ${item.delay}`}>
-        {item.name}
-      </a>
-    ))}
+    {
+      navItems.map((item) => (
+        <a href={item.href} style={`animation-delay: ${item.delay}`}>
+          {item.name}
+        </a>
+      ))
+    }
   </nav>
 </div>
 
@@ -26,9 +28,11 @@ const navItems = [
   :global(body) {
     margin: 0;
     padding: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-family:
+      -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+      Arial, sans-serif;
     color: #f7f7f7;
-    background-image: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&q=80');
+    background-image: url("https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&q=80");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: 20% 0;
@@ -210,26 +214,48 @@ const navItems = [
 </style>
 
 <script>
-  const burger = document.getElementById('burger');
-  const menu = document.getElementById('menu');
-  const menuLinks = menu?.querySelectorAll('a');
+  const burger = document.getElementById("burger");
+  const menu = document.getElementById("menu");
+  const menuLinks = menu?.querySelectorAll("a");
 
   function toggleMenu() {
-    document.body.classList.toggle('open');
+    document.body.classList.toggle("open");
   }
 
-  burger?.addEventListener('click', toggleMenu);
+  burger?.addEventListener("click", toggleMenu);
 
-  menuLinks?.forEach(link => {
-    link.addEventListener('click', () => {
-      document.body.classList.remove('open');
+  // Scroll suave para seções
+  menuLinks?.forEach((link) => {
+    link.addEventListener("click", (e) => {
+      const href = link.getAttribute("href");
+
+      // Se for link interno (#), faz scroll suave
+      if (href?.startsWith("#")) {
+        e.preventDefault();
+        const targetId = href.substring(1);
+        const targetElement = document.getElementById(targetId);
+
+        if (targetElement) {
+          document.body.classList.remove("open");
+
+          setTimeout(() => {
+            targetElement.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }, 300);
+        }
+      } else {
+        // Se não for link interno, apenas fecha o menu
+        document.body.classList.remove("open");
+      }
     });
   });
 
   // Close menu on Escape key
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && document.body.classList.contains('open')) {
-      document.body.classList.remove('open');
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && document.body.classList.contains("open")) {
+      document.body.classList.remove("open");
     }
   });
 </script>

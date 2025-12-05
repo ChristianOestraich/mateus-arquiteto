@@ -1,0 +1,602 @@
+---
+// ServiceDetail.astro - Página de Detalhes do Serviço
+interface Props {
+  serviceType: 'residencial' | 'interiores' | 'comercial' | 'consultoria' | 'moderno' | 'patrimonial';
+}
+
+const { serviceType } = Astro.props;
+
+const servicesData = {
+  residencial: {
+    title: "Projetos Residenciais",
+    subtitle: "Mais de 50 projetos",
+    description: "Criamos residências únicas que refletem o estilo de vida e personalidade de cada cliente. Nossos projetos residenciais combinam funcionalidade, conforto e estética contemporânea.",
+    features: [
+      "Arquitetura personalizada",
+      "Planejamento de espaços",
+      "Sustentabilidade e eficiência",
+      "Acompanhamento completo da obra"
+    ],
+    gallery: [
+      {
+        image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&q=80",
+        title: "Casa Moderna em Condomínio",
+        description: "Residência de 350m² com arquitetura minimalista e integração com jardim"
+      },
+      {
+        image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80",
+        title: "Residência Contemporânea",
+        description: "Projeto com linhas clean e amplos espaços de convivência"
+      },
+      {
+        image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1200&q=80",
+        title: "Casa de Campo Luxury",
+        description: "Integração perfeita entre arquitetura e natureza"
+      },
+      {
+        image: "https://images.unsplash.com/photo-1600607687644-c7171b42498f?w=1200&q=80",
+        title: "Sobrado Moderno",
+        description: "Design arrojado com fachada em vidro e madeira"
+      }
+    ]
+  },
+  interiores: {
+    title: "Design de Interiores",
+    subtitle: "Mais de 30 designs",
+    description: "Transformamos ambientes em espaços funcionais e inspiradores. Nosso design de interiores une estética, conforto e personalidade em cada projeto.",
+    features: [
+      "Projeto de ambientes completos",
+      "Seleção de mobiliário e acabamentos",
+      "Iluminação e decoração",
+      "Renderizações 3D realistas"
+    ],
+    gallery: [
+      {
+        image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1200&q=80",
+        title: "Sala de Estar Moderna",
+        description: "Ambiente integrado com design contemporâneo e aconchegante"
+      },
+      {
+        image: "https://images.unsplash.com/photo-1600210492493-0946911123ea?w=1200&q=80",
+        title: "Cozinha Gourmet",
+        description: "Funcionalidade e elegância em harmonia perfeita"
+      },
+      {
+        image: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=1200&q=80",
+        title: "Suíte Master",
+        description: "Conforto e sofisticação para momentos de descanso"
+      },
+      {
+        image: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=1200&q=80",
+        title: "Home Office",
+        description: "Produtividade e estilo em ambiente profissional"
+      }
+    ]
+  },
+  comercial: {
+    title: "Projetos Comerciais",
+    subtitle: "Mais de 20 projetos",
+    description: "Desenvolvemos espaços comerciais que potencializam negócios e criam experiências memoráveis para clientes e colaboradores.",
+    features: [
+      "Arquitetura corporativa",
+      "Lojas e showrooms",
+      "Restaurantes e cafés",
+      "Otimização de fluxo"
+    ],
+    gallery: [
+      {
+        image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=80",
+        title: "Escritório Corporativo",
+        description: "Ambiente profissional e moderno para alta produtividade"
+      },
+      {
+        image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=80",
+        title: "Espaço Coworking",
+        description: "Flexibilidade e colaboração em design inovador"
+      },
+      {
+        image: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=1200&q=80",
+        title: "Showroom de Luxo",
+        description: "Experiência imersiva para apresentação de produtos"
+      },
+      {
+        image: "https://images.unsplash.com/photo-1517502884422-41eaead166d4?w=1200&q=80",
+        title: "Restaurante Contemporâneo",
+        description: "Atmosfera acolhedora que valoriza a experiência gastronômica"
+      }
+    ]
+  },
+  consultoria: {
+    title: "Consultoria Estratégica",
+    subtitle: "Soluções inovadoras",
+    description: "Oferecemos consultoria especializada para otimização de projetos, viabilidade técnica e soluções personalizadas em arquitetura.",
+    features: [
+      "Análise de viabilidade",
+      "Otimização de projetos",
+      "Assessoria técnica",
+      "Gestão de obras"
+    ],
+    gallery: [
+      {
+        image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1200&q=80",
+        title: "Planejamento Estratégico",
+        description: "Desenvolvimento de soluções personalizadas"
+      },
+      {
+        image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&q=80",
+        title: "Análise Técnica",
+        description: "Estudos detalhados de viabilidade e execução"
+      }
+    ]
+  },
+  moderno: {
+    title: "Estilo Moderno",
+    subtitle: "Tendências atuais",
+    description: "Projetos que incorporam as últimas tendências em arquitetura moderna, com foco em minimalismo, funcionalidade e design atemporal.",
+    features: [
+      "Design minimalista",
+      "Tecnologia integrada",
+      "Materiais contemporâneos",
+      "Linhas clean e geométricas"
+    ],
+    gallery: [
+      {
+        image: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=1200&q=80",
+        title: "Arquitetura Minimalista",
+        description: "Menos é mais: simplicidade e elegância"
+      },
+      {
+        image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&q=80",
+        title: "Casa Smart",
+        description: "Tecnologia e conforto em perfeita sintonia"
+      }
+    ]
+  },
+  patrimonial: {
+    title: "Preservação Patrimonial",
+    subtitle: "Expertise completa",
+    description: "Especialização em restauro e preservação de patrimônio histórico, unindo técnicas tradicionais e soluções contemporâneas.",
+    features: [
+      "Restauro arquitetônico",
+      "Preservação histórica",
+      "Adequação às normas",
+      "Revitalização de espaços"
+    ],
+    gallery: [
+      {
+        image: "https://images.unsplash.com/photo-1511818966892-d7d671e672a2?w=1200&q=80",
+        title: "Restauro de Fachada",
+        description: "Preservação de elementos históricos originais"
+      },
+      {
+        image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80",
+        title: "Revitalização de Edifício",
+        description: "Novo uso para espaços históricos"
+      }
+    ]
+  }
+};
+
+const service = servicesData[serviceType];
+---
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>{service.title} | Arquitetura</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #ffffff;
+      color: #1a1a1a;
+    }
+
+    .service-detail {
+      position: relative;
+      min-height: 100vh;
+      padding: 40px 20px 100px;
+    }
+
+    /* Menu Hamburguer */
+    .burger {
+      position: fixed;
+      z-index: 1000;
+      top: 0;
+      left: 0;
+      display: grid;
+      place-items: center;
+      width: 100px;
+      height: 100px;
+      border: 0;
+      padding: 0;
+      background: transparent;
+      cursor: pointer;
+    }
+
+    .burger-icon {
+      position: relative;
+      width: 16px;
+      height: 2px;
+      background: #1a1a1a;
+      transition: 0.3s;
+    }
+
+    .burger-icon::before,
+    .burger-icon::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      width: 16px;
+      height: 2px;
+      background: #1a1a1a;
+      transition: 0.3s;
+    }
+
+    .burger-icon::before {
+      top: -8px;
+    }
+
+    .burger-icon::after {
+      top: 8px;
+    }
+
+    .menu {
+      position: fixed;
+      z-index: 999;
+      top: 0;
+      left: 0;
+      display: grid;
+      place-items: center;
+      width: 50%;
+      max-width: 400px;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(10px);
+      transform: translateX(-100%);
+      transition: transform 0.425s cubic-bezier(0.175, 0.885, 0.32, 1);
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .menu.open {
+      transform: translateX(0);
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .menu nav {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      opacity: 0;
+      transition: opacity 0.3s ease 0.2s;
+    }
+
+    .menu.open nav {
+      opacity: 1;
+    }
+
+    .menu a {
+      position: relative;
+      color: #f9f9f9;
+      font-size: 30px;
+      padding: 18px 0;
+      width: 100%;
+      text-decoration: none;
+      text-align: center;
+      transition: 0.4s;
+    }
+
+    .menu a::before,
+    .menu a::after {
+      content: "";
+      position: absolute;
+      bottom: 10px;
+      width: 100%;
+      height: 2px;
+      transition: 0.4s;
+    }
+
+    .menu a::before {
+      opacity: 0;
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .menu a::after {
+      transform: scaleX(0);
+      transform-origin: 0% 50%;
+      background: #f7f7f7;
+    }
+
+    .menu a:hover {
+      opacity: 1;
+    }
+
+    .menu a:hover::before {
+      opacity: 1;
+    }
+
+    .menu a:hover::after {
+      transform: scaleX(1);
+    }
+
+    body.menu-open .burger-icon {
+      background: #ffffff;
+      transform: rotate(-45deg);
+    }
+
+    body.menu-open .burger-icon::before {
+      background: #ffffff;
+      transform: rotate(90deg) translate(10px, -1px);
+    }
+
+    body.menu-open .burger-icon::after {
+      background: #ffffff;
+      transform: rotate(90deg) translate(-9px, 1px);
+    }
+
+    /* Content */
+    .service-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding-top: 60px;
+    }
+
+    .service-header {
+      margin-bottom: 80px;
+    }
+
+    .service-subtitle {
+      font-size: 0.95rem;
+      color: #d4a574;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 16px;
+    }
+
+    .service-title {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 700;
+      margin-bottom: 24px;
+      line-height: 1.1;
+    }
+
+    .service-description {
+      font-size: clamp(1rem, 1.5vw, 1.2rem);
+      color: #666;
+      line-height: 1.8;
+      max-width: 800px;
+    }
+
+    .features-section {
+      margin-bottom: 100px;
+    }
+
+    .features-title {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      font-weight: 600;
+      margin-bottom: 40px;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 24px;
+      background: #f8f8f8;
+      border-radius: 16px;
+    }
+
+    .feature-item svg {
+      color: #d4a574;
+      flex-shrink: 0;
+    }
+
+    .gallery-section {
+      margin-bottom: 100px;
+    }
+
+    .gallery-title {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      font-weight: 600;
+      margin-bottom: 48px;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+      gap: 32px;
+    }
+
+    .project-card {
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .project-image {
+      position: relative;
+      width: 100%;
+      height: 400px;
+      overflow: hidden;
+    }
+
+    .project-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .project-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 32px;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
+      color: #ffffff;
+    }
+
+    .project-title {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .project-description {
+      font-size: 0.95rem;
+      opacity: 0.9;
+    }
+
+    .cta-section {
+      text-align: center;
+      padding: 80px 40px;
+      background: linear-gradient(135deg, #2d3b3e 0%, #3a4a4e 100%);
+      border-radius: 24px;
+    }
+
+    .cta-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: 16px;
+    }
+
+    .cta-text {
+      font-size: 1.2rem;
+      color: #cccccc;
+      margin-bottom: 40px;
+    }
+
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 40px;
+      background: #d4a574;
+      color: #2d3b3e;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .cta-button:hover {
+      background: #c49564;
+      transform: translateY(-3px);
+    }
+
+    @media (max-width: 768px) {
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="service-detail">
+    <!-- Menu Hamburguer -->
+    <button class="burger" id="burger" aria-label="Toggle menu">
+      <span class="burger-icon"></span>
+    </button>
+
+    <div class="menu" id="menu">
+      <nav>
+        <a href="/">Home</a>
+        <a href="/#portfolio">Portfolio</a>
+        <a href="/#feedback">Feedback</a>
+        <a href="/#about">Sobre</a>
+        <a href="/#contact">Contato</a>
+      </nav>
+    </div>
+
+    <div class="service-container">
+      <!-- Header -->
+      <div class="service-header">
+        <p class="service-subtitle">{service.subtitle}</p>
+        <h1 class="service-title">{service.title}</h1>
+        <p class="service-description">{service.description}</p>
+      </div>
+
+      <!-- Features -->
+      <div class="features-section">
+        <h2 class="features-title">O que oferecemos</h2>
+        <div class="features-grid">
+          {service.features.map((feature) => (
+            <div class="feature-item">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              <span>{feature}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Gallery -->
+      <div class="gallery-section">
+        <h2 class="gallery-title">Nossos Projetos</h2>
+        <div class="projects-grid">
+          {service.gallery.map((project) => (
+            <div class="project-card">
+              <div class="project-image">
+                <img src={project.image} alt={project.title} loading="lazy" />
+                <div class="project-overlay">
+                  <h3 class="project-title">{project.title}</h3>
+                  <p class="project-description">{project.description}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="cta-section">
+        <h2 class="cta-title">Interessado neste serviço?</h2>
+        <p class="cta-text">Entre em contato conosco para discutir seu projeto</p>
+        <a href="/#contact" class="cta-button">
+          Solicitar Orçamento
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const burger = document.getElementById('burger');
+    const menu = document.getElementById('menu');
+
+    burger?.addEventListener('click', () => {
+      document.body.classList.toggle('menu-open');
+      menu?.classList.toggle('open');
+    });
+
+    // Fecha menu ao clicar nos links
+    document.querySelectorAll('.menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.body.classList.remove('menu-open');
+        menu?.classList.remove('open');
+      });
+    });
+  </script>
+</body>
+</html>

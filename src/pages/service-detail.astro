@@ -1,0 +1,8 @@
+---
+import ServiceDetail from '../components/ServiceDetail.astro';
+import type { Props } from '../components/ServiceDetail.astro';
+
+const { serviceType = 'residencial' } = Astro.params;
+---
+
+<ServiceDetail serviceType={serviceType as Props['serviceType']} />
