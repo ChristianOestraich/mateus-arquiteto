@@ -36,7 +36,65 @@ const contactInfo = {
     .contact-detail {
       position: relative;
       min-height: 100vh;
-      padding: 100px 20px;
+    }
+
+    /* Hero Section com Background Image */
+    .hero-section {
+      position: relative;
+      min-height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .hero-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    .hero-background img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 1200px;
+      padding: 60px 20px;
+      margin: 0 auto;
+    }
+
+    .hero-title {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 24px;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1rem, 1.5vw, 1.2rem);
+      color: #e0e0e0;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.8;
     }
 
     /* Menu Hamburguer */
@@ -174,30 +232,16 @@ const contactInfo = {
       transform: rotate(90deg) translate(-9px, 1px);
     }
 
+    /* Content Section */
+    .contact-content {
+      background: #cbc7c7;
+      padding: 100px 20px;
+    }
+
     /* Content */
     .contact-container {
       max-width: 1400px;
       margin: 0 auto;
-    }
-
-    .contact-header {
-      text-align: center;
-      margin-bottom: 80px;
-    }
-
-    .contact-title {
-      font-size: clamp(2.5rem, 5vw, 4rem);
-      font-weight: 700;
-      color: #000000;
-      margin-bottom: 24px;
-    }
-
-    .contact-subtitle {
-      font-size: clamp(1rem, 1.5vw, 1.2rem);
-      color: #000000;
-      max-width: 700px;
-      margin: 0 auto;
-      line-height: 1.8;
     }
 
     /* Main Grid */
@@ -466,12 +510,12 @@ const contactInfo = {
     }
 
     @media (max-width: 768px) {
-      .contact-detail {
-        padding: 60px 20px;
+      .hero-section {
+        min-height: 50vh;
       }
 
-      .contact-header {
-        margin-bottom: 60px;
+      .contact-content {
+        padding: 60px 20px;
       }
 
       .form-card,
@@ -517,199 +561,209 @@ const contactInfo = {
       </nav>
     </div>
 
-    <div class="contact-container">
-      <!-- Header -->
-      <div class="contact-header">
-        <h1 class="contact-title">Vamos Conversar?</h1>
-        <p class="contact-subtitle">
+    <!-- Hero Section com Background -->
+    <div class="hero-section">
+      <div class="hero-background">
+        <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1920&q=80" alt="Contato" />
+      </div>
+      <div class="hero-overlay"></div>
+      
+      <div class="hero-content">
+        <h1 class="hero-title">Vamos Conversar?</h1>
+        <p class="hero-subtitle">
           Entre em contato conosco para discutir seu próximo projeto. Estamos prontos para
           transformar suas ideias em realidade.
         </p>
       </div>
+    </div>
 
-      <!-- Main Grid -->
-      <div class="contact-grid">
-        <!-- Form Section -->
-        <div class="form-section">
-          <!-- Contact Form -->
-          <div class="form-card">
-            <form class="contact-form" id="contactForm">
-              <div class="form-group">
-                <label for="name">Nome Completo</label>
-                <input 
-                  type="text" 
-                  id="name" 
-                  name="name" 
-                  placeholder="Seu nome"
-                  required
-                />
-              </div>
+    <!-- Content Section -->
+    <div class="contact-content">
+      <div class="contact-container">
+        <!-- Main Grid -->
+        <div class="contact-grid">
+          <!-- Form Section -->
+          <div class="form-section">
+            <!-- Contact Form -->
+            <div class="form-card">
+              <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                  <label for="name">Nome Completo</label>
+                  <input 
+                    type="text" 
+                    id="name" 
+                    name="name" 
+                    placeholder="Seu nome"
+                    required
+                  />
+                </div>
 
-              <div class="form-group">
-                <label for="email">E-mail</label>
-                <input 
-                  type="email" 
-                  id="email" 
-                  name="email" 
-                  placeholder="seu@email.com"
-                  required
-                />
-              </div>
+                <div class="form-group">
+                  <label for="email">E-mail</label>
+                  <input 
+                    type="email" 
+                    id="email" 
+                    name="email" 
+                    placeholder="seu@email.com"
+                    required
+                  />
+                </div>
 
-              <div class="form-group">
-                <label for="phone">Telefone</label>
-                <input 
-                  type="tel" 
-                  id="phone" 
-                  name="phone" 
-                  placeholder="(00) 00000-0000"
-                />
-              </div>
+                <div class="form-group">
+                  <label for="phone">Telefone</label>
+                  <input 
+                    type="tel" 
+                    id="phone" 
+                    name="phone" 
+                    placeholder="(00) 00000-0000"
+                  />
+                </div>
 
-              <div class="form-group">
-                <label for="service">Tipo de Serviço</label>
-                <select id="service" name="service" required>
-                  <option value="">Selecione um serviço</option>
-                  <option value="residencial">Projeto Residencial</option>
-                  <option value="comercial">Projeto Comercial</option>
-                  <option value="interiores">Design de Interiores</option>
-                  <option value="consultoria">Consultoria</option>
-                  <option value="outro">Outro</option>
-                </select>
-              </div>
+                <div class="form-group">
+                  <label for="service">Tipo de Serviço</label>
+                  <select id="service" name="service" required>
+                    <option value="">Selecione um serviço</option>
+                    <option value="residencial">Projeto Residencial</option>
+                    <option value="comercial">Projeto Comercial</option>
+                    <option value="interiores">Design de Interiores</option>
+                    <option value="consultoria">Consultoria</option>
+                    <option value="outro">Outro</option>
+                  </select>
+                </div>
 
-              <div class="form-group full-width">
-                <label for="message">Mensagem</label>
-                <textarea 
-                  id="message" 
-                  name="message" 
-                  rows="6"
-                  placeholder="Conte-nos sobre seu projeto..."
-                  required
-                ></textarea>
-              </div>
+                <div class="form-group full-width">
+                  <label for="message">Mensagem</label>
+                  <textarea 
+                    id="message" 
+                    name="message" 
+                    rows="6"
+                    placeholder="Conte-nos sobre seu projeto..."
+                    required
+                  ></textarea>
+                </div>
 
-              <button type="submit" class="submit-button">
-                Enviar Mensagem
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M5 12h14M12 5l7 7-7 7"/>
-                </svg>
-              </button>
-            </form>
-          </div>
-
-          <!-- Map Section -->
-          <div class="map-section">
-            <h3 class="map-title">Nossa Localização</h3>
-            <div class="map-container">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3452.8797682534847!2d-51.85893788488395!3d-29.78543738198879!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjnCsDQ3JzA3LjYiUyA1McKwNTEnMjMuMiJX!5e0!3m2!1spt-BR!2sbr!4v1234567890"
-                allowfullscreen=""
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
-              ></iframe>
-            </div>
-          </div>
-        </div>
-
-        <!-- Contact Info -->
-        <div class="info-section">
-          <!-- Contact Details -->
-          <div class="info-card">
-            <h3 class="info-title">Informações de Contato</h3>
-            
-            <div class="info-item">
-              <div class="info-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                  <polyline points="22,6 12,13 2,6"/>
-                </svg>
-              </div>
-              <div class="info-content">
-                <p class="info-label">E-mail</p>
-                <a href={`mailto:${contactInfo.email}`} class="info-value">{contactInfo.email}</a>
-              </div>
+                <button type="submit" class="submit-button">
+                  Enviar Mensagem
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                  </svg>
+                </button>
+              </form>
             </div>
 
-            <div class="info-item">
-              <div class="info-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-                </svg>
-              </div>
-              <div class="info-content">
-                <p class="info-label">Telefone</p>
-                <a href={`tel:${contactInfo.phone.replace(/\D/g, '')}`} class="info-value">{contactInfo.phone}</a>
-              </div>
-            </div>
-
-            <div class="info-item">
-              <div class="info-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                  <circle cx="12" cy="10" r="3"/>
-                </svg>
-              </div>
-              <div class="info-content">
-                <p class="info-label">Endereço</p>
-                <p class="info-value">{contactInfo.address}</p>
+            <!-- Map Section -->
+            <div class="map-section">
+              <h3 class="map-title">Nossa Localização</h3>
+              <div class="map-container">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3452.8797682534847!2d-51.85893788488395!3d-29.78543738198879!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjnCsDQ3JzA3LjYiUyA1McKwNTEnMjMuMiJX!5e0!3m2!1spt-BR!2sbr!4v1234567890"
+                  allowfullscreen=""
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                ></iframe>
               </div>
             </div>
           </div>
 
-          <!-- Social Media -->
-          <div class="social-card">
-            <h3 class="social-title">Siga-nos</h3>
-            <div class="social-links">
-              {contactInfo.social.map((social) => (
-                <a href={social.link} class="social-link" aria-label={social.name}>
-                  {social.icon === 'instagram' && (
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-                      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-                    </svg>
-                  )}
-                  {social.icon === 'linkedin' && (
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-                      <rect x="2" y="9" width="4" height="12"/>
-                      <circle cx="4" cy="4" r="2"/>
-                    </svg>
-                  )}
-                  {social.icon === 'facebook' && (
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
-                    </svg>
-                  )}
-                  {social.icon === 'behance' && (
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <path d="M3 8h5.5a2.5 2.5 0 1 1 0 5H3V8z"/>
-                      <path d="M3 13h6a3 3 0 1 1 0 6H3v-6z"/>
-                      <path d="M14 7h7"/>
-                      <path d="M17 13a3 3 0 1 1 3 3h-3v-3z"/>
-                    </svg>
-                  )}
-                </a>
-              ))}
-            </div>
-          </div>
+          <!-- Contact Info -->
+          <div class="info-section">
+            <!-- Contact Details -->
+            <div class="info-card">
+              <h3 class="info-title">Informações de Contato</h3>
+              
+              <div class="info-item">
+                <div class="info-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                    <polyline points="22,6 12,13 2,6"/>
+                  </svg>
+                </div>
+                <div class="info-content">
+                  <p class="info-label">E-mail</p>
+                  <a href={`mailto:${contactInfo.email}`} class="info-value">{contactInfo.email}</a>
+                </div>
+              </div>
 
-          <!-- Office Hours -->
-          <div class="hours-card">
-            <h3 class="hours-title">Horário de Atendimento</h3>
-            <div class="hours-list">
-              <div class="hours-item">
-                <span class="hours-day">Segunda - Sexta</span>
-                <span class="hours-time">09:00 - 18:00</span>
+              <div class="info-item">
+                <div class="info-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                  </svg>
+                </div>
+                <div class="info-content">
+                  <p class="info-label">Telefone</p>
+                  <a href={`tel:${contactInfo.phone.replace(/\D/g, '')}`} class="info-value">{contactInfo.phone}</a>
+                </div>
               </div>
-              <div class="hours-item">
-                <span class="hours-day">Sábado</span>
-                <span class="hours-time">09:00 - 13:00</span>
+
+              <div class="info-item">
+                <div class="info-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                    <circle cx="12" cy="10" r="3"/>
+                  </svg>
+                </div>
+                <div class="info-content">
+                  <p class="info-label">Endereço</p>
+                  <p class="info-value">{contactInfo.address}</p>
+                </div>
               </div>
-              <div class="hours-item">
-                <span class="hours-day">Domingo</span>
-                <span class="hours-time">Fechado</span>
+            </div>
+
+            <!-- Social Media -->
+            <div class="social-card">
+              <h3 class="social-title">Siga-nos</h3>
+              <div class="social-links">
+                {contactInfo.social.map((social) => (
+                  <a href={social.link} class="social-link" aria-label={social.name}>
+                    {social.icon === 'instagram' && (
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                      </svg>
+                    )}
+                    {social.icon === 'linkedin' && (
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                        <rect x="2" y="9" width="4" height="12"/>
+                        <circle cx="4" cy="4" r="2"/>
+                      </svg>
+                    )}
+                    {social.icon === 'facebook' && (
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                      </svg>
+                    )}
+                    {social.icon === 'behance' && (
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 8h5.5a2.5 2.5 0 1 1 0 5H3V8z"/>
+                        <path d="M3 13h6a3 3 0 1 1 0 6H3v-6z"/>
+                        <path d="M14 7h7"/>
+                        <path d="M17 13a3 3 0 1 1 3 3h-3v-3z"/>
+                      </svg>
+                    )}
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            <!-- Office Hours -->
+            <div class="hours-card">
+              <h3 class="hours-title">Horário de Atendimento</h3>
+              <div class="hours-list">
+                <div class="hours-item">
+                  <span class="hours-day">Segunda - Sexta</span>
+                  <span class="hours-time">09:00 - 18:00</span>
+                </div>
+                <div class="hours-item">
+                  <span class="hours-day">Sábado</span>
+                  <span class="hours-time">09:00 - 13:00</span>
+                </div>
+                <div class="hours-item">
+                  <span class="hours-day">Domingo</span>
+                  <span class="hours-time">Fechado</span>
+                </div>
               </div>
             </div>
           </div>

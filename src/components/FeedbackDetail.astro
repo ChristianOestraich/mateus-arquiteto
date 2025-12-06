@@ -1,0 +1,672 @@
+---
+// FeedbackDetail.astro - Página Completa de Depoimentos
+const testimonials = [
+  {
+    name: "Maria Silva",
+    role: "Proprietária",
+    project: "Residência Moderna",
+    image:
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80",
+    rating: 5,
+    text: "Experiência incrível do início ao fim. A equipe transformou completamente nossa casa, superando todas as expectativas. O projeto ficou ainda melhor do que imaginávamos!",
+  },
+  {
+    name: "João Santos",
+    role: "Empresário",
+    project: "Escritório Corporativo",
+    image:
+      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80",
+    rating: 5,
+    text: "Profissionalismo impecável! O novo escritório aumentou a produtividade da equipe e impressiona todos os clientes que nos visitam. Investimento que valeu cada centavo.",
+  },
+  {
+    name: "Ana Paula Costa",
+    role: "Designer",
+    project: "Apartamento Contemporâneo",
+    image:
+      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80",
+    rating: 5,
+    text: "Atenção aos detalhes excepcional! Cada ambiente foi pensado com muito cuidado e o resultado final superou todas as minhas expectativas. Recomendo de olhos fechados!",
+  },
+  {
+    name: "Carlos Mendes",
+    role: "Arquiteto",
+    project: "Casa de Campo",
+    image:
+      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80",
+    rating: 5,
+    text: "Como arquiteto, sou muito exigente. A equipe demonstrou excelência técnica e criatividade, entregando um projeto que une funcionalidade e beleza de forma magistral.",
+  },
+  {
+    name: "Fernanda Oliveira",
+    role: "Médica",
+    project: "Clínica Médica",
+    image:
+      "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=400&q=80",
+    rating: 5,
+    text: "A nova clínica ficou perfeita! Ambiente acolhedor para os pacientes e funcional para a equipe. O projeto considerou cada necessidade específica da área médica.",
+  },
+  {
+    name: "Ricardo Almeida",
+    role: "Empresário",
+    project: "Restaurante Gourmet",
+    image:
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80",
+    rating: 5,
+    text: "O design do restaurante é sensacional! Criou uma atmosfera única que encanta os clientes. As reservas aumentaram significativamente após a reforma.",
+  },
+  {
+    name: "Patricia Lima",
+    role: "Advogada",
+    project: "Escritório de Advocacia",
+    image:
+      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80",
+    rating: 5,
+    text: "Ambiente sofisticado e profissional. Todos os clientes comentam sobre a elegância do escritório. A equipe entendeu perfeitamente a imagem que queríamos transmitir.",
+  },
+  {
+    name: "Eduardo Rocha",
+    role: "Dentista",
+    project: "Consultório Odontológico",
+    image:
+      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&q=80",
+    rating: 5,
+    text: "Consultório moderno e acolhedor. Os pacientes se sentem mais confortáveis e a funcionalidade facilitou muito o trabalho da equipe. Excelente custo-benefício!",
+  },
+  {
+    name: "Juliana Martins",
+    role: "Empresária",
+    project: "Loja de Moda",
+    image:
+      "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&q=80",
+    rating: 5,
+    text: "A loja ficou incrível! O design valoriza os produtos e cria uma experiência única para os clientes. As vendas aumentaram 40% após a reforma. Muito satisfeita!",
+  },
+];
+
+const stats = [
+  { number: "150+", label: "Projetos Concluídos" },
+  { number: "98%", label: "Clientes Satisfeitos" },
+  { number: "15+", label: "Anos de Experiência" },
+  { number: "50+", label: "Prêmios Recebidos" },
+];
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Depoimentos | Arquitetura</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        background: #1a1a1a;
+        color: #ffffff;
+      }
+
+      .feedback-detail {
+        position: relative;
+        min-height: 100vh;
+      }
+
+      /* Menu Hamburguer */
+      .burger {
+        position: fixed;
+        z-index: 1000;
+        top: 0;
+        left: 0;
+        display: grid;
+        place-items: center;
+        width: 100px;
+        height: 100px;
+        border: 0;
+        padding: 0;
+        background: transparent;
+        cursor: pointer;
+      }
+
+      .burger-icon {
+        position: relative;
+        width: 16px;
+        height: 2px;
+        background: #ffffff;
+        transition: 0.3s;
+      }
+
+      .burger-icon::before,
+      .burger-icon::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        width: 16px;
+        height: 2px;
+        background: #ffffff;
+        transition: 0.3s;
+      }
+
+      .burger-icon::before {
+        top: -8px;
+      }
+
+      .burger-icon::after {
+        top: 8px;
+      }
+
+      .menu {
+        position: fixed;
+        z-index: 999;
+        top: 0;
+        left: 0;
+        display: grid;
+        place-items: center;
+        width: 50%;
+        max-width: 400px;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(10px);
+        transform: translateX(-100%);
+        transition: transform 0.425s cubic-bezier(0.175, 0.885, 0.32, 1);
+        opacity: 0;
+        visibility: hidden;
+      }
+
+      .menu.open {
+        transform: translateX(0);
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .menu nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        opacity: 0;
+        transition: opacity 0.3s ease 0.2s;
+      }
+
+      .menu.open nav {
+        opacity: 1;
+      }
+
+      .menu a {
+        position: relative;
+        color: #f9f9f9;
+        font-size: 30px;
+        padding: 18px 0;
+        width: 100%;
+        text-decoration: none;
+        text-align: center;
+        transition: 0.4s;
+      }
+
+      .menu a::before,
+      .menu a::after {
+        content: "";
+        position: absolute;
+        bottom: 10px;
+        width: 100%;
+        height: 2px;
+        transition: 0.4s;
+      }
+
+      .menu a::before {
+        opacity: 0;
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      .menu a::after {
+        transform: scaleX(0);
+        transform-origin: 0% 50%;
+        background: #f7f7f7;
+      }
+
+      .menu a:hover {
+        opacity: 1;
+      }
+
+      .menu a:hover::before {
+        opacity: 1;
+      }
+
+      .menu a:hover::after {
+        transform: scaleX(1);
+      }
+
+      body.menu-open .burger-icon {
+        background: #ffffff;
+        transform: rotate(-45deg);
+      }
+
+      body.menu-open .burger-icon::before {
+        background: #ffffff;
+        transform: rotate(90deg) translate(10px, -1px);
+      }
+
+      body.menu-open .burger-icon::after {
+        background: #ffffff;
+        transform: rotate(90deg) translate(-9px, 1px);
+      }
+
+      /* Hero Section */
+      .hero-section {
+        position: relative;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+
+      .hero-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+      }
+
+      .hero-background img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        z-index: 1;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        max-width: 1200px;
+        padding: 60px 20px;
+        margin: 0 auto;
+      }
+
+      .hero-subtitle {
+        font-size: 0.95rem;
+        color: #d4a574;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        margin-bottom: 16px;
+      }
+
+      .hero-title {
+        font-size: clamp(2.5rem, 6vw, 5rem);
+        font-weight: 700;
+        color: #ffffff;
+        margin-bottom: 24px;
+        line-height: 1.1;
+      }
+
+      .hero-description {
+        font-size: clamp(1rem, 1.5vw, 1.3rem);
+        color: #e0e0e0;
+        line-height: 1.8;
+        max-width: 800px;
+        margin: 0 auto 60px;
+      }
+
+      /* Stats Section */
+      .stats-section {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 40px;
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+
+      .stat-item {
+        text-align: center;
+      }
+
+      .stat-number {
+        font-size: clamp(2.5rem, 4vw, 3.5rem);
+        font-weight: 700;
+        color: #d4a574;
+        margin-bottom: 8px;
+      }
+
+      .stat-label {
+        font-size: 1rem;
+        color: #cccccc;
+        font-weight: 500;
+      }
+
+      /* Content Section */
+      .content-section {
+        background: #cbc7c7;
+        padding: 100px 20px;
+      }
+
+      .content-container {
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: 80px;
+      }
+
+      .section-title {
+        font-size: clamp(2rem, 4vw, 3rem);
+        font-weight: 700;
+        color: #1a1a1a;
+        margin-bottom: 16px;
+      }
+
+      .section-description {
+        font-size: 1.1rem;
+        color: #666666;
+        max-width: 700px;
+        margin: 0 auto;
+      }
+
+      /* Testimonials Grid */
+      .testimonials-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+        gap: 32px;
+        margin-bottom: 80px;
+      }
+
+      .testimonial-card {
+        background: #ffffff;
+        border-radius: 20px;
+        padding: 32px;
+        transition: all 0.4s ease;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      }
+
+      .testimonial-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+      }
+
+      .testimonial-header {
+        display: flex;
+        gap: 16px;
+        margin-bottom: 24px;
+      }
+
+      .testimonial-avatar {
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid #d4a574;
+        flex-shrink: 0;
+      }
+
+      .testimonial-info {
+        flex: 1;
+      }
+
+      .testimonial-name {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #1a1a1a;
+        margin-bottom: 4px;
+      }
+
+      .testimonial-role {
+        font-size: 0.9rem;
+        color: #d4a574;
+        margin-bottom: 2px;
+      }
+
+      .testimonial-project {
+        font-size: 0.85rem;
+        color: #666666;
+      }
+
+      .testimonial-rating {
+        display: flex;
+        gap: 4px;
+        margin-bottom: 20px;
+      }
+
+      .testimonial-text {
+        font-size: 1rem;
+        color: #444444;
+        line-height: 1.7;
+        font-style: italic;
+      }
+
+      /* CTA Section */
+      .cta-section {
+        text-align: center;
+        padding: 80px 40px;
+        background: linear-gradient(135deg, #2d3b3e 0%, #3a4a4e 100%);
+        border-radius: 24px;
+      }
+
+      .cta-title {
+        font-size: clamp(2rem, 4vw, 3rem);
+        font-weight: 600;
+        color: #ffffff;
+        margin-bottom: 16px;
+      }
+
+      .cta-text {
+        font-size: 1.2rem;
+        color: #cccccc;
+        margin-bottom: 40px;
+      }
+
+      .cta-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        padding: 16px 40px;
+        background: #d4a574;
+        color: #ffffff;
+        border-radius: 50px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      .cta-button:hover {
+        background: #c49564;
+        transform: translateY(-3px);
+        box-shadow: 0 10px 30px rgba(212, 165, 116, 0.4);
+      }
+
+      @media (max-width: 768px) {
+        .hero-section {
+          min-height: 80vh;
+        }
+
+        .stats-section {
+          gap: 32px;
+        }
+
+        .content-section {
+          padding: 80px 20px;
+        }
+
+        .section-header {
+          margin-bottom: 60px;
+        }
+
+        .testimonials-grid {
+          grid-template-columns: 1fr;
+          gap: 24px;
+          margin-bottom: 60px;
+        }
+
+        .testimonial-card {
+          padding: 24px;
+        }
+
+        .cta-section {
+          padding: 60px 24px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="feedback-detail">
+      <!-- Menu Hamburguer -->
+      <button class="burger" id="burger" aria-label="Toggle menu">
+        <span class="burger-icon"></span>
+      </button>
+
+      <div class="menu" id="menu">
+        <nav>
+          <a href="/">Home</a>
+          <a href="/#portfolio">Portfolio</a>
+          <a href="/services/residencial">Serviços</a>
+          <a href="/about/about">Sobre</a>
+          <a href="/contact/contato">Contato</a>
+        </nav>
+      </div>
+
+      <!-- Hero Section -->
+      <div class="hero-section">
+        <div class="hero-background">
+          <img
+            src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=1920&q=80"
+            alt="Depoimentos"
+          />
+        </div>
+        <div class="hero-overlay"></div>
+
+        <div class="hero-content">
+          <p class="hero-subtitle">DEPOIMENTOS</p>
+          <h1 class="hero-title">O que Nossos Clientes Dizem</h1>
+          <p class="hero-description">
+            A satisfação dos nossos clientes é nossa maior conquista. Veja o que
+            eles têm a dizer sobre nossos projetos e a experiência de trabalhar
+            conosco.
+          </p>
+
+          <!-- Stats -->
+          <div class="stats-section">
+            {
+              stats.map((stat) => (
+                <div class="stat-item">
+                  <div class="stat-number">{stat.number}</div>
+                  <div class="stat-label">{stat.label}</div>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+
+      <!-- Content Section -->
+      <div class="content-section">
+        <div class="content-container">
+          <!-- Section Header -->
+          <div class="section-header">
+            <h2 class="section-title">Histórias de Sucesso</h2>
+            <p class="section-description">
+              Cada projeto é único e cada cliente tem uma história para contar.
+              Confira os depoimentos de quem confiou em nosso trabalho.
+            </p>
+          </div>
+
+          <!-- Testimonials Grid -->
+          <div class="testimonials-grid">
+            {
+              testimonials.map((testimonial) => (
+                <div class="testimonial-card">
+                  <div class="testimonial-header">
+                    <img
+                      src={testimonial.image}
+                      alt={testimonial.name}
+                      class="testimonial-avatar"
+                    />
+                    <div class="testimonial-info">
+                      <h3 class="testimonial-name">{testimonial.name}</h3>
+                      <p class="testimonial-role">{testimonial.role}</p>
+                      <p class="testimonial-project">{testimonial.project}</p>
+                    </div>
+                  </div>
+
+                  <div class="testimonial-rating">
+                    {Array.from({ length: testimonial.rating }).map(() => (
+                      <svg
+                        width="20"
+                        height="20"
+                        viewBox="0 0 24 24"
+                        fill="#d4a574"
+                        stroke="none"
+                      >
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                      </svg>
+                    ))}
+                  </div>
+
+                  <p class="testimonial-text">{testimonial.text}</p>
+                </div>
+              ))
+            }
+          </div>
+
+          <!-- CTA -->
+          <div class="cta-section">
+            <h2 class="cta-title">Pronto para Começar Seu Projeto?</h2>
+            <p class="cta-text">
+              Entre em contato conosco e faça parte das nossas histórias de
+              sucesso
+            </p>
+            <a href="/contact/contato" class="cta-button">
+              Solicitar Orçamento
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      const burger = document.getElementById("burger");
+      const menu = document.getElementById("menu");
+
+      burger?.addEventListener("click", () => {
+        document.body.classList.toggle("menu-open");
+        menu?.classList.toggle("open");
+      });
+
+      // Fecha menu ao clicar nos links
+      document.querySelectorAll(".menu a").forEach((link) => {
+        link.addEventListener("click", () => {
+          document.body.classList.remove("menu-open");
+          menu?.classList.remove("open");
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,92 +1,187 @@
 ---
-// Portfolio.astro - Portfólio de Projetos
-const projects = {
-  year: "2024",
-  subtitle: "Projetos concluídos, cada um com uma história única de design.",
-  team: [
-    { image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80", alt: "Membro 1" },
-    { image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80", alt: "Membro 2" },
-    { image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80", alt: "Membro 3" },
-    { image: "https://images.unsplash.com/photo-1485546246426-74dc88dec4d9?w=400&q=80", alt: "Projeto" }
-  ]
-};
+// Portfolio.astro - Seção Moderna de Portfolio
+const projects = [
+  {
+    id: 1,
+    title: "Residência Minimalista",
+    category: "Residencial",
+    location: "São Paulo, SP",
+    year: "2024",
+    area: "450m²",
+    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80",
+    description: "Projeto residencial com linhas clean e integração com a natureza"
+  },
+  {
+    id: 2,
+    title: "Loft Industrial",
+    category: "Interiores",
+    location: "Rio de Janeiro, RJ",
+    year: "2024",
+    area: "180m²",
+    image: "https://images.unsplash.com/photo-1600210492493-0946911123ea?w=1200&q=80",
+    description: "Design de interiores moderno com toques industriais"
+  },
+  {
+    id: 3,
+    title: "Escritório Corporativo",
+    category: "Comercial",
+    location: "Curitiba, PR",
+    year: "2023",
+    area: "800m²",
+    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=80",
+    description: "Ambiente corporativo que inspira produtividade e criatividade"
+  },
+  {
+    id: 4,
+    title: "Casa de Campo",
+    category: "Residencial",
+    location: "Campos do Jordão, SP",
+    year: "2023",
+    area: "520m²",
+    image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1200&q=80",
+    description: "Arquitetura que dialoga com a paisagem montanhosa"
+  },
+  {
+    id: 5,
+    title: "Apartamento Luxo",
+    category: "Interiores",
+    location: "São Paulo, SP",
+    year: "2023",
+    area: "220m²",
+    image: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=1200&q=80",
+    description: "Sofisticação e conforto em cada detalhe"
+  },
+  {
+    id: 6,
+    title: "Restaurante Gourmet",
+    category: "Comercial",
+    location: "Florianópolis, SC",
+    year: "2024",
+    area: "350m²",
+    image: "https://images.unsplash.com/photo-1517502884422-41eaead166d4?w=1200&q=80",
+    description: "Experiência gastronômica através do design"
+  },
+  {
+    id: 7,
+    title: "Sobrado Moderno",
+    category: "Residencial",
+    location: "Porto Alegre, RS",
+    year: "2024",
+    area: "380m²",
+    image: "https://images.unsplash.com/photo-1600607687644-c7171b42498f?w=1200&q=80",
+    description: "Fachada contemporânea com elementos em madeira e vidro"
+  },
+  {
+    id: 8,
+    title: "Clínica Médica",
+    category: "Comercial",
+    location: "Brasília, DF",
+    year: "2023",
+    area: "600m²",
+    image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=1200&q=80",
+    description: "Ambiente acolhedor e funcional para cuidados com a saúde"
+  },
+  {
+    id: 9,
+    title: "Penthouse Vista Mar",
+    category: "Interiores",
+    location: "Salvador, BA",
+    year: "2024",
+    area: "280m²",
+    image: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=1200&q=80",
+    description: "Luxo e elegância com vista privilegiada"
+  }
+];
+
+const categories = ["Todos", "Residencial", "Interiores", "Comercial"];
 ---
 
 <section class="portfolio">
   <div class="portfolio-container">
     <!-- Header -->
     <div class="portfolio-header">
-      <h2 class="portfolio-title">Portfólio de Projetos</h2>
+      <p class="portfolio-subtitle">NOSSO TRABALHO</p>
+      <h2 class="portfolio-title">Portfolio de Projetos</h2>
       <p class="portfolio-description">
-        Explore uma seleção cuidadosa dos nossos principais projetos,
-        demonstrando criatividade, inovação e atenção aos detalhes em cada
-        espaço que transformamos.
+        Explore nossa seleção de projetos que transformaram sonhos em realidade. 
+        Cada obra é única e reflete nossa paixão por criar espaços extraordinários.
       </p>
     </div>
 
-    <!-- Main Grid -->
-    <div class="portfolio-grid">
-      <!-- Row 1: Year Card + Large Image -->
-      <div class="year-card">
-        <div class="year-content">
-          <h3 class="year-number">{projects.year}</h3>
-          <p class="year-subtitle">{projects.subtitle}</p>
-          <div class="team-avatars">
-            {projects.team.map((member) => (
-              <div class="avatar">
-                <img src={member.image} alt={member.alt} />
+    <!-- Filter -->
+    <div class="filter-container">
+      <div class="filter-buttons" id="filterButtons">
+        {categories.map((category, index) => (
+          <button 
+            class={`filter-btn ${index === 0 ? 'active' : ''}`}
+            data-filter={category}
+          >
+            {category}
+          </button>
+        ))}
+      </div>
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="projects-grid" id="projectsGrid">
+      {projects.map((project) => (
+        <div class="project-card" data-category={project.category}>
+          <div class="project-image-wrapper">
+            <img src={project.image} alt={project.title} class="project-image" loading="lazy" />
+            <div class="project-overlay">
+              <div class="project-info">
+                <span class="project-category">{project.category}</span>
+                <h3 class="project-title">{project.title}</h3>
+                <p class="project-description">{project.description}</p>
+                <div class="project-details">
+                  <span class="project-detail">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                      <circle cx="12" cy="10" r="3"/>
+                    </svg>
+                    {project.location}
+                  </span>
+                  <span class="project-detail">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                      <line x1="16" y1="2" x2="16" y2="6"/>
+                      <line x1="8" y1="2" x2="8" y2="6"/>
+                      <line x1="3" y1="10" x2="21" y2="10"/>
+                    </svg>
+                    {project.year}
+                  </span>
+                  <span class="project-detail">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                    </svg>
+                    {project.area}
+                  </span>
+                </div>
               </div>
-            ))}
+            </div>
           </div>
         </div>
-      </div>
+      ))}
+    </div>
 
-      <div class="gallery-item large">
-        <div class="image-content">
-          <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&q=80" alt="Casa Moderna" />
-          <div class="image-overlay">
-            <p class="overlay-text">Desfrute de imagens em alta resolução que capturam cada detalhe e emoção de forma bela.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Row 2: Medium Image + Stat Card + Contact -->
-      <div class="gallery-item medium">
-        <div class="image-content">
-          <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=80" alt="Interior Design" />
-          <div class="image-overlay">
-            <p class="overlay-text">Desfrute de imagens em alta resolução que capturam cada detalhe e emoção de forma bela.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="gallery-item stat">
-        <div class="stat-content">
-          <div class="stat-number">95<span class="percent">%</span></div>
-          <p class="stat-text">Clientes satisfeitos recomendam nossos serviços.</p>
-        </div>
-      </div>
-
-      <div class="contact-card">
-        <button class="contact-button">
-          <span class="button-text">CONTACT US</span>
-          <div class="button-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
-          </div>
-        </button>
-      </div>
-
-      <!-- Row 3: Large Image + Large Image with Arrow -->
+    <!-- CTA -->
+    <div class="portfolio-cta">
+      <h3 class="cta-title">Gostou do que viu?</h3>
+      <p class="cta-text">Entre em contato e vamos criar algo incrível juntos</p>
+      <a href="/contact/contato" class="cta-button">
+        Iniciar Projeto
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
+    </div>
   </div>
 </section>
 
 <style>
   .portfolio {
     background: #cbc7c7;
-    padding: 80px 20px;
-    min-height: 100vh;
+    padding: 120px 20px;
   }
 
   .portfolio-container {
@@ -94,356 +189,318 @@ const projects = {
     margin: 0 auto;
   }
 
+  /* Header */
   .portfolio-header {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    margin-bottom: 60px;
-    align-items: start;
+    text-align: center;
+    margin-bottom: 80px;
+  }
+
+  .portfolio-subtitle {
+    font-size: 0.95rem;
+    color: #000000;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 16px;
   }
 
   .portfolio-title {
-    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-size: clamp(2.5rem, 5vw, 4rem);
     font-weight: 700;
     color: #1a1a1a;
-    line-height: 1.2;
+    margin-bottom: 24px;
+    line-height: 1.1;
   }
 
   .portfolio-description {
-    font-size: clamp(0.95rem, 1.5vw, 1.1rem);
-    color: #666;
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    color: #666666;
+    max-width: 800px;
+    margin: 0 auto;
     line-height: 1.8;
   }
 
-  .portfolio-grid {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 24px;
-  }
-
-  /* Year Card */
-  .year-card {
-    grid-column: span 5;
-    background: #ffffff;
-    border: 2px dashed #d0d0d0;
-    border-radius: 24px;
-    padding: 48px;
-    min-height: 420px;
+  /* Filter */
+  .filter-container {
+    margin-bottom: 60px;
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-
-  .year-number {
-    font-size: 5rem;
-    font-weight: 700;
-    color: #1a1a1a;
-    margin-bottom: 16px;
-    line-height: 1;
-  }
-
-  .year-subtitle {
-    font-size: 1rem;
-    color: #666;
-    line-height: 1.6;
-    margin-bottom: 40px;
-  }
-
-  .team-avatars {
-    display: flex;
-  }
-
-  .avatar {
-    width: 90px;
-    height: 90px;
-    border-radius: 50%;
-    overflow: hidden;
-    border: 4px solid #ffffff;
-    margin-left: -20px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  }
-
-  .avatar:first-child {
-    margin-left: 0;
-  }
-
-  .avatar img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  /* Gallery Items */
-  .gallery-item {
-    border-radius: 24px;
-    overflow: hidden;
-    position: relative;
-    transition: transform 0.4s ease;
-  }
-
-  .gallery-item:hover {
-    transform: translateY(-5px);
-  }
-
-  .gallery-item.large {
-    grid-column: span 7;
-    min-height: 420px;
-  }
-
-  .gallery-item.medium {
-    grid-column: span 5;
-    min-height: 360px;
-  }
-
-  .gallery-item.stat {
-    grid-column: span 5;
-    background: #f0f0f0;
-    display: flex;
-    align-items: center;
     justify-content: center;
-    padding: 48px;
-    min-height: 360px;
   }
 
-  .image-content {
+  .filter-buttons {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+    background: #ffffff;
+    padding: 8px;
+    border-radius: 50px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  .filter-btn {
+    padding: 12px 32px;
+    border: none;
+    background: transparent;
+    color: #666666;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .filter-btn:hover {
+    color: #d4a574;
+  }
+
+  .filter-btn.active {
+    background: #d4a574;
+    color: #ffffff;
+  }
+
+  /* Projects Grid */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 32px;
+    margin-bottom: 80px;
+  }
+
+  .project-card {
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+  }
+
+  .project-card.hidden {
+    display: none;
+  }
+
+  .project-image-wrapper {
     position: relative;
     width: 100%;
-    height: 100%;
-    min-height: 360px;
+    height: 500px;
+    overflow: hidden;
+    background: #2d3b3e;
   }
 
-  .image-content img {
+  .project-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    display: block;
+    transition: transform 0.6s ease;
   }
 
-  .image-overlay {
+  .project-card:hover .project-image {
+    transform: scale(1.1);
+  }
+
+  .project-overlay {
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-    padding: 40px;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.3) 60%, transparent 100%);
+    height: 100%;
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.95) 0%,
+      rgba(0, 0, 0, 0.7) 50%,
+      transparent 100%
+    );
     display: flex;
-    justify-content: space-between;
     align-items: flex-end;
+    padding: 32px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
   }
 
-  .overlay-text {
+  .project-card:hover .project-overlay {
+    opacity: 1;
+  }
+
+  .project-info {
+    width: 100%;
+  }
+
+  .project-category {
+    display: inline-block;
+    padding: 6px 16px;
+    background: #d4a574;
     color: #ffffff;
-    font-size: 1.1rem;
-    line-height: 1.6;
-    max-width: 85%;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-radius: 20px;
+    margin-bottom: 12px;
   }
 
-  .arrow-button {
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    background: #ffffff;
-    border: none;
+  .project-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+
+  .project-description {
+    font-size: 1rem;
+    color: #e0e0e0;
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+
+  .project-details {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .project-detail {
     display: flex;
     align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    flex-shrink: 0;
+    gap: 6px;
+    font-size: 0.9rem;
+    color: #cccccc;
   }
 
-  .arrow-button svg {
-    color: #1a1a1a;
+  .project-detail svg {
+    color: #d4a574;
   }
 
-  .arrow-button:hover {
-    transform: scale(1.1);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-  }
-
-  /* Stat Card */
-  .stat-content {
+  /* CTA */
+  .portfolio-cta {
     text-align: center;
+    padding: 80px 40px;
+    background: linear-gradient(135deg, #2d3b3e 0%, #3a4a4e 100%);
+    border-radius: 24px;
   }
 
-  .stat-number {
-    font-size: 7rem;
-    font-weight: 700;
-    color: #1a1a1a;
-    line-height: 1;
+  .cta-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 600;
+    color: #ffffff;
     margin-bottom: 16px;
   }
 
-  .percent {
-    font-size: 3rem;
-    vertical-align: super;
+  .cta-text {
+    font-size: 1.2rem;
+    color: #cccccc;
+    margin-bottom: 40px;
   }
 
-  .stat-text {
-    font-size: 1rem;
-    color: #666;
-    line-height: 1.6;
-  }
-
-  /* Contact Card */
-  .contact-card {
-    grid-column: span 2;
-    display: flex;
+  .cta-button {
+    display: inline-flex;
     align-items: center;
-    justify-content: center;
-    min-height: 360px;
-  }
-
-  .contact-button {
-    position: relative;
-    width: 160px;
-    height: 160px;
-    border-radius: 50%;
-    background: #c9a56c;
-    border: none;
-    cursor: pointer;
-    transition: all 0.4s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .contact-button:hover {
-    transform: scale(1.05);
-    background: #b89354;
-  }
-
-  .button-text {
-    position: absolute;
-    font-size: 0.65rem;
+    gap: 12px;
+    padding: 16px 40px;
+    background: #d4a574;
+    color: #ffffff;
+    border-radius: 50px;
+    font-size: 1.1rem;
     font-weight: 600;
-    letter-spacing: 0.2em;
-    color: #1a1a1a;
-    animation: rotateText 15s linear infinite;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
   }
 
-  .button-icon {
-    position: relative;
-    z-index: 2;
-    color: #1a1a1a;
-    transform: rotate(-45deg);
-  }
-
-  @keyframes rotateText {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
-  }
-
-  @media (max-width: 1024px) {
-    .portfolio-header {
-      grid-template-columns: 1fr;
-      gap: 30px;
-    }
-
-    .portfolio-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .year-card,
-    .gallery-item.large,
-    .gallery-item.medium,
-    .gallery-item.stat,
-    .contact-card {
-      grid-column: span 1;
-    }
-
-    .image-content {
-      min-height: 320px;
-    }
+  .cta-button:hover {
+    background: #c49564;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(212, 165, 116, 0.4);
   }
 
   @media (max-width: 768px) {
     .portfolio {
-      padding: 60px 20px;
+      padding: 80px 20px;
     }
 
-    .year-card {
-      padding: 32px;
-      min-height: 320px;
+    .portfolio-header {
+      margin-bottom: 60px;
     }
 
-    .year-number {
-      font-size: 4rem;
+    .filter-container {
+      margin-bottom: 40px;
     }
 
-    .avatar {
-      width: 70px;
-      height: 70px;
-      margin-left: -15px;
+    .filter-buttons {
+      padding: 6px;
+      gap: 8px;
     }
 
-    .stat-number {
-      font-size: 5rem;
+    .filter-btn {
+      padding: 10px 24px;
+      font-size: 0.9rem;
     }
 
-    .contact-button {
-      width: 140px;
-      height: 140px;
+    .projects-grid {
+      grid-template-columns: 1fr;
+      gap: 24px;
+      margin-bottom: 60px;
     }
 
-    .overlay-text {
-      font-size: 1rem;
-      max-width: 100%;
+    .project-image-wrapper {
+      height: 400px;
     }
 
-    .arrow-button {
-      width: 48px;
-      height: 48px;
+    .project-overlay {
+      opacity: 1;
+      background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.95) 0%,
+        rgba(0, 0, 0, 0.5) 60%,
+        transparent 100%
+      );
     }
 
-    .image-overlay {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 16px;
+    .project-title {
+      font-size: 1.5rem;
+    }
+
+    .portfolio-cta {
+      padding: 60px 24px;
     }
   }
 </style>
 
 <script>
-  // Animação de entrada dos itens
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-  };
+  // Filter functionality
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  const projectCards = document.querySelectorAll('.project-card');
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, index) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => {
-          entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translateY(0)';
-        }, index * 80);
-        observer.unobserve(entry.target);
-      }
+  filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      // Remove active class from all buttons
+      filterButtons.forEach(btn => btn.classList.remove('active'));
+      
+      // Add active class to clicked button
+      button.classList.add('active');
+
+      const filter = button.getAttribute('data-filter');
+
+      projectCards.forEach(card => {
+        const category = card.getAttribute('data-category');
+
+        if (filter === 'Todos' || category === filter) {
+          card.classList.remove('hidden');
+          // Trigger reflow for animation
+          setTimeout(() => {
+            card.style.opacity = '1';
+            card.style.transform = 'scale(1)';
+          }, 10);
+        } else {
+          card.style.opacity = '0';
+          card.style.transform = 'scale(0.9)';
+          setTimeout(() => {
+            card.classList.add('hidden');
+          }, 300);
+        }
+      });
     });
-  }, observerOptions);
-
-  document.querySelectorAll('.gallery-item, .year-card, .contact-card').forEach((item) => {
-    item.style.opacity = '0';
-    item.style.transform = 'translateY(30px)';
-    item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    observer.observe(item);
   });
 
-  // Click nos botões de seta
-  document.querySelectorAll('.arrow-button').forEach(button => {
-    button.addEventListener('click', (e) => {
-      e.stopPropagation();
-      console.log('Ver mais detalhes do projeto');
-    });
+  // Initialize all cards as visible
+  projectCards.forEach(card => {
+    card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
   });
 </script>
