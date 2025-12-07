@@ -1,0 +1,587 @@
+---
+// src/components/PortfolioDetail.astro
+
+// Dados Mockados para o Portfólio
+const projects = [
+  {
+    id: 1,
+    title: "Residência Aurora",
+    subtitle: "Projeto arquitetônico e interiores de alto padrão",
+    category: "Residencial",
+    image:
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=80",
+    tags: ["Alto Padrão", "Moderno", "Sustentável"],
+    link: "/portfolio/residencia-aurora",
+  },
+  {
+    id: 2,
+    title: "Escritório Criativo Connect",
+    subtitle: "Design de interiores para coworking e tecnologia",
+    category: "Comercial",
+    image:
+      "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=80",
+    tags: ["Corporativo", "Minimalista", "Industrial"],
+    link: "/portfolio/escritorio-connect",
+  },
+  {
+    id: 3,
+    title: "Clínica Bem-Estar",
+    subtitle: "Reforma e adequação para espaço de saúde e relaxamento",
+    category: "Saúde",
+    image:
+      "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=1200&q=80",
+    tags: ["Clínica", "Acolhedor", "Funcional"],
+    link: "/portfolio/clinica-bem-estar",
+  },
+  {
+    id: 4,
+    title: "Apartamento Vista Mar",
+    subtitle: "Projeto de interiores focado em iluminação natural",
+    category: "Interiores",
+    image:
+      "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=1200&q=80",
+    tags: ["Praia", "Contemporâneo", "Clean"],
+    link: "/portfolio/apartamento-vista-mar",
+  },
+  {
+    id: 5,
+    title: "Restaurante Terraço",
+    subtitle: "Arquitetura e paisagismo para área de convivência externa",
+    category: "Gastronomia",
+    image:
+      "https://images.unsplash.com/photo-1517502884422-41eaead166d4?w=1200&q=80",
+    tags: ["Restaurante", "Paisagismo", "Moderno"],
+    link: "/portfolio/restaurante-terraço",
+  },
+  {
+    id: 6,
+    title: "Casa de Campo",
+    subtitle: "Projeto rústico e integrado à natureza",
+    category: "Residencial",
+    image:
+      "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1200&q=80",
+    tags: ["Rústico", "Madeira", "Natureza"],
+    link: "/portfolio/casa-de-campo",
+  },
+];
+
+const categories = [
+  "Todos",
+  "Residencial",
+  "Comercial",
+  "Interiores",
+  "Saúde",
+  "Gastronomia",
+];
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Portfólio | Arquitetura</title>
+    <style>
+      /* BASE E CORES */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        background: #cbc7c7; /* Fundo principal */
+        color: #ffffff;
+      }
+
+      .portfolio-detail {
+        min-height: 100vh;
+      }
+
+      /* --- MENU HAMBURGUER --- (Mantido do seu padrão) */
+      .burger {
+        position: fixed;
+        z-index: 1000;
+        top: 0;
+        left: 0;
+        display: grid;
+        place-items: center;
+        width: 100px;
+        height: 100px;
+        border: 0;
+        padding: 0;
+        background: transparent;
+        cursor: pointer;
+      }
+
+      .burger-icon {
+        position: relative;
+        width: 16px;
+        height: 2px;
+        background: #ffffff;
+        transition: 0.3s;
+      }
+
+      .burger-icon::before,
+      .burger-icon::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        width: 16px;
+        height: 2px;
+        background: #ffffff;
+        transition: 0.3s;
+      }
+
+      .burger-icon::before {
+        top: -8px;
+      }
+
+      .burger-icon::after {
+        top: 8px;
+      }
+
+      .menu {
+        position: fixed;
+        z-index: 999;
+        top: 0;
+        left: 0;
+        display: grid;
+        place-items: center;
+        width: 50%;
+        max-width: 400px;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(10px);
+        transform: translateX(-100%);
+        transition: transform 0.425s cubic-bezier(0.175, 0.885, 0.32, 1);
+        opacity: 0;
+        visibility: hidden;
+      }
+
+      .menu.open {
+        transform: translateX(0);
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .menu nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        opacity: 0;
+        transition: opacity 0.3s ease 0.2s;
+      }
+
+      .menu.open nav {
+        opacity: 1;
+      }
+
+      .menu a {
+        position: relative;
+        color: #f9f9f9;
+        font-size: 30px;
+        padding: 18px 0;
+        width: 100%;
+        text-decoration: none;
+        text-align: center;
+        transition: 0.4s;
+      }
+
+      .menu a::before,
+      .menu a::after {
+        content: "";
+        position: absolute;
+        bottom: 10px;
+        width: 100%;
+        height: 2px;
+        transition: 0.4s;
+      }
+
+      .menu a::before {
+        opacity: 0;
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      .menu a::after {
+        transform: scaleX(0);
+        transform-origin: 0% 50%;
+        background: #f7f7f7;
+      }
+
+      .menu a:hover::before {
+        opacity: 1;
+      }
+
+      .menu a:hover::after {
+        transform: scaleX(1);
+      }
+
+      body.menu-open .burger-icon {
+        background: #ffffff;
+        transform: rotate(-45deg);
+      }
+
+      body.menu-open .burger-icon::before {
+        background: #ffffff;
+        transform: rotate(90deg) translate(10px, -1px);
+      }
+
+      body.menu-open .burger-icon::after {
+        background: #ffffff;
+        transform: rotate(90deg) translate(-9px, 1px);
+      }
+      /* --- FIM MENU HAMBURGUER --- */
+
+      /* HERO SECTION (AJUSTADO PARA IMAGEM NO HTML) */
+      /* Hero Section */
+      .hero-section {
+        position: relative;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+      .hero-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+      }
+      .hero-background img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 1;
+      }
+      .hero-content {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        max-width: 1200px;
+        padding: 60px 20px;
+        margin: 0 auto;
+      }
+      .hero-subtitle {
+        font-size: 0.95rem;
+        color: #d4a574;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        margin-bottom: 16px;
+      }
+      .hero-title {
+        font-size: clamp(2.5rem, 6vw, 5rem);
+        font-weight: 700;
+        color: #ffffff;
+        margin-bottom: 24px;
+        line-height: 1.1;
+      }
+      .hero-description {
+        font-size: clamp(1rem, 1.5vw, 1.3rem);
+        color: #e0e0e0;
+        line-height: 1.8;
+        max-width: 800px;
+        margin: 0 auto 60px;
+      }
+
+      /* CONTENT SECTION */
+      .portfolio-content {
+        background: #cbc7c7;
+        padding: 100px 20px;
+      }
+
+      .portfolio-container {
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      /* FILTRO DE CATEGORIA */
+      .category-filter {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        justify-content: center;
+        margin-bottom: 60px;
+      }
+
+      .filter-button {
+        padding: 10px 24px;
+        background: #3a4a4e;
+        color: #ffffff;
+        border: 2px solid #3a4a4e;
+        border-radius: 50px;
+        font-size: 0.9rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+
+      .filter-button:hover,
+      .filter-button.active {
+        background: #d4a574;
+        border-color: #d4a574;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 10px rgba(212, 165, 116, 0.3);
+      }
+
+      .filter-button.active {
+        font-weight: 600;
+      }
+
+      /* GRID DE PROJETOS */
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 40px;
+        justify-content: center;
+      }
+
+      /* CARD DE PROJETO (COM CORREÇÃO DE IMAGEM) */
+      .project-card {
+        background: #3a4a4e;
+        border-radius: 20px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+        text-decoration: none;
+      }
+
+      .project-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+      }
+
+      .project-image-container {
+        height: 250px; /* ALTURA FIXA é a chave para o object-fit funcionar */
+        overflow: hidden;
+        position: relative;
+      }
+
+      .project-image {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .project-card:hover .project-image {
+        transform: scale(1.05);
+      }
+
+      .project-info {
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+      }
+
+      .project-category {
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: #d4a574;
+        margin-bottom: 8px;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+      }
+
+      .project-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #ffffff;
+        margin-bottom: 8px;
+        line-height: 1.2;
+      }
+
+      .project-subtitle {
+        font-size: 0.95rem;
+        color: #cccccc;
+        margin-bottom: 20px;
+        line-height: 1.5;
+      }
+
+      .project-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: auto;
+      }
+
+      .tag {
+        font-size: 0.75rem;
+        color: #ffffff;
+        background: #4a5a5e;
+        padding: 4px 12px;
+        border-radius: 15px;
+        font-weight: 400;
+      }
+
+      @media (max-width: 768px) {
+        .portfolio-content {
+          padding: 60px 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="portfolio-detail">
+      <button class="burger" id="burger" aria-label="Toggle menu">
+        <span class="burger-icon"></span>
+      </button>
+
+      <div class="menu" id="menu">
+        <nav>
+          <a href="/">Home</a>
+          <a href="/services/residencial">Serviços</a>
+          <a href="/portfolio/portfolio">Portfólio</a>
+          <a href="/feedback/feedback">Feedback</a>
+          <a href="/about/about">Sobre</a>
+        </nav>
+      </div>
+
+      <div class="hero-section">
+        <div class="hero-background">
+          <img
+            src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=1920&q=80"
+            alt="Portfólio"
+          />
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <h1 class="hero-title">Nosso Portfólio</h1>
+          <p class="hero-subtitle">
+            Explore nossos projetos de arquitetura e design de interiores, onde
+            a funcionalidade encontra a estética em cada detalhe.
+          </p>
+        </div>
+      </div>
+
+      <div class="portfolio-content">
+        <div class="portfolio-container">
+          <div class="category-filter" id="filter-buttons">
+            {
+              categories.map((category, index) => (
+                <button
+                  class={`filter-button ${index === 0 ? "active" : ""}`}
+                  data-category={category.toLowerCase().replace(" ", "-")}
+                >
+                  {category}
+                </button>
+              ))
+            }
+          </div>
+
+          <div class="projects-grid" id="projects-grid">
+            {
+              projects.map((project) => (
+                <a
+                  href={project.link}
+                  class="project-card"
+                  data-category={project.category
+                    .toLowerCase()
+                    .replace(" ", "-")}
+                >
+                  <div class="project-image-container">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      class="project-image"
+                    />
+                  </div>
+                  <div class="project-info">
+                    <p class="project-category">{project.category}</p>
+                    <h2 class="project-title">{project.title}</h2>
+                    <p class="project-subtitle">{project.subtitle}</p>
+
+                    <div class="project-tags">
+                      {project.tags.map((tag) => (
+                        <span class="tag">{tag}</span>
+                      ))}
+                    </div>
+                  </div>
+                </a>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      // Lógica do Menu Hamburguer (JS)
+      const burger = document.getElementById("burger");
+      const menu = document.getElementById("menu");
+
+      burger?.addEventListener("click", () => {
+        document.body.classList.toggle("menu-open");
+        menu?.classList.toggle("open");
+      });
+
+      document.querySelectorAll(".menu a").forEach((link) => {
+        link.addEventListener("click", () => {
+          document.body.classList.remove("menu-open");
+          menu?.classList.remove("open");
+        });
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (
+          e.key === "Escape" &&
+          document.body.classList.contains("menu-open")
+        ) {
+          document.body.classList.remove("menu-open");
+          menu?.classList.remove("open");
+        }
+      });
+
+      // Lógica do Filtro de Categoria (JS)
+      document.addEventListener("DOMContentLoaded", () => {
+        const filterButtons = document.querySelectorAll(".filter-button");
+        const projectCards = document.querySelectorAll(".project-card");
+
+        filterButtons.forEach((button) => {
+          button.addEventListener("click", () => {
+            filterButtons.forEach((btn) => btn.classList.remove("active"));
+            button.classList.add("active");
+
+            const filterCategory = button.getAttribute("data-category");
+
+            projectCards.forEach((card) => {
+              const cardCategory = card.getAttribute("data-category");
+
+              if (
+                filterCategory === "todos" ||
+                filterCategory === cardCategory
+              ) {
+                card.style.display = "flex";
+              } else {
+                card.style.display = "none";
+              }
+            });
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
