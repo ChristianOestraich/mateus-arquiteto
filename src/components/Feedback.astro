@@ -1,5 +1,5 @@
 ---
-// Feedback.astro - Depoimentos de Clientes
+// Feedback.astro - Depoimentos de Clientes - Nova Estrutura
 const testimonials = [
   {
     id: 1,
@@ -7,7 +7,7 @@ const testimonials = [
     author: "Theo Gardner",
     role: "Fundador",
     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80",
-    featured: true
+    rating: 5
   },
   {
     id: 2,
@@ -15,7 +15,7 @@ const testimonials = [
     author: "Laura Ribeiro",
     role: "Diretora de Marketing",
     image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80",
-    featured: false
+    rating: 5
   },
   {
     id: 3,
@@ -23,7 +23,7 @@ const testimonials = [
     author: "Carlos Mendes",
     role: "CEO",
     image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80",
-    featured: false
+    rating: 5
   },
   {
     id: 4,
@@ -31,7 +31,7 @@ const testimonials = [
     author: "Marina Silva",
     role: "Arquiteta",
     image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80",
-    featured: false
+    rating: 5
   }
 ];
 ---
@@ -40,51 +40,73 @@ const testimonials = [
   <div class="feedback-container">
     <!-- Header -->
     <div class="feedback-header">
-      <div class="icon-wrapper">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-          <path d="M5 12h14M12 5l7 7-7 7"/>
-        </svg>
+      <div class="header-content">
+        <div class="icon-wrapper">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+          </svg>
+        </div>
+        <span class="header-label">Depoimentos</span>
       </div>
-      <h2 class="feedback-title">Feedback de Clientes</h2>
+      <h2 class="feedback-title">O Que Nossos Clientes Dizem</h2>
       <p class="feedback-description">
-        Confira o que nossos clientes têm a dizer sobre nossos serviços de arquitetura. Suas
-        avaliações destacam a criatividade, a atenção aos detalhes e a excelência que colocamos em
-        cada projeto.
+        Descubra as experiências de quem confiou em nosso trabalho. Cada projeto é uma
+        parceria única, construída com dedicação e excelência.
       </p>
     </div>
 
-    <!-- Testimonials Grid -->
-    <div class="testimonials-grid">
-      {testimonials.map((testimonial) => (
-        <div class={`testimonial-card ${testimonial.featured ? 'featured' : ''}`}>
-          {testimonial.featured ? (
-            <div class="featured-content">
-              <div class="featured-image">
-                <img src={testimonial.image} alt={testimonial.author} />
-                <div class="image-gradient"></div>
-              </div>
-              <div class="featured-text">
-                <p class="testimonial-text">{testimonial.text}</p>
-                <div class="author-info">
-                  <p class="author-name">{testimonial.author}</p>
-                  <p class="author-role">{testimonial.role}</p>
-                </div>
-              </div>
+    <!-- Testimonials Cards -->
+    <div class="testimonials-wrapper">
+      {testimonials.map((testimonial, index) => (
+        <article class="testimonial-card" data-index={index}>
+          <div class="card-header">
+            <div class="avatar-wrapper">
+              <img src={testimonial.image} alt={testimonial.author} class="avatar" />
+              <div class="avatar-ring"></div>
             </div>
-          ) : (
-            <div class="standard-content">
-              <div class="avatar">
-                <img src={testimonial.image} alt={testimonial.author} />
-              </div>
-              <p class="testimonial-text">{testimonial.text}</p>
-              <div class="author-info">
-                <p class="author-name">{testimonial.author}</p>
-                <p class="author-role">{testimonial.role}</p>
-              </div>
+            <div class="author-details">
+              <h3 class="author-name">{testimonial.author}</h3>
+              <p class="author-role">{testimonial.role}</p>
             </div>
-          )}
-        </div>
+            <div class="rating">
+              {Array.from({ length: testimonial.rating }).map(() => (
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                </svg>
+              ))}
+            </div>
+          </div>
+
+          <div class="card-body">
+            <svg class="quote-mark" width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M6 17h3l2-4V7H5v6h3zm8 0h3l2-4V7h-6v6h3z"/>
+            </svg>
+            <p class="testimonial-text">{testimonial.text}</p>
+          </div>
+
+          <div class="card-footer">
+            <div class="decoration-line"></div>
+          </div>
+        </article>
       ))}
+    </div>
+
+    <!-- Stats Section -->
+    <div class="stats-section">
+      <div class="stat-item">
+        <div class="stat-number">100+</div>
+        <div class="stat-label">Projetos Concluídos</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <div class="stat-number">98%</div>
+        <div class="stat-label">Satisfação dos Clientes</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <div class="stat-number">15+</div>
+        <div class="stat-label">Anos de Experiência</div>
+      </div>
     </div>
   </div>
 </section>
@@ -92,160 +114,155 @@ const testimonials = [
 <style>
   .feedback {
     background: #706d6d;
-    padding: 80px 20px;
+    padding: 120px 20px;
     min-height: 100vh;
+    position: relative;
   }
 
   .feedback-container {
-    max-width: 1400px;
+    max-width: 1200px;
     margin: 0 auto;
   }
 
+  /* Header */
   .feedback-header {
     text-align: center;
-    margin-bottom: 60px;
+    margin-bottom: 80px;
+  }
+
+  .header-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 24px;
   }
 
   .icon-wrapper {
-    display: inline-flex;
+    display: flex;
     align-items: center;
     justify-content: center;
-    width: 64px;
-    height: 64px;
+    width: 48px;
+    height: 48px;
     background: #6b46c1;
-    border-radius: 16px;
-    margin-bottom: 24px;
+    border-radius: 12px;
   }
 
   .icon-wrapper svg {
     color: #ffffff;
   }
 
-  .feedback-title {
-    font-size: clamp(2rem, 5vw, 3rem);
+  .header-label {
+    font-size: 1rem;
     font-weight: 600;
+    color: #2a2a2a;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .feedback-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 800;
     color: #1a1a1a;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
+    line-height: 1.1;
   }
 
   .feedback-description {
-    font-size: clamp(0.95rem, 1.5vw, 1.1rem);
-    color: #000000;
-    max-width: 900px;
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    color: #2a2a2a;
+    max-width: 700px;
     margin: 0 auto;
     line-height: 1.8;
   }
 
-  .testimonials-grid {
+  /* Testimonials Grid */
+  .testimonials-wrapper {
     display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 30px;
-    margin-top: 40px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 32px;
+    margin-bottom: 80px;
   }
 
   .testimonial-card {
-    background: #f8f8f8;
-    border-radius: 20px;
-    overflow: hidden;
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
-  }
-
-  .testimonial-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
-  }
-
-  /* Featured Card (Grande à esquerda) */
-  .testimonial-card.featured {
-    grid-column: span 7;
-    grid-row: span 2;
-  }
-
-  .featured-content {
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     position: relative;
-    height: 100%;
-    min-height: 500px;
+    overflow: hidden;
   }
 
-  .featured-image {
+  .testimonial-card::before {
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 4px;
     height: 100%;
+    background: linear-gradient(to bottom, #6b46c1, #8b5cf6);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.4s ease;
   }
 
-  .featured-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  .testimonial-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(107, 70, 193, 0.15);
   }
 
-  .image-gradient {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 60%;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 100%);
+  .testimonial-card:hover::before {
+    transform: scaleY(1);
   }
 
-  .featured-text {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    padding: 40px;
-    color: #ffffff;
-    z-index: 2;
-  }
-
-  .featured-text .testimonial-text {
-    font-size: 1.25rem;
-    line-height: 1.7;
-    margin-bottom: 24px;
-  }
-
-  /* Standard Cards (Menores à direita) */
-  .testimonial-card:not(.featured) {
-    grid-column: span 5;
-  }
-
-  .standard-content {
-    padding: 32px;
+  /* Card Header */
+  .card-header {
     display: flex;
-    flex-direction: column;
-    height: 100%;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .avatar-wrapper {
+    position: relative;
+    width: 64px;
+    height: 64px;
+    flex-shrink: 0;
   }
 
   .avatar {
-    width: 60px;
-    height: 60px;
-    border-radius: 12px;
-    overflow: hidden;
-    margin-bottom: 20px;
-  }
-
-  .avatar img {
     width: 100%;
     height: 100%;
+    border-radius: 50%;
     object-fit: cover;
+    object-position: center;
+    position: relative;
+    z-index: 2;
   }
 
-  .testimonial-text {
-    font-size: 1rem;
-    line-height: 1.7;
-    color: #333;
-    margin-bottom: 24px;
-    flex-grow: 1;
+  .avatar-ring {
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #6b46c1, #8b5cf6);
+    z-index: 1;
   }
 
-  .author-info {
-    margin-top: auto;
+  .author-details {
+    flex: 1;
+    min-width: 0;
   }
 
   .author-name {
-    font-size: 1rem;
-    font-weight: 600;
+    font-size: 1.1rem;
+    font-weight: 700;
     color: #1a1a1a;
     margin-bottom: 4px;
   }
@@ -253,81 +270,155 @@ const testimonials = [
   .author-role {
     font-size: 0.9rem;
     color: #666;
+    font-weight: 500;
   }
 
-  .featured-text .author-name,
-  .featured-text .author-role {
-    color: #ffffff;
+  .rating {
+    display: flex;
+    gap: 4px;
+    color: #6b46c1;
   }
 
-  .featured-text .author-role {
-    opacity: 0.9;
+  /* Card Body */
+  .card-body {
+    position: relative;
+    flex: 1;
   }
 
+  .quote-mark {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    color: #6b46c1;
+    opacity: 0.1;
+  }
+
+  .testimonial-text {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #333;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Card Footer */
+  .card-footer {
+    margin-top: auto;
+  }
+
+  .decoration-line {
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(to right, #6b46c1, #8b5cf6);
+    border-radius: 2px;
+  }
+
+  /* Stats Section */
+  .stats-section {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 24px;
+    padding: 60px 40px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  }
+
+  .stat-item {
+    text-align: center;
+  }
+
+  .stat-number {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 800;
+    color: #6b46c1;
+    margin-bottom: 8px;
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 1rem;
+    color: #666;
+    font-weight: 600;
+  }
+
+  .stat-divider {
+    width: 1px;
+    height: 80px;
+    background: linear-gradient(to bottom, transparent, #6b46c1, transparent);
+  }
+
+  /* Responsive */
   @media (max-width: 1024px) {
-    .testimonials-grid {
-      grid-template-columns: 1fr;
-      gap: 24px;
+    .testimonials-wrapper {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 28px;
     }
 
-    .testimonial-card.featured,
-    .testimonial-card:not(.featured) {
-      grid-column: span 1;
-      grid-row: span 1;
+    .stats-section {
+      padding: 50px 30px;
     }
 
-    .featured-content {
-      min-height: 400px;
-    }
-
-    .featured-text {
-      padding: 30px;
-    }
-
-    .featured-text .testimonial-text {
-      font-size: 1.1rem;
+    .stat-divider {
+      height: 60px;
     }
   }
 
   @media (max-width: 768px) {
     .feedback {
-      padding: 60px 20px;
+      padding: 80px 20px;
     }
 
     .feedback-header {
-      margin-bottom: 40px;
+      margin-bottom: 60px;
     }
 
-    .icon-wrapper {
-      width: 56px;
-      height: 56px;
-      border-radius: 14px;
+    .testimonials-wrapper {
+      grid-template-columns: 1fr;
+      gap: 24px;
+      margin-bottom: 60px;
     }
 
-    .featured-content {
-      min-height: 350px;
+    .testimonial-card {
+      padding: 32px;
     }
 
-    .featured-text {
-      padding: 24px;
+    .stats-section {
+      flex-direction: column;
+      gap: 40px;
+      padding: 40px 24px;
     }
 
-    .standard-content {
-      padding: 24px;
+    .stat-divider {
+      width: 80px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, #6b46c1, transparent);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .card-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .rating {
+      align-self: flex-start;
     }
   }
 </style>
 
 <script>
-  // Adiciona animação de entrada aos cards
+  // Animação de entrada dos cards
   const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px'
   };
 
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, index) => {
+    entries.forEach((entry) => {
       if (entry.isIntersecting) {
+        const index = parseInt(entry.target.getAttribute('data-index') || '0');
         setTimeout(() => {
           entry.target.style.opacity = '1';
           entry.target.style.transform = 'translateY(0)';
@@ -343,4 +434,31 @@ const testimonials = [
     card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
     observer.observe(card);
   });
+
+  // Animação da seção de estatísticas
+  const statsObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const statNumbers = entry.target.querySelectorAll('.stat-number');
+        statNumbers.forEach((stat, index) => {
+          setTimeout(() => {
+            stat.style.opacity = '1';
+            stat.style.transform = 'scale(1)';
+          }, index * 150);
+        });
+        statsObserver.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  const statsSection = document.querySelector('.stats-section');
+  if (statsSection) {
+    const statNumbers = statsSection.querySelectorAll('.stat-number');
+    statNumbers.forEach((stat) => {
+      stat.style.opacity = '0';
+      stat.style.transform = 'scale(0.8)';
+      stat.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    });
+    statsObserver.observe(statsSection);
+  }
 </script>

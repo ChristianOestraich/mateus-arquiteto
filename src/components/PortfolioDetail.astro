@@ -16,8 +16,8 @@ const projects = [
       "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80",
       "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1200&q=80",
       "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&q=80",
-      "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=1200&q=80",
-    ],
+      "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=1200&q=80"
+    ]
   },
   {
     id: 2,
@@ -32,8 +32,8 @@ const projects = [
       "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=80",
       "https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=1200&q=80",
       "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1200&q=80",
-      "https://images.unsplash.com/photo-1497215728101-856f4ea42174?w=1200&q=80",
-    ],
+      "https://images.unsplash.com/photo-1497215728101-856f4ea42174?w=1200&q=80"
+    ]
   },
   {
     id: 3,
@@ -47,8 +47,8 @@ const projects = [
     gallery: [
       "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=1200&q=80",
       "https://images.unsplash.com/photo-1519494140681-8b17d830a3ec?w=1200&q=80",
-      "https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=1200&q=80",
-    ],
+      "https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=1200&q=80"
+    ]
   },
   {
     id: 4,
@@ -63,8 +63,8 @@ const projects = [
       "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=1200&q=80",
       "https://images.unsplash.com/photo-1600607687644-c7171b42498f?w=1200&q=80",
       "https://images.unsplash.com/photo-1600607688960-e095ff83135a?w=1200&q=80",
-      "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?w=1200&q=80",
-    ],
+      "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?w=1200&q=80"
+    ]
   },
   {
     id: 5,
@@ -78,8 +78,8 @@ const projects = [
     gallery: [
       "https://images.unsplash.com/photo-1517502884422-41eaead166d4?w=1200&q=80",
       "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1200&q=80",
-      "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1200&q=80",
-    ],
+      "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1200&q=80"
+    ]
   },
   {
     id: 6,
@@ -94,8 +94,8 @@ const projects = [
       "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1200&q=80",
       "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=1200&q=80",
       "https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=1200&q=80",
-      "https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?w=1200&q=80",
-    ],
+      "https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?w=1200&q=80"
+    ]
   },
 ];
 
@@ -114,8 +114,6 @@ const categories = [
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>Portfólio | Arquitetura</title>
     <style>
       /* BASE E CORES */
@@ -736,9 +734,9 @@ const categories = [
         <nav>
           <a href="/">Home</a>
           <a href="/services/residencial">Serviços</a>
+          <a href="/portfolio/portfolio">Portfólio</a>
           <a href="/feedback/feedback">Feedback</a>
           <a href="/about/about">Sobre</a>
-          <a href="/contact/contato">Contato</a>
         </nav>
       </div>
 
@@ -790,30 +788,16 @@ const categories = [
                       class="project-image"
                     />
                     <div class="project-image-overlay">
-                      <button
+                      <button 
                         class="btn-gallery-overlay"
                         data-project-id={project.id}
                         data-project-title={project.title}
                         data-gallery={JSON.stringify(project.gallery)}
                       >
-                        <svg
-                          width="20"
-                          height="20"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          stroke-width="2"
-                        >
-                          <rect
-                            x="3"
-                            y="3"
-                            width="18"
-                            height="18"
-                            rx="2"
-                            ry="2"
-                          />
-                          <circle cx="8.5" cy="8.5" r="1.5" />
-                          <polyline points="21 15 16 10 5 21" />
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                          <circle cx="8.5" cy="8.5" r="1.5"/>
+                          <polyline points="21 15 16 10 5 21"/>
                         </svg>
                         Ver Galeria ({project.gallery.length})
                       </button>
@@ -838,6 +822,28 @@ const categories = [
       </div>
     </section>
 
+    <!-- Footer -->
+    <footer style="
+      background: #706d6d;
+      padding: 0rem 0;
+      border-top: 1px solid #555555;
+    ">
+      <div style="
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1rem;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        color: #000000;
+        font-size: 0.9rem;
+      ">
+        <p>
+          © 2025 — Todos os direitos reservados.
+        </p>
+      </div>
+    </footer>
+
     <!-- Gallery Modal -->
     <div class="gallery-modal" id="galleryModal">
       <div class="gallery-container">
@@ -848,64 +854,31 @@ const categories = [
               <span id="currentIndex">1</span> / <span id="totalImages">1</span>
             </p>
           </div>
-          <button
-            class="gallery-close"
-            id="closeGallery"
-            aria-label="Fechar galeria"
-          >
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <line x1="18" y1="6" x2="6" y2="18"></line>
-              <line x1="6" y1="6" x2="18" y2="18"></line>
+          <button class="gallery-close" id="closeGallery" aria-label="Fechar galeria">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="18" y1="6" x2="6" y2="18"/>
+              <line x1="6" y1="6" x2="18" y2="18"/>
             </svg>
           </button>
         </div>
 
         <div class="gallery-main">
-          <button
-            class="gallery-nav gallery-prev"
-            id="prevImage"
-            aria-label="Imagem anterior"
-          >
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <polyline points="15 18 9 12 15 6"></polyline>
+          <button class="gallery-nav gallery-prev" id="prevImage" aria-label="Imagem anterior">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="15 18 9 12 15 6"/>
             </svg>
           </button>
 
-          <img
-            id="galleryImage"
-            class="gallery-image"
-            src=""
+          <img 
+            id="galleryImage" 
+            class="gallery-image" 
+            src="" 
             alt="Imagem do projeto"
           />
 
-          <button
-            class="gallery-nav gallery-next"
-            id="nextImage"
-            aria-label="Próxima imagem"
-          >
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <polyline points="9 18 15 12 9 6"></polyline>
+          <button class="gallery-nav gallery-next" id="nextImage" aria-label="Próxima imagem">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="9 18 15 12 9 6"/>
             </svg>
           </button>
         </div>
@@ -970,28 +943,28 @@ const categories = [
       });
 
       // Gallery Modal
-      const galleryModal = document.getElementById("galleryModal");
-      const galleryImage = document.getElementById("galleryImage");
-      const galleryTitle = document.getElementById("galleryTitle");
-      const currentIndexEl = document.getElementById("currentIndex");
-      const totalImagesEl = document.getElementById("totalImages");
-      const thumbnailsContainer = document.getElementById("galleryThumbnails");
-      const prevBtn = document.getElementById("prevImage");
-      const nextBtn = document.getElementById("nextImage");
-      const closeBtn = document.getElementById("closeGallery");
+      const galleryModal = document.getElementById('galleryModal');
+      const galleryImage = document.getElementById('galleryImage');
+      const galleryTitle = document.getElementById('galleryTitle');
+      const currentIndexEl = document.getElementById('currentIndex');
+      const totalImagesEl = document.getElementById('totalImages');
+      const thumbnailsContainer = document.getElementById('galleryThumbnails');
+      const prevBtn = document.getElementById('prevImage');
+      const nextBtn = document.getElementById('nextImage');
+      const closeBtn = document.getElementById('closeGallery');
 
       let currentImages = [];
       let currentIndex = 0;
 
       // Abrir galeria
-      document.querySelectorAll(".btn-gallery-overlay").forEach((btn) => {
-        btn.addEventListener("click", (e) => {
+      document.querySelectorAll('.btn-gallery-overlay').forEach(btn => {
+        btn.addEventListener('click', (e) => {
           e.preventDefault();
           e.stopPropagation();
-
+          
           const title = btn.dataset.projectTitle;
           const gallery = JSON.parse(btn.dataset.gallery);
-
+          
           openGallery(title, gallery);
         });
       });
@@ -999,80 +972,76 @@ const categories = [
       function openGallery(title, images) {
         currentImages = images;
         currentIndex = 0;
-
+        
         galleryTitle.textContent = title;
         totalImagesEl.textContent = images.length;
-
+        
         updateGallery();
         createThumbnails();
-
-        galleryModal.classList.add("active");
-        document.body.style.overflow = "hidden";
+        
+        galleryModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
       }
 
       function closeGallery() {
-        galleryModal.classList.remove("active");
-        document.body.style.overflow = "";
+        galleryModal.classList.remove('active');
+        document.body.style.overflow = '';
       }
 
       function updateGallery() {
         galleryImage.src = currentImages[currentIndex];
         currentIndexEl.textContent = currentIndex + 1;
-
+        
         // Atualizar botões
         prevBtn.disabled = currentIndex === 0;
         nextBtn.disabled = currentIndex === currentImages.length - 1;
-
+        
         // Atualizar thumbnails
         updateThumbnails();
       }
 
       function createThumbnails() {
-        thumbnailsContainer.innerHTML = "";
-
+        thumbnailsContainer.innerHTML = '';
+        
         currentImages.forEach((image, index) => {
-          const thumb = document.createElement("img");
+          const thumb = document.createElement('img');
           thumb.src = image;
-          thumb.className = "thumbnail";
+          thumb.className = 'thumbnail';
           thumb.alt = `Miniatura ${index + 1}`;
-
+          
           if (index === 0) {
-            thumb.classList.add("active");
+            thumb.classList.add('active');
           }
-
-          thumb.addEventListener("click", () => {
+          
+          thumb.addEventListener('click', () => {
             currentIndex = index;
             updateGallery();
           });
-
+          
           thumbnailsContainer.appendChild(thumb);
         });
       }
 
       function updateThumbnails() {
-        const thumbs = thumbnailsContainer.querySelectorAll(".thumbnail");
+        const thumbs = thumbnailsContainer.querySelectorAll('.thumbnail');
         thumbs.forEach((thumb, index) => {
-          thumb.classList.toggle("active", index === currentIndex);
+          thumb.classList.toggle('active', index === currentIndex);
         });
-
+        
         // Scroll para a thumbnail ativa
         const activeThumb = thumbs[currentIndex];
-        activeThumb?.scrollIntoView({
-          behavior: "smooth",
-          block: "nearest",
-          inline: "center",
-        });
+        activeThumb?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
       }
 
       // Navegação
-      prevBtn.addEventListener("click", () => {
+      prevBtn.addEventListener('click', () => {
         if (currentIndex > 0) {
           currentIndex--;
           updateGallery();
         }
       });
 
-      nextBtn.addEventListener("click", () => {
+      nextBtn.addEventListener('click', () => {
         if (currentIndex < currentImages.length - 1) {
           currentIndex++;
           updateGallery();
@@ -1080,35 +1049,35 @@ const categories = [
       });
 
       // Fechar galeria
-      closeBtn.addEventListener("click", closeGallery);
+      closeBtn.addEventListener('click', closeGallery);
 
-      galleryModal.addEventListener("click", (e) => {
+      galleryModal.addEventListener('click', (e) => {
         if (e.target === galleryModal) {
           closeGallery();
         }
       });
 
       // Teclado - atualizado para não conflitar com o menu
-      document.addEventListener("keydown", (e) => {
+      document.addEventListener('keydown', (e) => {
         // Se o menu está aberto, deixa o ESC fechar o menu
-        if (document.body.classList.contains("menu-open")) {
+        if (document.body.classList.contains('menu-open')) {
           return;
         }
 
         // Se a galeria está aberta
-        if (!galleryModal.classList.contains("active")) return;
-
-        switch (e.key) {
-          case "Escape":
+        if (!galleryModal.classList.contains('active')) return;
+        
+        switch(e.key) {
+          case 'Escape':
             closeGallery();
             break;
-          case "ArrowLeft":
+          case 'ArrowLeft':
             if (currentIndex > 0) {
               currentIndex--;
               updateGallery();
             }
             break;
-          case "ArrowRight":
+          case 'ArrowRight':
             if (currentIndex < currentImages.length - 1) {
               currentIndex++;
               updateGallery();
@@ -1116,5 +1085,3 @@ const categories = [
             break;
         }
       });
-    </script></body>
-</html>
