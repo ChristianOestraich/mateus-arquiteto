@@ -1,5 +1,5 @@
 ---
-// src/components/PortfolioDetail.astro
+// src/components/PortfolioDetail.astro - ATUALIZADO
 
 // Dados Mockados para o Portfólio
 const projects = [
@@ -8,8 +8,7 @@ const projects = [
     title: "Residência Aurora",
     subtitle: "Projeto arquitetônico e interiores de alto padrão",
     category: "Residencial",
-    image:
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=80",
+    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=80",
     tags: ["Alto Padrão", "Moderno", "Sustentável"],
     link: "/portfolio/residencia-aurora",
     gallery: [
@@ -24,8 +23,7 @@ const projects = [
     title: "Escritório Criativo Connect",
     subtitle: "Design de interiores para coworking e tecnologia",
     category: "Comercial",
-    image:
-      "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=80",
     tags: ["Corporativo", "Minimalista", "Industrial"],
     link: "/portfolio/escritorio-connect",
     gallery: [
@@ -40,8 +38,7 @@ const projects = [
     title: "Clínica Bem-Estar",
     subtitle: "Reforma e adequação para espaço de saúde e relaxamento",
     category: "Saúde",
-    image:
-      "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=1200&q=80",
     tags: ["Clínica", "Acolhedor", "Funcional"],
     link: "/portfolio/clinica-bem-estar",
     gallery: [
@@ -55,8 +52,7 @@ const projects = [
     title: "Apartamento Vista Mar",
     subtitle: "Projeto de interiores focado em iluminação natural",
     category: "Interiores",
-    image:
-      "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=1200&q=80",
     tags: ["Praia", "Contemporâneo", "Clean"],
     link: "/portfolio/apartamento-vista-mar",
     gallery: [
@@ -68,26 +64,55 @@ const projects = [
   },
   {
     id: 5,
-    title: "Restaurante Terraço",
-    subtitle: "Arquitetura e paisagismo para área de convivência externa",
-    category: "Gastronomia",
-    image:
-      "https://images.unsplash.com/photo-1517502884422-41eaead166d4?w=1200&q=80",
-    tags: ["Restaurante", "Paisagismo", "Moderno"],
-    link: "/portfolio/restaurante-terraço",
+    title: "Loft Industrial Moderno",
+    subtitle: "Design de interiores com estilo urbano e contemporâneo",
+    category: "Interiores",
+    image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200&q=80",
+    tags: ["Industrial", "Moderno", "Urbano"],
+    link: "/portfolio/loft-industrial",
     gallery: [
-      "https://images.unsplash.com/photo-1517502884422-41eaead166d4?w=1200&q=80",
-      "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1200&q=80",
-      "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1200&q=80"
+      "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200&q=80",
+      "https://images.unsplash.com/photo-1556909172-54557c7e4fb7?w=1200&q=80",
+      "https://images.unsplash.com/photo-1556909212-d5b604d0c90d?w=1200&q=80",
+      "https://images.unsplash.com/photo-1556909172-54557c7e4fb7?w=1200&q=80"
     ]
   },
   {
     id: 6,
+    title: "Penthouse Luxo",
+    subtitle: "Interiores sofisticados com vista panorâmica",
+    category: "Interiores",
+    image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1200&q=80",
+    tags: ["Luxo", "Sofisticado", "Elegante"],
+    link: "/portfolio/penthouse-luxo",
+    gallery: [
+      "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1200&q=80",
+      "https://images.unsplash.com/photo-1560448204-603b3fc33ddc?w=1200&q=80",
+      "https://images.unsplash.com/photo-1560449752-8b1e6c1c6c09?w=1200&q=80",
+      "https://images.unsplash.com/photo-1560185127-6bdc6ba31b0e?w=1200&q=80"
+    ]
+  },
+  {
+    id: 7,
+    title: "Casa Minimalista Zen",
+    subtitle: "Design de interiores com conceito minimalista japonês",
+    category: "Interiores",
+    image: "https://images.unsplash.com/photo-1615876234886-fd9a39fda97f?w=1200&q=80",
+    tags: ["Minimalista", "Zen", "Japonês"],
+    link: "/portfolio/casa-minimalista",
+    gallery: [
+      "https://images.unsplash.com/photo-1615876234886-fd9a39fda97f?w=1200&q=80",
+      "https://images.unsplash.com/photo-1615873968403-89e068629265?w=1200&q=80",
+      "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=1200&q=80",
+      "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=1200&q=80"
+    ]
+  },
+  {
+    id: 8,
     title: "Casa de Campo",
     subtitle: "Projeto rústico e integrado à natureza",
     category: "Residencial",
-    image:
-      "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1200&q=80",
+    image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1200&q=80",
     tags: ["Rústico", "Madeira", "Natureza"],
     link: "/portfolio/casa-de-campo",
     gallery: [
@@ -96,7 +121,7 @@ const projects = [
       "https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=1200&q=80",
       "https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?w=1200&q=80"
     ]
-  },
+  }
 ];
 
 const categories = [
@@ -104,8 +129,7 @@ const categories = [
   "Residencial",
   "Comercial",
   "Interiores",
-  "Saúde",
-  "Gastronomia",
+  "Saúde"
 ];
 ---
 
@@ -116,7 +140,6 @@ const categories = [
     <meta name="viewport" content="width=device-width" />
     <title>Portfólio | Arquitetura</title>
     <style>
-      /* BASE E CORES */
       * {
         margin: 0;
         padding: 0;
@@ -124,17 +147,15 @@ const categories = [
       }
 
       body {
-        font-family:
-          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-        background: #cbc7c7; /* Fundo principal */
-        color: #ffffff;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        background: #ECF0F1;
+        color: #2C3E50;
       }
 
       .portfolio-detail {
         min-height: 100vh;
       }
 
-      /* --- MENU HAMBURGUER --- (Mantido do seu padrão) */
       .burger {
         position: fixed;
         z-index: 1000;
@@ -154,7 +175,7 @@ const categories = [
         position: relative;
         width: 16px;
         height: 2px;
-        background: #ffffff;
+        background: #E3735E;
         transition: 0.3s;
       }
 
@@ -165,7 +186,7 @@ const categories = [
         left: 0;
         width: 16px;
         height: 2px;
-        background: #ffffff;
+        background: #E3735E;
         transition: 0.3s;
       }
 
@@ -187,12 +208,13 @@ const categories = [
         width: 50%;
         max-width: 400px;
         height: 100%;
-        background: rgba(0, 0, 0, 0.4);
+        background: rgba(44, 62, 80, 0.95);
         backdrop-filter: blur(10px);
         transform: translateX(-100%);
         transition: transform 0.425s cubic-bezier(0.175, 0.885, 0.32, 1);
         opacity: 0;
         visibility: hidden;
+        border-right: 3px solid #E3735E;
       }
 
       .menu.open {
@@ -216,13 +238,17 @@ const categories = [
 
       .menu a {
         position: relative;
-        color: #f9f9f9;
+        color: #ECF0F1;
         font-size: 30px;
         padding: 18px 0;
         width: 100%;
         text-decoration: none;
         text-align: center;
         transition: 0.4s;
+      }
+
+      .menu a:hover {
+        color: #E3735E;
       }
 
       .menu a::before,
@@ -237,13 +263,13 @@ const categories = [
 
       .menu a::before {
         opacity: 0;
-        background: rgba(255, 255, 255, 0.2);
+        background: rgba(227, 115, 94, 0.3);
       }
 
       .menu a::after {
         transform: scaleX(0);
         transform-origin: 0% 50%;
-        background: #f7f7f7;
+        background: #E3735E;
       }
 
       .menu a:hover::before {
@@ -255,23 +281,20 @@ const categories = [
       }
 
       body.menu-open .burger-icon {
-        background: #ffffff;
+        background: #E3735E;
         transform: rotate(-45deg);
       }
 
       body.menu-open .burger-icon::before {
-        background: #ffffff;
+        background: #E3735E;
         transform: rotate(90deg) translate(10px, -1px);
       }
 
       body.menu-open .burger-icon::after {
-        background: #ffffff;
+        background: #E3735E;
         transform: rotate(90deg) translate(-9px, 1px);
       }
-      /* --- FIM MENU HAMBURGUER --- */
 
-      /* HERO SECTION (AJUSTADO PARA IMAGEM NO HTML) */
-      /* Hero Section */
       .hero-section {
         position: relative;
         min-height: 100vh;
@@ -280,6 +303,7 @@ const categories = [
         justify-content: center;
         overflow: hidden;
       }
+      
       .hero-background {
         position: absolute;
         top: 0;
@@ -288,20 +312,23 @@ const categories = [
         height: 100%;
         z-index: 0;
       }
+      
       .hero-background img {
         width: 100%;
         height: 100%;
         object-fit: cover;
       }
+      
       .hero-overlay {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0, 0, 0, 0.6);
+        background: rgba(44, 62, 80, 0.8);
         z-index: 1;
       }
+      
       .hero-content {
         position: relative;
         z-index: 2;
@@ -310,32 +337,25 @@ const categories = [
         padding: 60px 20px;
         margin: 0 auto;
       }
-      .hero-subtitle {
-        font-size: 0.95rem;
-        color: #d4a574;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.15em;
-        margin-bottom: 16px;
-      }
+      
       .hero-title {
         font-size: clamp(2.5rem, 6vw, 5rem);
         font-weight: 700;
-        color: #ffffff;
+        color: #ECF0F1;
         margin-bottom: 24px;
         line-height: 1.1;
       }
+      
       .hero-description {
         font-size: clamp(1rem, 1.5vw, 1.3rem);
-        color: #e0e0e0;
+        color: #F2A594;
         line-height: 1.8;
         max-width: 800px;
         margin: 0 auto 60px;
       }
 
-      /* CONTENT SECTION */
       .portfolio-content {
-        background: #cbc7c7;
+        background: #ECF0F1;
         padding: 100px 20px;
       }
 
@@ -344,7 +364,6 @@ const categories = [
         margin: 0 auto;
       }
 
-      /* FILTRO DE CATEGORIA */
       .category-filter {
         display: flex;
         flex-wrap: wrap;
@@ -355,9 +374,9 @@ const categories = [
 
       .filter-button {
         padding: 10px 24px;
-        background: #3a4a4e;
-        color: #ffffff;
-        border: 2px solid #3a4a4e;
+        background: #34495E;
+        color: #ECF0F1;
+        border: 2px solid #34495E;
         border-radius: 50px;
         font-size: 0.9rem;
         font-weight: 500;
@@ -367,19 +386,21 @@ const categories = [
         letter-spacing: 0.05em;
       }
 
-      .filter-button:hover,
-      .filter-button.active {
-        background: #d4a574;
-        border-color: #d4a574;
+      .filter-button:hover {
+        background: #E3735E;
+        border-color: #E3735E;
         transform: translateY(-2px);
-        box-shadow: 0 4px 10px rgba(212, 165, 116, 0.3);
+        box-shadow: 0 4px 10px rgba(227, 115, 94, 0.3);
       }
 
       .filter-button.active {
+        background: #E3735E;
+        border-color: #E3735E;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 10px rgba(227, 115, 94, 0.3);
         font-weight: 600;
       }
 
-      /* GRID DE PROJETOS */
       .projects-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -387,28 +408,26 @@ const categories = [
         justify-content: center;
       }
 
-      /* CARD DE PROJETO (COM CORREÇÃO DE IMAGEM) */
       .project-card {
-        background: #3a4a4e;
+        background: #ffffff;
         border-radius: 20px;
         overflow: hidden;
         display: flex;
         flex-direction: column;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        transition:
-          transform 0.3s ease,
-          box-shadow 0.3s ease;
+        box-shadow: 0 10px 30px rgba(44, 62, 80, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
         text-decoration: none;
         position: relative;
+        border: 1px solid rgba(44, 62, 80, 0.1);
       }
 
       .project-card:hover {
         transform: translateY(-8px);
-        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 15px 40px rgba(44, 62, 80, 0.2);
       }
 
       .project-image-container {
-        height: 250px; /* ALTURA FIXA é a chave para o object-fit funcionar */
+        height: 250px;
         overflow: hidden;
         position: relative;
       }
@@ -425,14 +444,13 @@ const categories = [
         transform: scale(1.05);
       }
 
-      /* Overlay com botão da galeria */
       .project-image-overlay {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0, 0, 0, 0.5);
+        background: rgba(44, 62, 80, 0.7);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -446,8 +464,8 @@ const categories = [
 
       .btn-gallery-overlay {
         padding: 12px 24px;
-        background: #d4a574;
-        color: #ffffff;
+        background: #E3735E;
+        color: #ECF0F1;
         border: none;
         border-radius: 8px;
         font-size: 0.9rem;
@@ -460,7 +478,7 @@ const categories = [
       }
 
       .btn-gallery-overlay:hover {
-        background: #c49564;
+        background: #C85A45;
         transform: scale(1.05);
       }
 
@@ -474,7 +492,7 @@ const categories = [
       .project-category {
         font-size: 0.8rem;
         font-weight: 600;
-        color: #d4a574;
+        color: #E3735E;
         margin-bottom: 8px;
         text-transform: uppercase;
         letter-spacing: 0.1em;
@@ -483,14 +501,14 @@ const categories = [
       .project-title {
         font-size: 1.5rem;
         font-weight: 700;
-        color: #ffffff;
+        color: #2C3E50;
         margin-bottom: 8px;
         line-height: 1.2;
       }
 
       .project-subtitle {
         font-size: 0.95rem;
-        color: #cccccc;
+        color: #7F8C8D;
         margin-bottom: 20px;
         line-height: 1.5;
       }
@@ -504,21 +522,25 @@ const categories = [
 
       .tag {
         font-size: 0.75rem;
-        color: #ffffff;
-        background: #4a5a5e;
+        color: #ECF0F1;
+        background: #E3735E;
         padding: 4px 12px;
         border-radius: 15px;
         font-weight: 400;
+        transition: background 0.3s ease;
       }
 
-      /* Gallery Modal */
+      .tag:hover {
+        background: #C85A45;
+      }
+
       .gallery-modal {
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0, 0, 0, 0.95);
+        background: rgba(44, 62, 80, 0.98);
         z-index: 2000;
         display: flex;
         align-items: center;
@@ -552,21 +574,22 @@ const categories = [
 
       .gallery-info h3 {
         font-size: 1.5rem;
+        color: #ECF0F1;
         margin-bottom: 4px;
       }
 
       .gallery-counter {
-        color: #999;
+        color: #F2A594;
         font-size: 0.9rem;
       }
 
       .gallery-close {
         width: 48px;
         height: 48px;
-        background: rgba(255, 255, 255, 0.1);
-        border: none;
+        background: rgba(227, 115, 94, 0.1);
+        border: 1px solid rgba(227, 115, 94, 0.3);
         border-radius: 50%;
-        color: #ffffff;
+        color: #E3735E;
         cursor: pointer;
         display: flex;
         align-items: center;
@@ -575,8 +598,9 @@ const categories = [
       }
 
       .gallery-close:hover {
-        background: rgba(255, 255, 255, 0.2);
+        background: rgba(227, 115, 94, 0.2);
         transform: rotate(90deg);
+        color: #ECF0F1;
       }
 
       .gallery-main {
@@ -587,6 +611,7 @@ const categories = [
         justify-content: center;
         overflow: hidden;
         border-radius: 12px;
+        background: rgba(44, 62, 80, 0.5);
       }
 
       .gallery-image {
@@ -602,11 +627,11 @@ const categories = [
         transform: translateY(-50%);
         width: 48px;
         height: 48px;
-        background: rgba(255, 255, 255, 0.1);
+        background: rgba(227, 115, 94, 0.1);
         backdrop-filter: blur(10px);
-        border: none;
+        border: 1px solid rgba(227, 115, 94, 0.3);
         border-radius: 50%;
-        color: #ffffff;
+        color: #E3735E;
         cursor: pointer;
         display: flex;
         align-items: center;
@@ -615,8 +640,9 @@ const categories = [
       }
 
       .gallery-nav:hover {
-        background: rgba(255, 255, 255, 0.2);
+        background: rgba(227, 115, 94, 0.2);
         transform: translateY(-50%) scale(1.1);
+        color: #ECF0F1;
       }
 
       .gallery-nav:disabled {
@@ -649,12 +675,12 @@ const categories = [
       }
 
       .gallery-thumbnails::-webkit-scrollbar-track {
-        background: rgba(255, 255, 255, 0.1);
+        background: rgba(227, 115, 94, 0.1);
         border-radius: 3px;
       }
 
       .gallery-thumbnails::-webkit-scrollbar-thumb {
-        background: rgba(212, 165, 116, 0.5);
+        background: rgba(227, 115, 94, 0.5);
         border-radius: 3px;
       }
 
@@ -676,7 +702,24 @@ const categories = [
 
       .thumbnail.active {
         opacity: 1;
-        border-color: #d4a574;
+        border-color: #E3735E;
+      }
+
+      footer {
+        background: #34495E;
+        padding: 2rem 0;
+        border-top: 3px solid #E3735E;
+      }
+
+      footer div {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1rem;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        color: #ECF0F1;
+        font-size: 0.9rem;
       }
 
       @media (max-width: 1024px) {
@@ -721,6 +764,14 @@ const categories = [
           width: 60px;
           height: 45px;
         }
+
+        .menu {
+          width: 80%;
+        }
+
+        .menu a {
+          font-size: 24px;
+        }
       }
     </style>
   </head>
@@ -742,15 +793,12 @@ const categories = [
 
       <div class="hero-section">
         <div class="hero-background">
-          <img
-            src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=1920&q=80"
-            alt="Portfólio"
-          />
+          <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=1920&q=80" alt="Portfólio" />
         </div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
           <h1 class="hero-title">Nosso Portfólio</h1>
-          <p class="hero-subtitle">
+          <p class="hero-description">
             Explore nossos projetos de arquitetura e design de interiores, onde
             a funcionalidade encontra a estética em cada detalhe.
           </p>
@@ -760,87 +808,49 @@ const categories = [
       <div class="portfolio-content">
         <div class="portfolio-container">
           <div class="category-filter" id="filter-buttons">
-            {
-              categories.map((category, index) => (
-                <button
-                  class={`filter-button ${index === 0 ? "active" : ""}`}
-                  data-category={category.toLowerCase().replace(" ", "-")}
-                >
-                  {category}
-                </button>
-              ))
-            }
+            {categories.map((category, index) => (
+              <button class={`filter-button ${index === 0 ? "active" : ""}`} data-category={category.toLowerCase().replace(" ", "-")}>
+                {category}
+              </button>
+            ))}
           </div>
 
           <div class="projects-grid" id="projects-grid">
-            {
-              projects.map((project) => (
-                <div
-                  class="project-card"
-                  data-category={project.category
-                    .toLowerCase()
-                    .replace(" ", "-")}
-                >
-                  <div class="project-image-container">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      class="project-image"
-                    />
-                    <div class="project-image-overlay">
-                      <button 
-                        class="btn-gallery-overlay"
-                        data-project-id={project.id}
-                        data-project-title={project.title}
-                        data-gallery={JSON.stringify(project.gallery)}
-                      >
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                          <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-                          <circle cx="8.5" cy="8.5" r="1.5"/>
-                          <polyline points="21 15 16 10 5 21"/>
-                        </svg>
-                        Ver Galeria ({project.gallery.length})
-                      </button>
-                    </div>
-                  </div>
-                  <div class="project-info">
-                    <p class="project-category">{project.category}</p>
-                    <h2 class="project-title">{project.title}</h2>
-                    <p class="project-subtitle">{project.subtitle}</p>
-
-                    <div class="project-tags">
-                      {project.tags.map((tag) => (
-                        <span class="tag">{tag}</span>
-                      ))}
-                    </div>
+            {projects.map((project) => (
+              <div class="project-card" data-category={project.category.toLowerCase().replace(" ", "-")}>
+                <div class="project-image-container">
+                  <img src={project.image} alt={project.title} class="project-image" />
+                  <div class="project-image-overlay">
+                    <button class="btn-gallery-overlay" data-project-id={project.id} data-project-title={project.title} data-gallery={JSON.stringify(project.gallery)}>
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                        <circle cx="8.5" cy="8.5" r="1.5"/>
+                        <polyline points="21 15 16 10 5 21"/>
+                      </svg>
+                      Ver Galeria ({project.gallery.length})
+                    </button>
                   </div>
                 </div>
-              ))
-            }
+                <div class="project-info">
+                  <p class="project-category">{project.category}</p>
+                  <h2 class="project-title">{project.title}</h2>
+                  <p class="project-subtitle">{project.subtitle}</p>
+                  <div class="project-tags">
+                    {project.tags.map((tag) => (
+                      <span class="tag">{tag}</span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Footer -->
-    <footer style="
-      background: #706d6d;
-      padding: 0rem 0;
-      border-top: 1px solid #555555;
-    ">
-      <div style="
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 1rem;
-        display: flex;
-        justify-content: center;
-        text-align: center;
-        color: #000000;
-        font-size: 0.9rem;
-      ">
-        <p>
-          © 2025 — Todos os direitos reservados.
-        </p>
+    <footer>
+      <div>
+        <p>© 2025 — Todos os direitos reservados.</p>
       </div>
     </footer>
 
@@ -1085,3 +1095,6 @@ const categories = [
             break;
         }
       });
+    </script>
+  </body>
+</html>

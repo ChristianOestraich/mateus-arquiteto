@@ -2,7 +2,7 @@
 // src/components/About.astro
 ---
 
-<section id="sobre" class="py-20 bg-white">
+<section id="sobre" class="about-section">
   <div class="container mx-auto px-6">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
       <!-- Image -->
@@ -14,15 +14,15 @@
             class="w-full h-[500px] object-cover"
           />
         </div>
-        <div class="absolute -bottom-6 -right-6 w-24 h-24 bg-amber-700 rounded-full"></div>
+        <div class="decorative-circle"></div>
       </div>
 
       <!-- Content -->
       <div class="lg:pl-12">
-        <h2 class="text-4xl md:text-5xl font-serif font-bold text-gray-800 mb-6">
+        <h2 class="about-title">
           Sobre o Arquiteto
         </h2>
-        <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+        <p class="about-description">
           Com mais de 10 anos de experiência no mercado, Mateus combina criatividade, 
           técnica e funcionalidade para criar espaços que refletem a personalidade 
           e necessidades de cada cliente.
@@ -30,23 +30,85 @@
         
         <div class="space-y-4 mb-8">
           <div class="flex items-center gap-3">
-            <div class="w-2 h-2 bg-amber-700 rounded-full"></div>
-            <span class="text-gray-700">Projetos residenciais e comerciais</span>
+            <div class="bullet-point"></div>
+            <span class="list-item-text">Projetos residenciais e comerciais</span>
           </div>
           <div class="flex items-center gap-3">
-            <div class="w-2 h-2 bg-amber-700 rounded-full"></div>
-            <span class="text-gray-700">Acompanhamento de obra</span>
+            <div class="bullet-point"></div>
+            <span class="list-item-text">Acompanhamento de obra</span>
           </div>
           <div class="flex items-center gap-3">
-            <div class="w-2 h-2 bg-amber-700 rounded-full"></div>
-            <span class="text-gray-700">Design de interiores</span>
+            <div class="bullet-point"></div>
+            <span class="list-item-text">Design de interiores</span>
           </div>
         </div>
 
-        <button class="bg-amber-700 hover:bg-amber-800 text-white px-8 py-3 rounded-lg font-semibold transition-colors">
+        <button class="contact-button">
           Entre em Contato
         </button>
       </div>
     </div>
   </div>
 </section>
+
+<style>
+  .about-section {
+    padding: 5rem 0;
+    background-color: #FAF8F5;
+  }
+
+  .about-title {
+    font-size: 2.5rem;
+    font-family: serif;
+    font-weight: bold;
+    color: #2C3E50;
+    margin-bottom: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .about-title {
+      font-size: 3rem;
+    }
+  }
+
+  .about-description {
+    font-size: 1.125rem;
+    color: #7F8C8D;
+    margin-bottom: 1.5rem;
+    line-height: 1.75;
+  }
+
+  .decorative-circle {
+    position: absolute;
+    bottom: -1.5rem;
+    right: -1.5rem;
+    width: 6rem;
+    height: 6rem;
+    background-color: #E3735E;
+    border-radius: 50%;
+  }
+
+  .bullet-point {
+    width: 0.5rem;
+    height: 0.5rem;
+    background-color: #E3735E;
+    border-radius: 50%;
+  }
+
+  .list-item-text {
+    color: #34495E;
+  }
+
+  .contact-button {
+    background-color: #E3735E;
+    color: #ECF0F1;
+    padding: 0.75rem 2rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+  }
+
+  .contact-button:hover {
+    background-color: #C85A45;
+  }
+</style>

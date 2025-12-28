@@ -1,16 +1,31 @@
 ---
-// Contact.astro - Contato com Envio de Email
+// Contact.astro - Contato com Envio de Email - ATUALIZADO IGUAL AO ContactDetail
 const contactInfo = {
   email: "contato@arquitetura.com",
-  phone: "+55 (11) 98765-4321",
+  phone: "+55 (51) 99554-3845",
   address: "Av. Paulista, 1000 - São Paulo, SP",
   coordinates: "-29.785444, -51.856444",
   social: [
-    { name: "Instagram", icon: "instagram", link: "#" },
-    { name: "LinkedIn", icon: "linkedin", link: "#" },
-    { name: "Facebook", icon: "facebook", link: "#" },
-    { name: "Behance", icon: "behance", link: "#" }
-  ]
+    {
+      name: "Instagram",
+      icon: "instagram",
+      link: "https://www.instagram.com/eng.mateusmuller/",
+      target: "_blank",
+    },
+    { name: "LinkedIn", icon: "linkedin", link: "#", target: "_blank" },
+    {
+      name: "Facebook",
+      icon: "facebook",
+      link: "https://www.facebook.com/mateus.muller.562",
+      target: "_blank",
+    },
+    {
+      name: "WhatsApp",
+      icon: "whatsapp",
+      link: "https://wa.me/5551995543845",
+      target: "_blank",
+    },
+  ],
 };
 ---
 
@@ -20,8 +35,8 @@ const contactInfo = {
     <div class="contact-header">
       <h2 class="contact-title">Vamos Conversar?</h2>
       <p class="contact-subtitle">
-        Entre em contato conosco para discutir seu próximo projeto. Estamos prontos para
-        transformar suas ideias em realidade.
+        Entre em contato conosco para discutir seu próximo projeto. Estamos
+        prontos para transformar suas ideias em realidade.
       </p>
     </div>
 
@@ -32,39 +47,46 @@ const contactInfo = {
         <div class="form-section">
           <form class="contact-form" id="contactForm">
             <!-- Campos ocultos para FormSubmit -->
-            <input type="hidden" name="_subject" value="Novo Contato - Site Arquitetura" />
+            <input
+              type="hidden"
+              name="_subject"
+              value="Novo Contato - Site Arquitetura"
+            />
             <input type="hidden" name="_captcha" value="false" />
             <input type="hidden" name="_template" value="box" />
-            
+
             <div class="form-group">
               <label for="name">Nome Completo</label>
-              <input 
-                type="text" 
-                id="name" 
-                name="name" 
+              <input
+                type="text"
+                id="name"
+                name="name"
                 placeholder="Seu nome"
+                maxlength="100"
                 required
               />
             </div>
 
             <div class="form-group">
               <label for="email">E-mail</label>
-              <input 
-                type="email" 
-                id="email" 
-                name="email" 
+              <input
+                type="email"
+                id="email"
+                name="email"
                 placeholder="seu@email.com"
+                maxlength="100"
                 required
               />
             </div>
 
             <div class="form-group">
               <label for="phone">Telefone</label>
-              <input 
-                type="tel" 
-                id="phone" 
-                name="phone" 
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
                 placeholder="(00) 00000-0000"
+                maxlength="15"
               />
             </div>
 
@@ -82,20 +104,30 @@ const contactInfo = {
 
             <div class="form-group full-width">
               <label for="message">Mensagem</label>
-              <textarea 
-                id="message" 
-                name="message" 
+              <textarea
+                id="message"
+                name="message"
                 rows="6"
                 placeholder="Conte-nos sobre seu projeto..."
-                required
-              ></textarea>
+                maxlength="500"
+                required></textarea>
+              <div class="char-counter" id="charCounter">0 / 500</div>
             </div>
 
             <button type="submit" class="submit-button">
               <span class="button-text">Enviar Mensagem</span>
-              <span class="button-loading" style="display: none;">Enviando...</span>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M5 12h14M12 5l7 7-7 7"/>
+              <span class="button-loading" style="display: none;"
+                >Enviando...</span
+              >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M5 12h14M12 5l7 7-7 7"></path>
               </svg>
             </button>
           </form>
@@ -109,8 +141,7 @@ const contactInfo = {
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3452.8797682534847!2d-51.85893788488395!3d-29.78543738198879!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjnCsDQ3JzA3LjYiUyA1McKwNTEnMjMuMiJX!5e0!3m2!1spt-BR!2sbr!4v1234567890"
               allowfullscreen=""
               loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-            ></iframe>
+              referrerpolicy="no-referrer-when-downgrade"></iframe>
           </div>
         </div>
       </div>
@@ -120,37 +151,67 @@ const contactInfo = {
         <!-- Contact Details -->
         <div class="info-card">
           <h3 class="info-title">Informações de Contato</h3>
-          
+
           <div class="info-item">
             <div class="info-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                <polyline points="22,6 12,13 2,6"/>
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                ></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
               </svg>
             </div>
             <div class="info-content">
               <p class="info-label">E-mail</p>
-              <a href={`mailto:${contactInfo.email}`} class="info-value">{contactInfo.email}</a>
+              <a href={`mailto:${contactInfo.email}`} class="info-value"
+                >{contactInfo.email}</a
+              >
             </div>
           </div>
 
           <div class="info-item">
             <div class="info-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+                ></path>
               </svg>
             </div>
             <div class="info-content">
               <p class="info-label">Telefone</p>
-              <a href={`tel:${contactInfo.phone.replace(/\D/g, '')}`} class="info-value">{contactInfo.phone}</a>
+              <a
+                href={`tel:${contactInfo.phone.replace(/\D/g, "")}`}
+                class="info-value">{contactInfo.phone}</a
+              >
             </div>
           </div>
 
           <div class="info-item">
             <div class="info-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                <circle cx="12" cy="10" r="3"/>
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
               </svg>
             </div>
             <div class="info-content">
@@ -164,37 +225,66 @@ const contactInfo = {
         <div class="social-card">
           <h3 class="social-title">Siga-nos</h3>
           <div class="social-links">
-            {contactInfo.social.map((social) => (
-              <a href={social.link} class="social-link" aria-label={social.name}>
-                {social.icon === 'instagram' && (
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-                  </svg>
-                )}
-                {social.icon === 'linkedin' && (
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-                    <rect x="2" y="9" width="4" height="12"/>
-                    <circle cx="4" cy="4" r="2"/>
-                  </svg>
-                )}
-                {social.icon === 'facebook' && (
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
-                  </svg>
-                )}
-                {social.icon === 'behance' && (
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M3 8h5.5a2.5 2.5 0 1 1 0 5H3V8z"/>
-                    <path d="M3 13h6a3 3 0 1 1 0 6H3v-6z"/>
-                    <path d="M14 7h7"/>
-                    <path d="M17 13a3 3 0 1 1 3 3h-3v-3z"/>
-                  </svg>
-                )}
-              </a>
-            ))}
+            {
+              contactInfo.social.map((social) => (
+                <a
+                  href={social.link}
+                  class="social-link"
+                  aria-label={social.name}
+                >
+                  {social.icon === "instagram" && (
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                    </svg>
+                  )}
+                  {social.icon === "linkedin" && (
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                      <rect x="2" y="9" width="4" height="12" />
+                      <circle cx="4" cy="4" r="2" />
+                    </svg>
+                  )}
+                  {social.icon === "facebook" && (
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                    </svg>
+                  )}
+                  {social.icon === "whatsapp" && (
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                    >
+                      <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.815 9.815 0 0 0 12.04 2zm.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23-1.48 0-2.93-.39-4.19-1.14l-.3-.17-3.12.82.83-3.04-.2-.32a8.188 8.188 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24zM8.53 7.33c-.16 0-.43.06-.66.31-.22.25-.87.86-.87 2.07 0 1.22.89 2.39 1 2.56.14.17 1.76 2.67 4.25 3.73.59.27 1.05.42 1.41.53.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.07-.1-.23-.16-.48-.28-.25-.13-1.47-.74-1.69-.82-.23-.08-.37-.12-.56.12-.16.25-.64.81-.78.97-.15.17-.29.19-.53.07-.26-.13-1.06-.39-2-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.11-.56-1.35-.77-1.84-.2-.48-.41-.42-.56-.43-.14 0-.3-.01-.47-.01z" />
+                    </svg>
+                  )}
+                </a>
+              ))
+            }
           </div>
         </div>
 
@@ -224,9 +314,16 @@ const contactInfo = {
   <div class="success-modal" id="successModal">
     <div class="modal-content">
       <div class="modal-icon">
-        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-          <polyline points="22 4 12 14.01 9 11.01"/>
+        <svg
+          width="64"
+          height="64"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+          <polyline points="22 4 12 14.01 9 11.01"></polyline>
         </svg>
       </div>
       <h3 class="modal-title">Mensagem Enviada!</h3>
@@ -240,7 +337,7 @@ const contactInfo = {
 
 <style>
   .contact {
-    background: #cbc7c7;
+    background: #faf8f5;
     padding: 100px 20px;
   }
 
@@ -249,7 +346,6 @@ const contactInfo = {
     margin: 0 auto;
   }
 
-  /* Header */
   .contact-header {
     text-align: center;
     margin-bottom: 80px;
@@ -258,37 +354,35 @@ const contactInfo = {
   .contact-title {
     font-size: clamp(2.5rem, 5vw, 4rem);
     font-weight: 700;
-    color: #000000;
+    color: #2c3e50;
     margin-bottom: 24px;
   }
 
   .contact-subtitle {
     font-size: clamp(1rem, 1.5vw, 1.2rem);
-    color: #000000;
+    color: #7f8c8d;
     max-width: 700px;
     margin: 0 auto;
     line-height: 1.8;
   }
 
-  /* Main Grid */
   .contact-grid {
     display: grid;
     grid-template-columns: 1.5fr 1fr;
     gap: 60px;
   }
 
-  /* Form Section Wrapper */
   .form-section-wrapper {
     display: flex;
     flex-direction: column;
     gap: 32px;
   }
 
-  /* Form Section */
   .form-section {
-    background: #3a4a4e;
+    background: #ffffff;
     padding: 40px;
     border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   }
 
   .contact-form {
@@ -309,7 +403,7 @@ const contactInfo = {
   .form-group label {
     font-size: 0.9rem;
     font-weight: 600;
-    color: #ffffff;
+    color: #2c3e50;
     margin-bottom: 6px;
   }
 
@@ -317,11 +411,11 @@ const contactInfo = {
   .form-group select,
   .form-group textarea {
     padding: 12px 16px;
-    border: 2px solid #4a5a5e;
+    border: 2px solid #ecf0f1;
     border-radius: 10px;
     font-size: 0.95rem;
-    color: #ffffff;
-    background: #2d3b3e;
+    color: #2c3e50;
+    background: #faf8f5;
     transition: all 0.3s ease;
     font-family: inherit;
   }
@@ -330,21 +424,22 @@ const contactInfo = {
   .form-group select:focus,
   .form-group textarea:focus {
     outline: none;
-    border-color: #d4a574;
-    box-shadow: 0 0 0 4px rgba(212, 165, 116, 0.15);
+    border-color: #e3735e;
+    box-shadow: 0 0 0 4px rgba(227, 115, 94, 0.15);
+    background: #ffffff;
   }
 
   .form-group input::placeholder,
   .form-group textarea::placeholder {
-    color: #666666;
+    color: #7f8c8d;
   }
 
   .form-group select {
-    color: #666666;
+    color: #7f8c8d;
   }
 
   .form-group select:valid {
-    color: #ffffff;
+    color: #2c3e50;
   }
 
   .form-group textarea {
@@ -352,11 +447,22 @@ const contactInfo = {
     min-height: 120px;
   }
 
+  .char-counter {
+    font-size: 0.85rem;
+    color: #7f8c8d;
+    text-align: right;
+    margin-top: 4px;
+  }
+
+  .char-counter.warning {
+    color: #e3735e;
+  }
+
   .submit-button {
     grid-column: span 2;
     padding: 14px 36px;
-    background: #d4a574;
-    color: #2d3b3e;
+    background: #e3735e;
+    color: #ffffff;
     border: none;
     border-radius: 50px;
     font-size: 1rem;
@@ -371,27 +477,28 @@ const contactInfo = {
   }
 
   .submit-button:hover:not(:disabled) {
-    background: #c49564;
+    background: #c85a45;
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(212, 165, 116, 0.3);
+    box-shadow: 0 8px 20px rgba(227, 115, 94, 0.4);
   }
 
   .submit-button:disabled {
-    opacity: 0.7;
+    opacity: 0.6;
     cursor: not-allowed;
+    transform: none;
   }
 
-  /* Map Section */
   .map-section {
-    background: #3a4a4e;
+    background: #ffffff;
     padding: 40px;
     border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   }
 
   .map-title {
     font-size: 1.4rem;
     font-weight: 600;
-    color: #ffffff;
+    color: #2c3e50;
     margin-bottom: 20px;
   }
 
@@ -408,7 +515,6 @@ const contactInfo = {
     border: none;
   }
 
-  /* Info Section */
   .info-section {
     display: flex;
     flex-direction: column;
@@ -418,9 +524,10 @@ const contactInfo = {
   .info-card,
   .social-card,
   .hours-card {
-    background: #3a4a4e;
+    background: #ffffff;
     padding: 32px;
     border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   }
 
   .info-title,
@@ -428,7 +535,7 @@ const contactInfo = {
   .hours-title {
     font-size: 1.4rem;
     font-weight: 600;
-    color: #ffffff;
+    color: #2c3e50;
     margin-bottom: 24px;
   }
 
@@ -445,12 +552,12 @@ const contactInfo = {
   .info-icon {
     width: 48px;
     height: 48px;
-    background: #2d3b3e;
+    background: #e3735e;
     border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #d4a574;
+    color: #ecf0f1;
     flex-shrink: 0;
   }
 
@@ -460,7 +567,7 @@ const contactInfo = {
 
   .info-label {
     font-size: 0.85rem;
-    color: #888888;
+    color: #7f8c8d;
     margin-bottom: 4px;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -468,17 +575,16 @@ const contactInfo = {
 
   .info-value {
     font-size: 1rem;
-    color: #ffffff;
+    color: #2c3e50;
     font-weight: 500;
     text-decoration: none;
     transition: color 0.3s ease;
   }
 
   a.info-value:hover {
-    color: #d4a574;
+    color: #e3735e;
   }
 
-  /* Social Links */
   .social-links {
     display: flex;
     gap: 12px;
@@ -487,23 +593,22 @@ const contactInfo = {
   .social-link {
     width: 48px;
     height: 48px;
-    background: #2d3b3e;
+    background: #faf8f5;
     border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #ffffff;
+    color: #34495e;
     transition: all 0.3s ease;
     text-decoration: none;
   }
 
   .social-link:hover {
-    background: #d4a574;
-    color: #2d3b3e;
+    background: #e3735e;
+    color: #ecf0f1;
     transform: translateY(-3px);
   }
 
-  /* Hours */
   .hours-list {
     display: flex;
     flex-direction: column;
@@ -515,7 +620,7 @@ const contactInfo = {
     justify-content: space-between;
     align-items: center;
     padding: 12px 0;
-    border-bottom: 1px solid #4a5a5e;
+    border-bottom: 1px solid #ecf0f1;
   }
 
   .hours-item:last-child {
@@ -524,24 +629,23 @@ const contactInfo = {
 
   .hours-day {
     font-size: 0.95rem;
-    color: #888888;
+    color: #34495e;
     font-weight: 500;
   }
 
   .hours-time {
     font-size: 0.95rem;
-    color: #ffffff;
+    color: #2c3e50;
     font-weight: 600;
   }
 
-  /* Success Modal */
   .success-modal {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(44, 62, 80, 0.8);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -574,7 +678,7 @@ const contactInfo = {
   .modal-icon {
     width: 80px;
     height: 80px;
-    background: #d4a574;
+    background: #e3735e;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -583,27 +687,27 @@ const contactInfo = {
   }
 
   .modal-icon svg {
-    color: #ffffff;
+    color: #ecf0f1;
   }
 
   .modal-title {
     font-size: 2rem;
     font-weight: 700;
-    color: #1a1a1a;
+    color: #2c3e50;
     margin-bottom: 16px;
   }
 
   .modal-text {
     font-size: 1.1rem;
-    color: #666;
+    color: #7f8c8d;
     line-height: 1.6;
     margin-bottom: 32px;
   }
 
   .modal-button {
     padding: 14px 40px;
-    background: #d4a574;
-    color: #ffffff;
+    background: #e3735e;
+    color: #ecf0f1;
     border: none;
     border-radius: 50px;
     font-size: 1rem;
@@ -613,7 +717,7 @@ const contactInfo = {
   }
 
   .modal-button:hover {
-    background: #c49564;
+    background: #c85a45;
     transform: translateY(-2px);
   }
 
@@ -633,7 +737,8 @@ const contactInfo = {
       margin-bottom: 60px;
     }
 
-    .form-section {
+    .form-section,
+    .map-section {
       padding: 32px 24px;
     }
 
@@ -652,10 +757,6 @@ const contactInfo = {
       padding: 24px;
     }
 
-    .map-section {
-      padding: 32px 24px;
-    }
-
     .map-container {
       height: 300px;
     }
@@ -667,77 +768,96 @@ const contactInfo = {
 </style>
 
 <script>
-  const form = document.getElementById('contactForm') as HTMLFormElement;
-  const successModal = document.getElementById('successModal');
-  const closeModalBtn = document.getElementById('closeModal');
+  // Character counter
+  const messageTextarea = document.getElementById(
+    "message"
+  ) as HTMLTextAreaElement;
+  const charCounter = document.getElementById("charCounter");
 
-  form?.addEventListener('submit', async (e) => {
+  if (messageTextarea && charCounter) {
+    messageTextarea.addEventListener("input", () => {
+      const currentLength = messageTextarea.value.length;
+      const maxLength = 500;
+      charCounter.textContent = `${currentLength} / ${maxLength}`;
+
+      if (currentLength >= maxLength * 0.9) {
+        charCounter.classList.add("warning");
+      } else {
+        charCounter.classList.remove("warning");
+      }
+    });
+  }
+
+  // Form submission
+  const form = document.getElementById("contactForm") as HTMLFormElement;
+  const successModal = document.getElementById("successModal");
+  const closeModalBtn = document.getElementById("closeModal");
+
+  form?.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    const button = form.querySelector('.submit-button') as HTMLButtonElement;
-    const buttonText = button.querySelector('.button-text') as HTMLElement;
-    const buttonLoading = button.querySelector('.button-loading') as HTMLElement;
-    
-    // Mostrar loading
-    buttonText.style.display = 'none';
-    buttonLoading.style.display = 'inline';
+    const button = form.querySelector(".submit-button") as HTMLButtonElement;
+    const buttonText = button.querySelector(".button-text") as HTMLElement;
+    const buttonLoading = button.querySelector(
+      ".button-loading"
+    ) as HTMLElement;
+
+    buttonText.style.display = "none";
+    buttonLoading.style.display = "inline";
     button.disabled = true;
 
     try {
       const formData = new FormData(form);
-      
-      // Enviar para FormSubmit
-      const response = await fetch('https://formsubmit.co/christianoestraich@gmail.com', {
-        method: 'POST',
-        body: formData,
-        headers: {
-          'Accept': 'application/json'
+
+      const response = await fetch(
+        "https://formsubmit.co/christianoestraich@gmail.com",
+        {
+          method: "POST",
+          body: formData,
+          headers: {
+            Accept: "application/json",
+          },
         }
-      });
+      );
 
       if (response.ok) {
-        // Mostrar modal de sucesso
-        successModal?.classList.add('show');
-        
-        // Limpar formulário
+        successModal?.classList.add("show");
         form.reset();
+        if (charCounter) charCounter.textContent = "0 / 500";
       } else {
-        alert('Erro ao enviar mensagem. Por favor, tente novamente.');
+        alert("Erro ao enviar mensagem. Por favor, tente novamente.");
       }
     } catch (error) {
-      console.error('Erro:', error);
-      alert('Erro ao enviar mensagem. Por favor, tente novamente.');
+      console.error("Erro:", error);
+      alert("Erro ao enviar mensagem. Por favor, tente novamente.");
     } finally {
-      // Restaurar botão
-      buttonText.style.display = 'inline';
-      buttonLoading.style.display = 'none';
+      buttonText.style.display = "inline";
+      buttonLoading.style.display = "none";
       button.disabled = false;
     }
   });
 
-  // Fechar modal
-  closeModalBtn?.addEventListener('click', () => {
-    successModal?.classList.remove('show');
+  closeModalBtn?.addEventListener("click", () => {
+    successModal?.classList.remove("show");
   });
 
-  // Fechar modal clicando fora
-  successModal?.addEventListener('click', (e) => {
+  successModal?.addEventListener("click", (e) => {
     if (e.target === successModal) {
-      successModal.classList.remove('show');
+      successModal.classList.remove("show");
     }
   });
 
-  // Máscara de telefone
-  const phoneInput = document.getElementById('phone') as HTMLInputElement;
-  
-  phoneInput?.addEventListener('input', (e) => {
-    let value = (e.target as HTMLInputElement).value.replace(/\D/g, '');
-    
+  // Phone mask
+  const phoneInput = document.getElementById("phone") as HTMLInputElement;
+
+  phoneInput?.addEventListener("input", (e) => {
+    let value = (e.target as HTMLInputElement).value.replace(/\D/g, "");
+
     if (value.length <= 11) {
-      value = value.replace(/^(\d{2})(\d)/g, '($1) $2');
-      value = value.replace(/(\d)(\d{4})$/, '$1-$2');
+      value = value.replace(/^(\d{2})(\d)/g, "($1) $2");
+      value = value.replace(/(\d)(\d{4})$/, "$1-$2");
     }
-    
+
     (e.target as HTMLInputElement).value = value;
   });
 </script>

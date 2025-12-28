@@ -243,8 +243,8 @@ const service = servicesData[serviceType];
       body {
         font-family:
           -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-        background: #cbc7c7;
-        color: #1a1a1a;
+        background: #ECF0F1;
+        color: #2C3E50;
       }
 
       .service-detail {
@@ -307,7 +307,7 @@ const service = servicesData[serviceType];
         position: relative;
         width: 16px;
         height: 2px;
-        background: #ffffff;
+        background: #E3735E;
         transition: 0.3s;
       }
 
@@ -318,7 +318,7 @@ const service = servicesData[serviceType];
         left: 0;
         width: 16px;
         height: 2px;
-        background: #ffffff;
+        background: #E3735E;
         transition: 0.3s;
       }
 
@@ -340,12 +340,13 @@ const service = servicesData[serviceType];
         width: 50%;
         max-width: 400px;
         height: 100%;
-        background: rgba(0, 0, 0, 0.4);
+        background: rgba(44, 62, 80, 0.95);
         backdrop-filter: blur(10px);
         transform: translateX(-100%);
         transition: transform 0.425s cubic-bezier(0.175, 0.885, 0.32, 1);
         opacity: 0;
         visibility: hidden;
+        border-right: 3px solid #E3735E;
       }
 
       .menu.open {
@@ -369,7 +370,7 @@ const service = servicesData[serviceType];
 
       .menu a {
         position: relative;
-        color: #f9f9f9;
+        color: #ECF0F1;
         font-size: 30px;
         padding: 18px 0;
         width: 100%;
@@ -390,16 +391,17 @@ const service = servicesData[serviceType];
 
       .menu a::before {
         opacity: 0;
-        background: rgba(255, 255, 255, 0.2);
+        background: rgba(227, 115, 94, 0.3);
       }
 
       .menu a::after {
         transform: scaleX(0);
         transform-origin: 0% 50%;
-        background: #f7f7f7;
+        background: #E3735E;
       }
 
       .menu a:hover {
+        color: #E3735E;
         opacity: 1;
       }
 
@@ -412,17 +414,17 @@ const service = servicesData[serviceType];
       }
 
       body.menu-open .burger-icon {
-        background: #ffffff;
+        background: #E3735E;
         transform: rotate(-45deg);
       }
 
       body.menu-open .burger-icon::before {
-        background: #ffffff;
+        background: #E3735E;
         transform: rotate(90deg) translate(10px, -1px);
       }
 
       body.menu-open .burger-icon::after {
-        background: #ffffff;
+        background: #E3735E;
         transform: rotate(90deg) translate(-9px, 1px);
       }
 
@@ -437,12 +439,12 @@ const service = servicesData[serviceType];
 
       .service-header {
         text-align: center;
-        color: #ffffff;
+        color: #ECF0F1;
       }
 
       .service-subtitle {
         font-size: 0.95rem;
-        color: #d4a574;
+        color: #E3735E;
         font-weight: 600;
         text-transform: uppercase;
         letter-spacing: 0.1em;
@@ -454,12 +456,12 @@ const service = servicesData[serviceType];
         font-weight: 700;
         margin-bottom: 24px;
         line-height: 1.1;
-        color: #ffffff;
+        color: #ECF0F1;
       }
 
       .service-description {
         font-size: clamp(1rem, 1.5vw, 1.2rem);
-        color: #e0e0e0;
+        color: #ECF0F1;
         line-height: 1.8;
         max-width: 800px;
         margin: 0 auto;
@@ -467,7 +469,7 @@ const service = servicesData[serviceType];
 
       /* Content Section */
       .content-section {
-        background: #cbc7c7;
+        background: #FAF8F5;
         padding: 100px 20px;
       }
 
@@ -484,6 +486,7 @@ const service = servicesData[serviceType];
         font-size: clamp(1.8rem, 4vw, 2.5rem);
         font-weight: 600;
         margin-bottom: 40px;
+        color: #2C3E50;
       }
 
       .features-grid {
@@ -497,12 +500,13 @@ const service = servicesData[serviceType];
         align-items: center;
         gap: 16px;
         padding: 24px;
-        background: #f8f8f8;
+        background: #ECF0F1;
         border-radius: 16px;
+        color: #2C3E50;
       }
 
       .feature-item svg {
-        color: #d4a574;
+        color: #E3735E;
         flex-shrink: 0;
       }
 
@@ -514,6 +518,7 @@ const service = servicesData[serviceType];
         font-size: clamp(1.8rem, 4vw, 2.5rem);
         font-weight: 600;
         margin-bottom: 48px;
+        color: #2C3E50;
       }
 
       .projects-grid {
@@ -525,6 +530,7 @@ const service = servicesData[serviceType];
       .project-card {
         border-radius: 20px;
         overflow: hidden;
+        background: #ECF0F1;
       }
 
       .project-image {
@@ -538,6 +544,11 @@ const service = servicesData[serviceType];
         width: 100%;
         height: 100%;
         object-fit: cover;
+        transition: transform 0.3s ease;
+      }
+
+      .project-card:hover .project-image img {
+        transform: scale(1.05);
       }
 
       .project-overlay {
@@ -548,40 +559,42 @@ const service = servicesData[serviceType];
         padding: 32px;
         background: linear-gradient(
           to top,
-          rgba(0, 0, 0, 0.9) 0%,
+          rgba(44, 62, 80, 0.9) 0%,
           transparent 100%
         );
-        color: #ffffff;
+        color: #ECF0F1;
       }
 
       .project-title {
         font-size: 1.4rem;
         font-weight: 600;
         margin-bottom: 8px;
+        color: #ECF0F1;
       }
 
       .project-description {
         font-size: 0.95rem;
         opacity: 0.9;
+        color: #ECF0F1;
       }
 
       .cta-section {
         text-align: center;
         padding: 80px 40px;
-        background: linear-gradient(135deg, #2d3b3e 0%, #3a4a4e 100%);
+        background: linear-gradient(135deg, #34495E 0%, #2C3E50 100%);
         border-radius: 24px;
       }
 
       .cta-title {
         font-size: clamp(2rem, 4vw, 3rem);
         font-weight: 600;
-        color: #ffffff;
+        color: #ECF0F1;
         margin-bottom: 16px;
       }
 
       .cta-text {
         font-size: 1.2rem;
-        color: #cccccc;
+        color: #7F8C8D;
         margin-bottom: 40px;
       }
 
@@ -590,8 +603,8 @@ const service = servicesData[serviceType];
         align-items: center;
         gap: 12px;
         padding: 16px 40px;
-        background: #d4a574;
-        color: #2d3b3e;
+        background: #E3735E;
+        color: #ECF0F1;
         border-radius: 50px;
         font-size: 1.1rem;
         font-weight: 600;
@@ -600,13 +613,17 @@ const service = servicesData[serviceType];
       }
 
       .cta-button:hover {
-        background: #c49564;
+        background: #C85A45;
         transform: translateY(-3px);
       }
 
       @media (max-width: 768px) {
         .projects-grid {
           grid-template-columns: 1fr;
+        }
+        .menu {
+          width: 100%;
+          max-width: 100%;
         }
       }
     </style>
@@ -722,9 +739,9 @@ const service = servicesData[serviceType];
     <!-- Footer -->
     <footer
       style="
-      background: #706d6d;
-      padding: 0.8rem 0;
-      border-top: 1px solid #555555;
+      background: #34495E;
+      padding: 1rem 0;
+      border-top: 1px solid #2C3E50;
     "
     >
       <div
@@ -735,7 +752,7 @@ const service = servicesData[serviceType];
         display: flex;
         justify-content: center;
         text-align: center;
-        color: #000000;
+        color: #ECF0F1;
         font-size: 0.9rem;
       "
       >

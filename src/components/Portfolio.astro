@@ -180,7 +180,7 @@ const categories = ["Todos", "Residencial", "Interiores", "Comercial"];
 
 <style>
   .portfolio {
-    background: #cbc7c7;
+    background: #FAF8F5;
     padding: 120px 20px;
   }
 
@@ -197,7 +197,7 @@ const categories = ["Todos", "Residencial", "Interiores", "Comercial"];
 
   .portfolio-subtitle {
     font-size: 0.95rem;
-    color: #000000;
+    color: #E3735E;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.15em;
@@ -207,14 +207,14 @@ const categories = ["Todos", "Residencial", "Interiores", "Comercial"];
   .portfolio-title {
     font-size: clamp(2.5rem, 5vw, 4rem);
     font-weight: 700;
-    color: #1a1a1a;
+    color: #2C3E50;
     margin-bottom: 24px;
     line-height: 1.1;
   }
 
   .portfolio-description {
     font-size: clamp(1rem, 1.5vw, 1.2rem);
-    color: #666666;
+    color: #7F8C8D;
     max-width: 800px;
     margin: 0 auto;
     line-height: 1.8;
@@ -242,7 +242,7 @@ const categories = ["Todos", "Residencial", "Interiores", "Comercial"];
     padding: 12px 32px;
     border: none;
     background: transparent;
-    color: #666666;
+    color: #7F8C8D;
     font-size: 0.95rem;
     font-weight: 600;
     border-radius: 50px;
@@ -251,12 +251,12 @@ const categories = ["Todos", "Residencial", "Interiores", "Comercial"];
   }
 
   .filter-btn:hover {
-    color: #d4a574;
+    color: #E3735E;
   }
 
   .filter-btn.active {
-    background: #d4a574;
-    color: #ffffff;
+    background: #E3735E;
+    color: #ECF0F1;
   }
 
   /* Projects Grid */
@@ -282,7 +282,7 @@ const categories = ["Todos", "Residencial", "Interiores", "Comercial"];
     width: 100%;
     height: 500px;
     overflow: hidden;
-    background: #2d3b3e;
+    background: #34495E;
   }
 
   .project-image {
@@ -304,8 +304,8 @@ const categories = ["Todos", "Residencial", "Interiores", "Comercial"];
     height: 100%;
     background: linear-gradient(
       to top,
-      rgba(0, 0, 0, 0.95) 0%,
-      rgba(0, 0, 0, 0.7) 50%,
+      rgba(44, 62, 80, 0.95) 0%,
+      rgba(44, 62, 80, 0.7) 50%,
       transparent 100%
     );
     display: flex;
@@ -326,8 +326,8 @@ const categories = ["Todos", "Residencial", "Interiores", "Comercial"];
   .project-category {
     display: inline-block;
     padding: 6px 16px;
-    background: #d4a574;
-    color: #ffffff;
+    background: #E3735E;
+    color: #ECF0F1;
     font-size: 0.8rem;
     font-weight: 600;
     text-transform: uppercase;
@@ -339,16 +339,17 @@ const categories = ["Todos", "Residencial", "Interiores", "Comercial"];
   .project-title {
     font-size: 1.8rem;
     font-weight: 700;
-    color: #ffffff;
+    color: #ECF0F1;
     margin-bottom: 12px;
     line-height: 1.2;
   }
 
   .project-description {
     font-size: 1rem;
-    color: #e0e0e0;
+    color: #ECF0F1;
     margin-bottom: 20px;
     line-height: 1.6;
+    opacity: 0.9;
   }
 
   .project-details {
@@ -362,31 +363,33 @@ const categories = ["Todos", "Residencial", "Interiores", "Comercial"];
     align-items: center;
     gap: 6px;
     font-size: 0.9rem;
-    color: #cccccc;
+    color: #ECF0F1;
+    opacity: 0.85;
   }
 
   .project-detail svg {
-    color: #d4a574;
+    color: #E3735E;
   }
 
   /* CTA */
   .portfolio-cta {
     text-align: center;
     padding: 80px 40px;
-    background: linear-gradient(135deg, #2d3b3e 0%, #3a4a4e 100%);
+    background: linear-gradient(135deg, #2C3E50 0%, #34495E 100%);
     border-radius: 24px;
   }
 
   .cta-title {
     font-size: clamp(2rem, 4vw, 3rem);
     font-weight: 600;
-    color: #ffffff;
+    color: #ECF0F1;
     margin-bottom: 16px;
   }
 
   .cta-text {
     font-size: 1.2rem;
-    color: #cccccc;
+    color: #ECF0F1;
+    opacity: 0.85;
     margin-bottom: 40px;
   }
 
@@ -395,8 +398,8 @@ const categories = ["Todos", "Residencial", "Interiores", "Comercial"];
     align-items: center;
     gap: 12px;
     padding: 16px 40px;
-    background: #d4a574;
-    color: #ffffff;
+    background: #E3735E;
+    color: #ECF0F1;
     border-radius: 50px;
     font-size: 1.1rem;
     font-weight: 600;
@@ -405,9 +408,9 @@ const categories = ["Todos", "Residencial", "Interiores", "Comercial"];
   }
 
   .cta-button:hover {
-    background: #c49564;
+    background: #C85A45;
     transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(212, 165, 116, 0.4);
+    box-shadow: 0 10px 30px rgba(227, 115, 94, 0.4);
   }
 
   @media (max-width: 768px) {
@@ -447,8 +450,8 @@ const categories = ["Todos", "Residencial", "Interiores", "Comercial"];
       opacity: 1;
       background: linear-gradient(
         to top,
-        rgba(0, 0, 0, 0.95) 0%,
-        rgba(0, 0, 0, 0.5) 60%,
+        rgba(44, 62, 80, 0.95) 0%,
+        rgba(44, 62, 80, 0.6) 60%,
         transparent 100%
       );
     }

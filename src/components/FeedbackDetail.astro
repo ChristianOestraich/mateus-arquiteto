@@ -110,8 +110,8 @@ const stats = [
       body {
         font-family:
           -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-        background: #1a1a1a;
-        color: #ffffff;
+        background: #ECF0F1;
+        color: #2C3E50;
       }
 
       .feedback-detail {
@@ -139,7 +139,7 @@ const stats = [
         position: relative;
         width: 16px;
         height: 2px;
-        background: #ffffff;
+        background: #E3735E;
         transition: 0.3s;
       }
 
@@ -150,7 +150,7 @@ const stats = [
         left: 0;
         width: 16px;
         height: 2px;
-        background: #ffffff;
+        background: #E3735E;
         transition: 0.3s;
       }
 
@@ -172,12 +172,13 @@ const stats = [
         width: 50%;
         max-width: 400px;
         height: 100%;
-        background: rgba(0, 0, 0, 0.4);
+        background: rgba(44, 62, 80, 0.95);
         backdrop-filter: blur(10px);
         transform: translateX(-100%);
         transition: transform 0.425s cubic-bezier(0.175, 0.885, 0.32, 1);
         opacity: 0;
         visibility: hidden;
+        border-right: 3px solid #E3735E;
       }
 
       .menu.open {
@@ -201,7 +202,7 @@ const stats = [
 
       .menu a {
         position: relative;
-        color: #f9f9f9;
+        color: #ECF0F1;
         font-size: 30px;
         padding: 18px 0;
         width: 100%;
@@ -222,17 +223,18 @@ const stats = [
 
       .menu a::before {
         opacity: 0;
-        background: rgba(255, 255, 255, 0.2);
+        background: rgba(227, 115, 94, 0.3);
       }
 
       .menu a::after {
         transform: scaleX(0);
         transform-origin: 0% 50%;
-        background: #f7f7f7;
+        background: #E3735E;
       }
 
       .menu a:hover {
         opacity: 1;
+        color: #E3735E;
       }
 
       .menu a:hover::before {
@@ -244,17 +246,17 @@ const stats = [
       }
 
       body.menu-open .burger-icon {
-        background: #ffffff;
+        background: #E3735E;
         transform: rotate(-45deg);
       }
 
       body.menu-open .burger-icon::before {
-        background: #ffffff;
+        background: #E3735E;
         transform: rotate(90deg) translate(10px, -1px);
       }
 
       body.menu-open .burger-icon::after {
-        background: #ffffff;
+        background: #E3735E;
         transform: rotate(90deg) translate(-9px, 1px);
       }
 
@@ -304,7 +306,7 @@ const stats = [
 
       .hero-subtitle {
         font-size: 0.95rem;
-        color: #d4a574;
+        color: #E3735E;
         font-weight: 600;
         text-transform: uppercase;
         letter-spacing: 0.15em;
@@ -321,7 +323,7 @@ const stats = [
 
       .hero-description {
         font-size: clamp(1rem, 1.5vw, 1.3rem);
-        color: #e0e0e0;
+        color: #ECF0F1;
         line-height: 1.8;
         max-width: 800px;
         margin: 0 auto 60px;
@@ -343,19 +345,19 @@ const stats = [
       .stat-number {
         font-size: clamp(2.5rem, 4vw, 3.5rem);
         font-weight: 700;
-        color: #d4a574;
+        color: #E3735E;
         margin-bottom: 8px;
       }
 
       .stat-label {
         font-size: 1rem;
-        color: #cccccc;
+        color: #ECF0F1;
         font-weight: 500;
       }
 
       /* Content Section */
       .content-section {
-        background: #cbc7c7;
+        background: #FAF8F5;
         padding: 100px 20px;
       }
 
@@ -372,13 +374,13 @@ const stats = [
       .section-title {
         font-size: clamp(2rem, 4vw, 3rem);
         font-weight: 700;
-        color: #1a1a1a;
+        color: #2C3E50;
         margin-bottom: 16px;
       }
 
       .section-description {
         font-size: 1.1rem;
-        color: #666666;
+        color: #7F8C8D;
         max-width: 700px;
         margin: 0 auto;
       }
@@ -415,7 +417,7 @@ const stats = [
         height: 64px;
         border-radius: 50%;
         object-fit: cover;
-        border: 3px solid #d4a574;
+        border: 3px solid #E3735E;
         flex-shrink: 0;
       }
 
@@ -426,19 +428,19 @@ const stats = [
       .testimonial-name {
         font-size: 1.2rem;
         font-weight: 600;
-        color: #1a1a1a;
+        color: #2C3E50;
         margin-bottom: 4px;
       }
 
       .testimonial-role {
         font-size: 0.9rem;
-        color: #d4a574;
+        color: #E3735E;
         margin-bottom: 2px;
       }
 
       .testimonial-project {
         font-size: 0.85rem;
-        color: #666666;
+        color: #7F8C8D;
       }
 
       .testimonial-rating {
@@ -449,7 +451,7 @@ const stats = [
 
       .testimonial-text {
         font-size: 1rem;
-        color: #444444;
+        color: #34495E;
         line-height: 1.7;
         font-style: italic;
       }
@@ -458,20 +460,20 @@ const stats = [
       .cta-section {
         text-align: center;
         padding: 80px 40px;
-        background: linear-gradient(135deg, #2d3b3e 0%, #3a4a4e 100%);
+        background: linear-gradient(135deg, #34495E 0%, #2C3E50 100%);
         border-radius: 24px;
       }
 
       .cta-title {
         font-size: clamp(2rem, 4vw, 3rem);
         font-weight: 600;
-        color: #ffffff;
+        color: #ECF0F1;
         margin-bottom: 16px;
       }
 
       .cta-text {
         font-size: 1.2rem;
-        color: #cccccc;
+        color: #ECF0F1;
         margin-bottom: 40px;
       }
 
@@ -480,7 +482,7 @@ const stats = [
         align-items: center;
         gap: 12px;
         padding: 16px 40px;
-        background: #d4a574;
+        background: #E3735E;
         color: #ffffff;
         border-radius: 50px;
         font-size: 1.1rem;
@@ -490,9 +492,9 @@ const stats = [
       }
 
       .cta-button:hover {
-        background: #c49564;
+        background: #C85A45;
         transform: translateY(-3px);
-        box-shadow: 0 10px 30px rgba(212, 165, 116, 0.4);
+        box-shadow: 0 10px 30px rgba(227, 115, 94, 0.4);
       }
 
       @media (max-width: 768px) {
@@ -566,14 +568,22 @@ const stats = [
 
           <!-- Stats -->
           <div class="stats-section">
-            {
-              stats.map((stat) => (
-                <div class="stat-item">
-                  <div class="stat-number">{stat.number}</div>
-                  <div class="stat-label">{stat.label}</div>
-                </div>
-              ))
-            }
+            <div class="stat-item">
+              <div class="stat-number">150+</div>
+              <div class="stat-label">Projetos Concluídos</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">98%</div>
+              <div class="stat-label">Clientes Satisfeitos</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">15+</div>
+              <div class="stat-label">Anos de Experiência</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">50+</div>
+              <div class="stat-label">Prêmios Recebidos</div>
+            </div>
           </div>
         </div>
       </div>
@@ -592,40 +602,320 @@ const stats = [
 
           <!-- Testimonials Grid -->
           <div class="testimonials-grid">
-            {
-              testimonials.map((testimonial) => (
-                <div class="testimonial-card">
-                  <div class="testimonial-header">
-                    <img
-                      src={testimonial.image}
-                      alt={testimonial.name}
-                      class="testimonial-avatar"
-                    />
-                    <div class="testimonial-info">
-                      <h3 class="testimonial-name">{testimonial.name}</h3>
-                      <p class="testimonial-role">{testimonial.role}</p>
-                      <p class="testimonial-project">{testimonial.project}</p>
-                    </div>
-                  </div>
-
-                  <div class="testimonial-rating">
-                    {Array.from({ length: testimonial.rating }).map(() => (
-                      <svg
-                        width="20"
-                        height="20"
-                        viewBox="0 0 24 24"
-                        fill="#d4a574"
-                        stroke="none"
-                      >
-                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                      </svg>
-                    ))}
-                  </div>
-
-                  <p class="testimonial-text">{testimonial.text}</p>
+            <div class="testimonial-card">
+              <div class="testimonial-header">
+                <img
+                  src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80"
+                  alt="Maria Silva"
+                  class="testimonial-avatar"
+                />
+                <div class="testimonial-info">
+                  <h3 class="testimonial-name">Maria Silva</h3>
+                  <p class="testimonial-role">Proprietária</p>
+                  <p class="testimonial-project">Residência Moderna</p>
                 </div>
-              ))
-            }
+              </div>
+
+              <div class="testimonial-rating">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#E3735E" stroke="none">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                </svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#E3735E" stroke="none">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                </svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#E3735E" stroke="none">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                </svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#E3735E" stroke="none">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                </svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#E3735E" stroke="none">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                </svg>
+              </div>
+
+              <p class="testimonial-text">Experiência incrível do início ao fim. A equipe transformou completamente nossa casa, superando todas as expectativas. O projeto ficou ainda melhor do que imaginávamos!</p>
+            </div>
+
+            <div class="testimonial-card">
+              <div class="testimonial-header">
+                <img
+                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80"
+                  alt="João Santos"
+                  class="testimonial-avatar"
+                />
+                <div class="testimonial-info">
+                  <h3 class="testimonial-name">João Santos</h3>
+                  <p class="testimonial-role">Empresário</p>
+                  <p class="testimonial-project">Escritório Corporativo</p>
+                </div>
+              </div>
+
+              <div class="testimonial-rating">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#E3735E" stroke="none">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                </svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#E3735E" stroke="none">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                </svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#E3735E" stroke="none">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                </svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#E3735E" stroke="none">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                </svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#E3735E" stroke="none">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                </svg>
+              </div>
+
+              <p class="testimonial-text">Profissionalismo impecável! O novo escritório aumentou a produtividade da equipe e impressiona todos os clientes que nos visitam. Investimento que valeu cada centavo.</p>
+            </div>
+
+            <div class="testimonial-card">
+              <div class="testimonial-header">
+                <img
+                  src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80"
+                  alt="Ana Paula Costa"
+                  class="testimonial-avatar"
+                />
+                <div class="testimonial-info">
+                  <h3 class="testimonial-name">Ana Paula Costa</h3>
+                  <p class="testimonial-role">Designer</p>
+                  <p class="testimonial-project">Apartamento Contemporâneo</p>
+                </div>
+              </div>
+
+              <div class="testimonial-rating">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#E3735E" stroke="none">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                </svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#E3735E" stroke="none">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                </svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#E3735E" stroke="none">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                </svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#E3735E" stroke="none">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                </svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#E3735E" stroke="none">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                </svg>
+              </div>
+
+              <p class="testimonial-text">Atenção aos detalhes excepcional! Cada ambiente foi pensado com muito cuidado e o resultado final superou todas as minhas expectativas. Recomendo de olhos fechados!</p>
+            </div>
+
+            <div class="testimonial-card">
+              <div class="testimonial-header">
+                <img
+                  src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80"
+                  alt="Carlos Mendes"
+                  class="testimonial-avatar"
+                />
+                <div class="testimonial-info">
+                  <h3 class="testimonial-name">Carlos Mendes</h3>
+                  <p class="testimonial-role">Arquiteto</p>
+                  <p class="testimonial-project">Casa de Campo</p>
+                </div>
+              </div>
+
+              <div class="testimonial-rating">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#E3735E" stroke="none">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                </svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#E3735E" stroke="none">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                </svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#E3735E" stroke="none">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                </svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#E3735E" stroke="none">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                </svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#E3735E" stroke="none">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                </svg>
+              </div>
+
+              <p class="testimonial-text">Como arquiteto, sou muito exigente. A equipe demonstrou excelência técnica e criatividade, entregando um projeto que une funcionalidade e beleza de forma magistral.</p>
+            </div>
+
+            <div class="testimonial-card">
+              <div class="testimonial-header">
+                <img
+                  src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=400&q=80"
+                  alt="Fernanda Oliveira"
+                  class="testimonial-avatar"
+                />
+                <div class="testimonial-info">
+                  <h3 class="testimonial-name">Fernanda Oliveira</h3>
+                  <p class="testimonial-role">Médica</p>
+                  <p class="testimonial-project">Clínica Médica</p>
+                </div>
+              </div>
+
+              <div class="testimonial-rating">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#E3735E" stroke="none">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                </svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#E3735E" stroke="none">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                </svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#E3735E" stroke="none">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                </svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#E3735E" stroke="none">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                </svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#E3735E" stroke="none">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                </svg>
+              </div>
+
+              <p class="testimonial-text">A nova clínica ficou perfeita! Ambiente acolhedor para os pacientes e funcional para a equipe. O projeto considerou cada necessidade específica da área médica.</p>
+            </div>
+
+            <div class="testimonial-card">
+              <div class="testimonial-header">
+                <img
+                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80"
+                  alt="Ricardo Almeida"
+                  class="testimonial-avatar"
+                />
+                <div class="testimonial-info">
+                  <h3 class="testimonial-name">Ricardo Almeida</h3>
+                  <p class="testimonial-role">Empresário</p>
+                  <p class="testimonial-project">Restaurante Gourmet</p>
+                </div>
+              </div>
+
+              <div class="testimonial-rating">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#E3735E" stroke="none">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                </svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#E3735E" stroke="none">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                </svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#E3735E" stroke="none">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                </svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#E3735E" stroke="none">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                </svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#E3735E" stroke="none">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                </svg>
+              </div>
+
+              <p class="testimonial-text">O design do restaurante é sensacional! Criou uma atmosfera única que encanta os clientes. As reservas aumentaram significativamente após a reforma.</p>
+            </div>
+
+            <div class="testimonial-card">
+              <div class="testimonial-header">
+                <img
+                  src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80"
+                  alt="Patricia Lima"
+                  class="testimonial-avatar"
+                />
+                <div class="testimonial-info">
+                  <h3 class="testimonial-name">Patricia Lima</h3>
+                  <p class="testimonial-role">Advogada</p>
+                  <p class="testimonial-project">Escritório de Advocacia</p>
+                </div>
+              </div>
+
+              <div class="testimonial-rating">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#E3735E" stroke="none">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                </svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#E3735E" stroke="none">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                </svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#E3735E" stroke="none">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                </svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#E3735E" stroke="none">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                </svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#E3735E" stroke="none">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                </svg>
+              </div>
+
+              <p class="testimonial-text">Ambiente sofisticado e profissional. Todos os clientes comentam sobre a elegância do escritório. A equipe entendeu perfeitamente a imagem que queríamos transmitir.</p>
+            </div>
+
+            <div class="testimonial-card">
+              <div class="testimonial-header">
+                <img
+                  src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&q=80"
+                  alt="Eduardo Rocha"
+                  class="testimonial-avatar"
+                />
+                <div class="testimonial-info">
+                  <h3 class="testimonial-name">Eduardo Rocha</h3>
+                  <p class="testimonial-role">Dentista</p>
+                  <p class="testimonial-project">Consultório Odontológico</p>
+                </div>
+              </div>
+
+              <div class="testimonial-rating">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#E3735E" stroke="none">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                </svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#E3735E" stroke="none">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                </svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#E3735E" stroke="none">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                </svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#E3735E" stroke="none">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                </svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#E3735E" stroke="none">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                </svg>
+              </div>
+
+              <p class="testimonial-text">Consultório moderno e acolhedor. Os pacientes se sentem mais confortáveis e a funcionalidade facilitou muito o trabalho da equipe. Excelente custo-benefício!</p>
+            </div>
+
+            <div class="testimonial-card">
+              <div class="testimonial-header">
+                <img
+                  src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&q=80"
+                  alt="Juliana Martins"
+                  class="testimonial-avatar"
+                />
+                <div class="testimonial-info">
+                  <h3 class="testimonial-name">Juliana Martins</h3>
+                  <p class="testimonial-role">Empresária</p>
+                  <p class="testimonial-project">Loja de Moda</p>
+                </div>
+              </div>
+
+              <div class="testimonial-rating">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#E3735E" stroke="none">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                </svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#E3735E" stroke="none">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                </svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#E3735E" stroke="none">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                </svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#E3735E" stroke="none">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                </svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#E3735E" stroke="none">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                </svg>
+              </div>
+
+              <p class="testimonial-text">A loja ficou incrível! O design valoriza os produtos e cria uma experiência única para os clientes. As vendas aumentaram 40% após a reforma. Muito satisfeita!</p>
+            </div>
           </div>
 
           <!-- CTA -->
@@ -655,9 +945,9 @@ const stats = [
 
     <!-- Footer -->
     <footer style="
-      background: #706d6d;
+      background: #34495E;
       padding: 0.8rem 0;
-      border-top: 1px solid #555555;
+      border-top: 1px solid #2C3E50;
     ">
       <div style="
         max-width: 1200px;
@@ -666,7 +956,7 @@ const stats = [
         display: flex;
         justify-content: center;
         text-align: center;
-        color: #000000;
+        color: #ECF0F1;
         font-size: 0.9rem;
       ">
         <p>

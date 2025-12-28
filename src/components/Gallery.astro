@@ -1,5 +1,5 @@
 ---
-// Gallery.astro - Galeria de Serviços de Arquitetura
+// Gallery.astro - Galeria de Serviços de Arquitetura - ATUALIZADO COM PALETA TERRA COTA
 const services = [
   {
     title: "Projetos Residenciais",
@@ -79,7 +79,7 @@ const services = [
 
 <style>
   .gallery {
-    background: #706d6d;
+    background: #FAF8F5; /* MUDANÇA: #706d6d → #FAF8F5 (BG Cream) */
     padding: 80px 20px;
     min-height: 100vh;
   }
@@ -97,13 +97,13 @@ const services = [
   .gallery-title {
     font-size: clamp(2rem, 5vw, 3rem);
     font-weight: 600;
-    color: #1a1a1a;
+    color: #2C3E50; /* MUDANÇA: #1a1a1a → #2C3E50 (Secondary) */
     margin-bottom: 20px;
   }
 
   .gallery-description {
     font-size: clamp(0.95rem, 1.5vw, 1.1rem);
-    color: #000000;
+    color: #7F8C8D; /* MUDANÇA: #000000 → #7F8C8D (Neutral) */
     max-width: 900px;
     margin: 0 auto;
     line-height: 1.8;
@@ -118,16 +118,17 @@ const services = [
 
   .service-card {
     position: relative;
-    background: #f8f8f8;
+    background: #FFFFFF; /* MUDANÇA: #f8f8f8 → #FFFFFF */
     border-radius: 20px;
     overflow: hidden;
     transition: transform 0.4s ease, box-shadow 0.4s ease;
     cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* NOVO: Sombra inicial */
   }
 
   .service-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 20px 40px rgba(227, 115, 94, 0.15); /* MUDANÇA: Sombra terra cota */
   }
 
   .card-image {
@@ -135,7 +136,7 @@ const services = [
     width: 100%;
     height: 280px;
     overflow: hidden;
-    background: #e0e0e0;
+    background: #ECF0F1; /* MUDANÇA: #e0e0e0 → #ECF0F1 */
   }
 
   .card-image img {
@@ -143,6 +144,7 @@ const services = [
     height: 100%;
     object-fit: cover;
     display: block;
+    transition: transform 0.4s ease; /* NOVO: Transição suave */
   }
 
   .service-card:hover .card-image img {
@@ -155,7 +157,7 @@ const services = [
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.3) 100%);
+    background: linear-gradient(to bottom, transparent 0%, rgba(227, 115, 94, 0.2) 100%); /* MUDANÇA: Overlay terra cota */
   }
 
   .card-content {
@@ -165,13 +167,13 @@ const services = [
   .card-title {
     font-size: 1.4rem;
     font-weight: 600;
-    color: #1a1a1a;
+    color: #2C3E50; /* MUDANÇA: #1a1a1a → #2C3E50 (Secondary) */
     margin-bottom: 8px;
   }
 
   .card-description {
     font-size: 0.95rem;
-    color: #666;
+    color: #7F8C8D; /* MUDANÇA: #666 → #7F8C8D (Neutral) */
     margin-bottom: 20px;
   }
 
@@ -181,12 +183,12 @@ const services = [
     max-width: 200px;
     margin: 0 auto 24px;
     padding: 12px 32px;
-    background: #1a1a1a;
+    background: #E3735E; /* MUDANÇA: #1a1a1a → #E3735E (TERRA COTA) */
     color: #ffffff;
     border: none;
     border-radius: 50px;
     font-size: 0.95rem;
-    font-weight: 500;
+    font-weight: 600; /* MUDANÇA: 500 → 600 */
     cursor: pointer;
     transition: all 0.3s ease;
     text-align: center;
@@ -194,9 +196,9 @@ const services = [
   }
 
   .card-button:hover {
-    background: #333;
+    background: #C85A45; /* MUDANÇA: #333 → #C85A45 (Terra Cota Dark) */
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 20px rgba(227, 115, 94, 0.4); /* MUDANÇA: Sombra terra cota */
   }
 
   @media (max-width: 768px) {

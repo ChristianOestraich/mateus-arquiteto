@@ -1,20 +1,20 @@
 ---
-// Hero.astro - Slider de Casas Modernas
+// Hero.astro - Slider de Casas Modernas - ATUALIZADO COM PALETA TERRA COTA
 const slides = [
   {
-    title: "MODERN LIVING",
-    subtitle: "Contemporary Architecture",
-    image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200&q=80"
+    title: "VIDA MODERNA",
+    subtitle: "Arquitetura Contemporânea",
+    image: "/../public/banners/image-hero/hero-01.png"
   },
   {
-    title: "LUXURY HOMES",
-    subtitle: "Elegant Design",
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80"
+    title: "CASAS DE LUXO",
+    subtitle: "Design elegante",
+    image: "/../public/banners/image-hero/hero-02.png"
   },
   {
-    title: "DREAM HOUSES",
-    subtitle: "Minimalist Style",
-    image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1200&q=80"
+    title: "CASAS DOS SONHOS",
+    subtitle: "Estilo minimalista",
+    image: "/../public/banners/image-hero/hero-03.png"
   }
 ];
 ---
@@ -70,7 +70,7 @@ const slides = [
     position: relative;
     width: 100%;
     height: 100vh;
-    background: #0a0a0a;
+    background: #2C3E50; /* MUDANÇA: #0a0a0a → #2C3E50 (Secondary - mais elegante) */
     overflow: hidden;
   }
 
@@ -115,19 +115,21 @@ const slides = [
   .slide-title {
     font-size: clamp(3rem, 8vw, 6rem);
     font-weight: 900;
-    color: #fff;
+    color: #ECF0F1; /* MUDANÇA: #fff → #ECF0F1 (Neutral Light - mais suave) */
     margin: 0;
     line-height: 1;
     letter-spacing: -0.02em;
     text-transform: uppercase;
     animation: slideInUp 0.8s ease-out;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* NOVO: Sombra para legibilidade */
   }
 
   .slide-subtitle {
     font-size: clamp(1rem, 2vw, 1.5rem);
-    color: #888;
+    color: #E3735E; /* MUDANÇA: #888 → #E3735E (TERRA COTA - destaque) */
     margin-top: 1rem;
     animation: slideInUp 0.8s ease-out 0.2s backwards;
+    font-weight: 600; /* NOVO: Peso maior */
   }
 
   .slide-image {
@@ -136,8 +138,9 @@ const slides = [
     height: 70vh;
     overflow: hidden;
     border-radius: 20px;
-    background: #1a1a1a;
+    background: #34495E; /* MUDANÇA: #1a1a1a → #34495E (Neutral Dark) */
     animation: scaleIn 0.8s ease-out 0.3s backwards;
+    border: 3px solid rgba(227, 115, 94, 0.3); /* NOVO: Borda terra cota sutil */
   }
 
   .slide-image img {
@@ -159,9 +162,9 @@ const slides = [
   }
 
   .slider-btn {
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: #fff;
+    background: rgba(227, 115, 94, 0.2); /* MUDANÇA: rgba branco → Terra cota com transparência */
+    border: 2px solid rgba(227, 115, 94, 0.5); /* MUDANÇA: Borda terra cota */
+    color: #ECF0F1; /* MUDANÇA: #fff → #ECF0F1 */
     width: 48px;
     height: 48px;
     border-radius: 50%;
@@ -174,7 +177,8 @@ const slides = [
   }
 
   .slider-btn:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(227, 115, 94, 0.4); /* MUDANÇA: Hover terra cota */
+    border-color: #E3735E; /* MUDANÇA: Borda sólida terra cota */
     transform: scale(1.1);
   }
 
@@ -187,14 +191,14 @@ const slides = [
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(236, 240, 241, 0.3); /* MUDANÇA: rgba branco → Neutral Light com transparência */
     border: none;
     cursor: pointer;
     transition: all 0.3s;
   }
 
   .dot.active {
-    background: #fff;
+    background: #E3735E; /* MUDANÇA: #fff → #E3735E (TERRA COTA) */
     width: 32px;
     border-radius: 6px;
   }
@@ -205,13 +209,13 @@ const slides = [
     left: 0;
     width: 100%;
     height: 4px;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(52, 73, 94, 0.5); /* MUDANÇA: rgba branco → Neutral Dark */
     z-index: 10;
   }
 
   .progress-bar {
     height: 100%;
-    background: linear-gradient(90deg, #6366f1, #8b5cf6);
+    background: linear-gradient(90deg, #E3735E, #F2A594); /* MUDANÇA: Gradiente roxo → Gradiente terra cota */
     width: 0%;
     transition: width 0.1s linear;
   }
