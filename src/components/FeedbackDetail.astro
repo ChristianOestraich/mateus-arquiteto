@@ -1,95 +1,5 @@
 ---
 // FeedbackDetail.astro - Página Completa de Depoimentos
-const testimonials = [
-  {
-    name: "Maria Silva",
-    role: "Proprietária",
-    project: "Residência Moderna",
-    image:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80",
-    rating: 5,
-    text: "Experiência incrível do início ao fim. A equipe transformou completamente nossa casa, superando todas as expectativas. O projeto ficou ainda melhor do que imaginávamos!",
-  },
-  {
-    name: "João Santos",
-    role: "Empresário",
-    project: "Escritório Corporativo",
-    image:
-      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80",
-    rating: 5,
-    text: "Profissionalismo impecável! O novo escritório aumentou a produtividade da equipe e impressiona todos os clientes que nos visitam. Investimento que valeu cada centavo.",
-  },
-  {
-    name: "Ana Paula Costa",
-    role: "Designer",
-    project: "Apartamento Contemporâneo",
-    image:
-      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80",
-    rating: 5,
-    text: "Atenção aos detalhes excepcional! Cada ambiente foi pensado com muito cuidado e o resultado final superou todas as minhas expectativas. Recomendo de olhos fechados!",
-  },
-  {
-    name: "Carlos Mendes",
-    role: "Arquiteto",
-    project: "Casa de Campo",
-    image:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80",
-    rating: 5,
-    text: "Como arquiteto, sou muito exigente. A equipe demonstrou excelência técnica e criatividade, entregando um projeto que une funcionalidade e beleza de forma magistral.",
-  },
-  {
-    name: "Fernanda Oliveira",
-    role: "Médica",
-    project: "Clínica Médica",
-    image:
-      "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=400&q=80",
-    rating: 5,
-    text: "A nova clínica ficou perfeita! Ambiente acolhedor para os pacientes e funcional para a equipe. O projeto considerou cada necessidade específica da área médica.",
-  },
-  {
-    name: "Ricardo Almeida",
-    role: "Empresário",
-    project: "Restaurante Gourmet",
-    image:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80",
-    rating: 5,
-    text: "O design do restaurante é sensacional! Criou uma atmosfera única que encanta os clientes. As reservas aumentaram significativamente após a reforma.",
-  },
-  {
-    name: "Patricia Lima",
-    role: "Advogada",
-    project: "Escritório de Advocacia",
-    image:
-      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80",
-    rating: 5,
-    text: "Ambiente sofisticado e profissional. Todos os clientes comentam sobre a elegância do escritório. A equipe entendeu perfeitamente a imagem que queríamos transmitir.",
-  },
-  {
-    name: "Eduardo Rocha",
-    role: "Dentista",
-    project: "Consultório Odontológico",
-    image:
-      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&q=80",
-    rating: 5,
-    text: "Consultório moderno e acolhedor. Os pacientes se sentem mais confortáveis e a funcionalidade facilitou muito o trabalho da equipe. Excelente custo-benefício!",
-  },
-  {
-    name: "Juliana Martins",
-    role: "Empresária",
-    project: "Loja de Moda",
-    image:
-      "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&q=80",
-    rating: 5,
-    text: "A loja ficou incrível! O design valoriza os produtos e cria uma experiência única para os clientes. As vendas aumentaram 40% após a reforma. Muito satisfeita!",
-  },
-];
-
-const stats = [
-  { number: "150+", label: "Projetos Concluídos" },
-  { number: "98%", label: "Clientes Satisfeitos" },
-  { number: "15+", label: "Anos de Experiência" },
-  { number: "50+", label: "Prêmios Recebidos" },
-];
 ---
 
 <!doctype html>
@@ -551,7 +461,7 @@ const stats = [
       <div class="hero-section">
         <div class="hero-background">
           <img
-            src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=1920&q=80"
+            src="/public/images/feedback-details/feedback-details-01.jpeg"
             alt="Depoimentos"
           />
         </div>
@@ -605,7 +515,7 @@ const stats = [
             <div class="testimonial-card">
               <div class="testimonial-header">
                 <img
-                  src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80"
+                  src="/public/images/feedback-details/feedback-details-02.jpeg"
                   alt="Maria Silva"
                   class="testimonial-avatar"
                 />
@@ -640,7 +550,7 @@ const stats = [
             <div class="testimonial-card">
               <div class="testimonial-header">
                 <img
-                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80"
+                  src="/public/images/feedback-details/feedback-details-03.jpeg"
                   alt="João Santos"
                   class="testimonial-avatar"
                 />
@@ -675,7 +585,7 @@ const stats = [
             <div class="testimonial-card">
               <div class="testimonial-header">
                 <img
-                  src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80"
+                  src="/public/images/feedback-details/feedback-details-04.jpeg"
                   alt="Ana Paula Costa"
                   class="testimonial-avatar"
                 />
@@ -710,7 +620,7 @@ const stats = [
             <div class="testimonial-card">
               <div class="testimonial-header">
                 <img
-                  src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80"
+                  src="/public/images/feedback-details/feedback-details-05.jpeg"
                   alt="Carlos Mendes"
                   class="testimonial-avatar"
                 />
@@ -745,7 +655,7 @@ const stats = [
             <div class="testimonial-card">
               <div class="testimonial-header">
                 <img
-                  src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=400&q=80"
+                  src="/public/images/feedback-details/feedback-details-06.jpeg"
                   alt="Fernanda Oliveira"
                   class="testimonial-avatar"
                 />
@@ -780,7 +690,7 @@ const stats = [
             <div class="testimonial-card">
               <div class="testimonial-header">
                 <img
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80"
+                  src="/public/images/feedback-details/feedback-details-07.jpeg"
                   alt="Ricardo Almeida"
                   class="testimonial-avatar"
                 />
@@ -815,7 +725,7 @@ const stats = [
             <div class="testimonial-card">
               <div class="testimonial-header">
                 <img
-                  src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80"
+                  src="/public/images/feedback-details/feedback-details-08.jpeg"
                   alt="Patricia Lima"
                   class="testimonial-avatar"
                 />
@@ -850,7 +760,7 @@ const stats = [
             <div class="testimonial-card">
               <div class="testimonial-header">
                 <img
-                  src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&q=80"
+                  src="/public/images/feedback-details/feedback-details-09.jpeg"
                   alt="Eduardo Rocha"
                   class="testimonial-avatar"
                 />
@@ -885,7 +795,7 @@ const stats = [
             <div class="testimonial-card">
               <div class="testimonial-header">
                 <img
-                  src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&q=80"
+                  src="/public/images/feedback-details/feedback-details-10.jpeg"
                   alt="Juliana Martins"
                   class="testimonial-avatar"
                 />

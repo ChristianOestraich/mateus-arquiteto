@@ -2,12 +2,7 @@
 // ServiceDetail.astro - Página de Detalhes do Serviço
 interface Props {
   serviceType:
-    | "residencial"
-    | "interiores"
-    | "comercial"
-    | "consultoria"
-    | "moderno"
-    | "patrimonial";
+    | "residencial";
 }
 
 const { serviceType } = Astro.props;
@@ -19,7 +14,7 @@ const servicesData = {
     description:
       "Criamos residências únicas que refletem o estilo de vida e personalidade de cada cliente. Nossos projetos residenciais combinam funcionalidade, conforto e estética contemporânea.",
     heroImage:
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&q=80",
+      "/public/images/service-details/serviceDetais-01.jpeg",
     features: [
       "Arquitetura personalizada",
       "Planejamento de espaços",
@@ -29,194 +24,28 @@ const servicesData = {
     gallery: [
       {
         image:
-          "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&q=80",
+          "/public/images/service-details/serviceDetais-02.jpeg",
         title: "Casa Moderna em Condomínio",
         description:
           "Residência de 350m² com arquitetura minimalista e integração com jardim",
       },
       {
         image:
-          "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80",
+          "/public/images/service-details/serviceDetais-03.jpeg",
         title: "Residência Contemporânea",
         description: "Projeto com linhas clean e amplos espaços de convivência",
       },
       {
         image:
-          "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1200&q=80",
+          "/public/images/service-details/serviceDetais-04.jpeg",
         title: "Casa de Campo Luxury",
         description: "Integração perfeita entre arquitetura e natureza",
       },
       {
         image:
-          "https://images.unsplash.com/photo-1600607687644-c7171b42498f?w=1200&q=80",
+          "/public/images/service-details/serviceDetais-05.jpeg",
         title: "Sobrado Moderno",
         description: "Design arrojado com fachada em vidro e madeira",
-      },
-    ],
-  },
-  interiores: {
-    title: "Design de Interiores",
-    subtitle: "Mais de 30 designs",
-    description:
-      "Transformamos ambientes em espaços funcionais e inspiradores. Nosso design de interiores une estética, conforto e personalidade em cada projeto.",
-    heroImage:
-      "https://images.unsplash.com/photo-1600210492493-0946911123ea?w=1920&q=80",
-    features: [
-      "Projeto de ambientes completos",
-      "Seleção de mobiliário e acabamentos",
-      "Iluminação e decoração",
-      "Renderizações 3D realistas",
-    ],
-    gallery: [
-      {
-        image:
-          "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1200&q=80",
-        title: "Sala de Estar Moderna",
-        description:
-          "Ambiente integrado com design contemporâneo e aconchegante",
-      },
-      {
-        image:
-          "https://images.unsplash.com/photo-1600210492493-0946911123ea?w=1200&q=80",
-        title: "Cozinha Gourmet",
-        description: "Funcionalidade e elegância em harmonia perfeita",
-      },
-      {
-        image:
-          "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=1200&q=80",
-        title: "Suíte Master",
-        description: "Conforto e sofisticação para momentos de descanso",
-      },
-      {
-        image:
-          "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=1200&q=80",
-        title: "Home Office",
-        description: "Produtividade e estilo em ambiente profissional",
-      },
-    ],
-  },
-  comercial: {
-    title: "Projetos Comerciais",
-    subtitle: "Mais de 20 projetos",
-    description:
-      "Desenvolvemos espaços comerciais que potencializam negócios e criam experiências memoráveis para clientes e colaboradores.",
-    heroImage:
-      "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&q=80",
-    features: [
-      "Arquitetura corporativa",
-      "Lojas e showrooms",
-      "Restaurantes e cafés",
-      "Otimização de fluxo",
-    ],
-    gallery: [
-      {
-        image:
-          "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=80",
-        title: "Escritório Corporativo",
-        description: "Ambiente profissional e moderno para alta produtividade",
-      },
-      {
-        image:
-          "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=80",
-        title: "Espaço Coworking",
-        description: "Flexibilidade e colaboração em design inovador",
-      },
-      {
-        image:
-          "https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=1200&q=80",
-        title: "Showroom de Luxo",
-        description: "Experiência imersiva para apresentação de produtos",
-      },
-      {
-        image:
-          "https://images.unsplash.com/photo-1517502884422-41eaead166d4?w=1200&q=80",
-        title: "Restaurante Contemporâneo",
-        description:
-          "Atmosfera acolhedora que valoriza a experiência gastronômica",
-      },
-    ],
-  },
-  consultoria: {
-    title: "Consultoria Estratégica",
-    subtitle: "Soluções inovadoras",
-    description:
-      "Oferecemos consultoria especializada para otimização de projetos, viabilidade técnica e soluções personalizadas em arquitetura.",
-    heroImage:
-      "https://images.unsplash.com/photo-1568992687947-868a62a9f521?w=1920&q=80",
-    features: [
-      "Análise de viabilidade",
-      "Otimização de projetos",
-      "Assessoria técnica",
-      "Gestão de obras",
-    ],
-    gallery: [
-      {
-        image:
-          "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1200&q=80",
-        title: "Planejamento Estratégico",
-        description: "Desenvolvimento de soluções personalizadas",
-      },
-      {
-        image:
-          "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&q=80",
-        title: "Análise Técnica",
-        description: "Estudos detalhados de viabilidade e execução",
-      },
-    ],
-  },
-  moderno: {
-    title: "Estilo Moderno",
-    subtitle: "Tendências atuais",
-    description:
-      "Projetos que incorporam as últimas tendências em arquitetura moderna, com foco em minimalismo, funcionalidade e design atemporal.",
-    heroImage:
-      "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=1920&q=80",
-    features: [
-      "Design minimalista",
-      "Tecnologia integrada",
-      "Materiais contemporâneos",
-      "Linhas clean e geométricas",
-    ],
-    gallery: [
-      {
-        image:
-          "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=1200&q=80",
-        title: "Arquitetura Minimalista",
-        description: "Menos é mais: simplicidade e elegância",
-      },
-      {
-        image:
-          "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&q=80",
-        title: "Casa Smart",
-        description: "Tecnologia e conforto em perfeita sintonia",
-      },
-    ],
-  },
-  patrimonial: {
-    title: "Preservação Patrimonial",
-    subtitle: "Expertise completa",
-    description:
-      "Especialização em restauro e preservação de patrimônio histórico, unindo técnicas tradicionais e soluções contemporâneas.",
-    heroImage:
-      "https://images.unsplash.com/photo-1511818966892-d7d671e672a2?w=1920&q=80",
-    features: [
-      "Restauro arquitetônico",
-      "Preservação histórica",
-      "Adequação às normas",
-      "Revitalização de espaços",
-    ],
-    gallery: [
-      {
-        image:
-          "https://images.unsplash.com/photo-1511818966892-d7d671e672a2?w=1200&q=80",
-        title: "Restauro de Fachada",
-        description: "Preservação de elementos históricos originais",
-      },
-      {
-        image:
-          "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80",
-        title: "Revitalização de Edifício",
-        description: "Novo uso para espaços históricos",
       },
     ],
   },
